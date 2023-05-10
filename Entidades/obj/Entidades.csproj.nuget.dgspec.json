@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

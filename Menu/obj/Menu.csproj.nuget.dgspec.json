@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Menu\\Menu.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\Menu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Menu\\Menu.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\Menu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Menu\\Menu.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\Menu.csproj",
         "projectName": "Menu",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Menu\\Menu.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\Menu.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Menu\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\source\\repos\\PP-YamilaDioncio\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Entidades\\Entidades.csproj"
               }
             }
           }
