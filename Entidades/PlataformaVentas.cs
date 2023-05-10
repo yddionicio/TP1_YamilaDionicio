@@ -11,11 +11,13 @@ namespace Entidades
     {
         public static List<Producto> productos;
         public static List<Cliente> clientes;
+        private static List<Venta> ventas;
 
         static PlataformaVentas()
         {
             productos = new List<Producto>();
             clientes = new List<Cliente>();
+            ventas = new List<Venta>();
             PlataformaVentas.CargarProductos();
             PlataformaVentas.CargarClientes();
         }
@@ -32,6 +34,11 @@ namespace Entidades
             set { PlataformaVentas.clientes = value; }
         }
 
+        public List<Venta> Ventas
+        {
+            get { return PlataformaVentas.ventas; }
+            set { PlataformaVentas.ventas = value; }
+        }
         public static void CargarProductos()
         {
             Random rdm = new Random();
@@ -40,7 +47,7 @@ namespace Entidades
             productos.Add(new Hardware(rdm.Next(200000, 600000), "Teclado", 2000, TipoConexion.USB, 1000, 5));
             productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 1000, 5));
             productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 2500, 90));
-            productos.Add(new Software(123456, "Photoshop", "9.0", TipoSistemaOperativo.Windows, 2500, 90));
+            productos.Add(new Software(123456, "Photoshop", "9.0", TipoSistemaOperativo.Windows, 1200, 90));
             productos.Add(new Software(2222, "aaaaa", "7.0", TipoSistemaOperativo.Linux, 2500, 5));
         }
 

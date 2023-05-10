@@ -23,7 +23,7 @@ namespace Menu
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ventas = new frmVentas(plataformaVentas.Clientes, plataformaVentas.Productos);
+            ventas = new frmVentas(plataformaVentas.Clientes, plataformaVentas.Productos, plataformaVentas.Ventas);
             ventas.ShowDialog();
         }
 

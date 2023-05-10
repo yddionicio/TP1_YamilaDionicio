@@ -31,6 +31,8 @@
             dgvClientes = new DataGridView();
             dgvProductos = new DataGridView();
             groupBox1 = new GroupBox();
+            label6 = new Label();
+            txtPrecio = new TextBox();
             btnAgregar = new Button();
             label4 = new Label();
             label5 = new Label();
@@ -44,9 +46,16 @@
             label2 = new Label();
             btnCrearVenta = new Button();
             groupBox2 = new GroupBox();
-            comboBox1 = new ComboBox();
+            lblRecDes = new Label();
+            lblCadena = new Label();
+            lblSubtotal = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            btnSimulador = new Button();
+            cmbMedioPago = new ComboBox();
             label8 = new Label();
-            textBox1 = new TextBox();
+            txtDinero = new TextBox();
             label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
@@ -77,6 +86,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(txtPrecio);
             groupBox1.Controls.Add(btnAgregar);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label5);
@@ -94,9 +105,26 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle de producto";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(418, 38);
+            label6.Name = "label6";
+            label6.Size = new Size(60, 25);
+            label6.TabIndex = 8;
+            label6.Text = "Precio";
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.Enabled = false;
+            txtPrecio.Location = new Point(418, 66);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(79, 31);
+            txtPrecio.TabIndex = 7;
+            // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(690, 30);
+            btnAgregar.Location = new Point(707, 30);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(112, 66);
             btnAgregar.TabIndex = 5;
@@ -107,7 +135,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(481, 38);
+            label4.Location = new Point(503, 38);
             label4.Name = "label4";
             label4.Size = new Size(55, 25);
             label4.TabIndex = 5;
@@ -116,7 +144,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(565, 38);
+            label5.Location = new Point(587, 38);
             label5.Name = "label5";
             label5.Size = new Size(83, 25);
             label5.TabIndex = 6;
@@ -125,7 +153,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(325, 38);
+            label3.Location = new Point(240, 38);
             label3.Name = "label3";
             label3.Size = new Size(104, 25);
             label3.TabIndex = 5;
@@ -133,7 +161,7 @@
             // 
             // numUdCantidad
             // 
-            numUdCantidad.Location = new Point(567, 65);
+            numUdCantidad.Location = new Point(589, 65);
             numUdCantidad.Name = "numUdCantidad";
             numUdCantidad.Size = new Size(80, 31);
             numUdCantidad.TabIndex = 5;
@@ -141,7 +169,7 @@
             // txtStock
             // 
             txtStock.Enabled = false;
-            txtStock.Location = new Point(481, 66);
+            txtStock.Location = new Point(503, 66);
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(80, 31);
             txtStock.TabIndex = 5;
@@ -149,7 +177,7 @@
             // txtDescripcion
             // 
             txtDescripcion.Enabled = false;
-            txtDescripcion.Location = new Point(325, 66);
+            txtDescripcion.Location = new Point(240, 66);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(150, 31);
             txtDescripcion.TabIndex = 5;
@@ -190,33 +218,106 @@
             // 
             // btnCrearVenta
             // 
-            btnCrearVenta.Location = new Point(588, 834);
+            btnCrearVenta.Location = new Point(588, 865);
             btnCrearVenta.Name = "btnCrearVenta";
             btnCrearVenta.Size = new Size(260, 50);
             btnCrearVenta.TabIndex = 4;
             btnCrearVenta.Text = "Crear Venta";
             btnCrearVenta.UseVisualStyleBackColor = true;
+            btnCrearVenta.Click += btnCrearVenta_Click;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(comboBox1);
+            groupBox2.Controls.Add(lblRecDes);
+            groupBox2.Controls.Add(lblCadena);
+            groupBox2.Controls.Add(lblSubtotal);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(label10);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(btnSimulador);
+            groupBox2.Controls.Add(cmbMedioPago);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(txtDinero);
             groupBox2.Controls.Add(label7);
             groupBox2.Location = new Point(23, 702);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(825, 113);
+            groupBox2.Size = new Size(825, 157);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalle de Pago";
             // 
-            // comboBox1
+            // lblRecDes
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(16, 66);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(166, 33);
-            comboBox1.TabIndex = 9;
+            lblRecDes.AutoSize = true;
+            lblRecDes.Location = new Point(707, 74);
+            lblRecDes.Name = "lblRecDes";
+            lblRecDes.Size = new Size(19, 25);
+            lblRecDes.TabIndex = 16;
+            lblRecDes.Text = "-";
+            // 
+            // lblCadena
+            // 
+            lblCadena.AutoSize = true;
+            lblCadena.Location = new Point(571, 73);
+            lblCadena.Name = "lblCadena";
+            lblCadena.Size = new Size(69, 25);
+            lblCadena.TabIndex = 15;
+            lblCadena.Text = "label13";
+            // 
+            // lblSubtotal
+            // 
+            lblSubtotal.AutoSize = true;
+            lblSubtotal.Location = new Point(707, 38);
+            lblSubtotal.Name = "lblSubtotal";
+            lblSubtotal.Size = new Size(19, 25);
+            lblSubtotal.TabIndex = 14;
+            lblSubtotal.Text = "-";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(571, 38);
+            label11.Name = "label11";
+            label11.Size = new Size(83, 25);
+            label11.TabIndex = 13;
+            label11.Text = "Subtotal:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(188, 38);
+            label10.Name = "label10";
+            label10.Size = new Size(65, 25);
+            label10.TabIndex = 12;
+            label10.Text = "Dinero";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(707, 115);
+            label9.Name = "label9";
+            label9.Size = new Size(59, 25);
+            label9.TabIndex = 11;
+            label9.Text = "label9";
+            // 
+            // btnSimulador
+            // 
+            btnSimulador.Location = new Point(344, 64);
+            btnSimulador.Name = "btnSimulador";
+            btnSimulador.Size = new Size(82, 34);
+            btnSimulador.TabIndex = 10;
+            btnSimulador.Text = "Simular";
+            btnSimulador.UseVisualStyleBackColor = true;
+            btnSimulador.Click += btnSimulador_Click;
+            // 
+            // cmbMedioPago
+            // 
+            cmbMedioPago.FormattingEnabled = true;
+            cmbMedioPago.Location = new Point(16, 66);
+            cmbMedioPago.Name = "cmbMedioPago";
+            cmbMedioPago.Size = new Size(166, 33);
+            cmbMedioPago.TabIndex = 9;
+            cmbMedioPago.SelectedIndexChanged += cmbMedioPago_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -227,19 +328,20 @@
             label8.TabIndex = 8;
             label8.Text = "Medio de Pago:";
             // 
-            // textBox1
+            // txtDinero
             // 
-            textBox1.Location = new Point(188, 66);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 7;
+            txtDinero.Location = new Point(188, 66);
+            txtDinero.Name = "txtDinero";
+            txtDinero.Size = new Size(150, 31);
+            txtDinero.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(188, 38);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(571, 115);
             label7.Name = "label7";
-            label7.Size = new Size(118, 25);
+            label7.Size = new Size(129, 25);
             label7.TabIndex = 0;
             label7.Text = "Total a pagar:";
             // 
@@ -247,7 +349,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(870, 896);
+            ClientSize = new Size(870, 927);
             Controls.Add(groupBox2);
             Controls.Add(btnCrearVenta);
             Controls.Add(label2);
@@ -287,9 +389,18 @@
         private Label label3;
         private Button btnAgregar;
         private GroupBox groupBox2;
-        private ComboBox comboBox1;
+        private ComboBox cmbMedioPago;
         private Label label8;
-        private TextBox textBox1;
+        private TextBox txtDinero;
         private Label label7;
+        private Label label6;
+        private TextBox txtPrecio;
+        private Label label10;
+        private Label label9;
+        private Button btnSimulador;
+        private Label lblRecDes;
+        private Label lblCadena;
+        private Label lblSubtotal;
+        private Label label11;
     }
 }
