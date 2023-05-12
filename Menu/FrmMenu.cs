@@ -1,6 +1,8 @@
 using Entidades;
 using FrmProducto;
 using FrmVentas;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Menu
 {
@@ -39,6 +41,11 @@ namespace Menu
         {
             clientes = new FrmCliente(plataformaVentas.Clientes);
             clientes.ShowDialog();
+        }
+
+        public void OcultarMenuItem()
+        {
+            menuStrip1.Items["reportesToolStripMenuItem"].Visible = false;
         }
     }
 }

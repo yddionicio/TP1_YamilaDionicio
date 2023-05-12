@@ -26,7 +26,6 @@ namespace Menu
 
         private void FrmReporte_Load(object sender, EventArgs e)
         {
-
             dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             bindingSource.DataSource = listaVentas;
