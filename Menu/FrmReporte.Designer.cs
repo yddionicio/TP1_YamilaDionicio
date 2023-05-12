@@ -28,54 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
+            dgvVentas = new DataGridView();
+            Acciones = new DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(10, 120);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(634, 554);
-            listBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 21);
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(11, 8);
             label1.Name = "label1";
-            label1.Size = new Size(126, 25);
+            label1.Size = new Size(68, 28);
             label1.TabIndex = 2;
-            label1.Text = "Buscar reporte";
+            label1.Text = "Buscar";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(10, 49);
+            dateTimePicker1.Location = new Point(12, 39);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(300, 31);
+            dateTimePicker1.Size = new Size(270, 29);
             dateTimePicker1.TabIndex = 3;
+            // 
+            // dgvVentas
+            // 
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVentas.Columns.AddRange(new DataGridViewColumn[] { Acciones });
+            dgvVentas.Location = new Point(11, 81);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.RowHeadersWidth = 62;
+            dgvVentas.RowTemplate.Height = 33;
+            dgvVentas.Size = new Size(758, 348);
+            dgvVentas.TabIndex = 4;
+            dgvVentas.CellContentClick += dgvVentas_CellContentClick;
+            // 
+            // Acciones
+            // 
+            Acciones.HeaderText = "Acciones";
+            Acciones.MinimumWidth = 8;
+            Acciones.Name = "Acciones";
+            Acciones.Width = 150;
             // 
             // FrmReporte
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(656, 677);
+            ClientSize = new Size(779, 437);
+            Controls.Add(dgvVentas);
             Controls.Add(dateTimePicker1);
             Controls.Add(label1);
-            Controls.Add(listBox1);
+            Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmReporte";
             Text = "FrmReporte";
+            Load += FrmReporte_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox listBox1;
         private Label label1;
         private DateTimePicker dateTimePicker1;
+        private DataGridView dgvVentas;
+        private DataGridViewButtonColumn Acciones;
     }
 }

@@ -31,7 +31,7 @@ namespace Menu
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            reportes = new FrmReporte();
+            reportes = new FrmReporte(plataformaVentas.Ventas);
             reportes.ShowDialog();
         }
 

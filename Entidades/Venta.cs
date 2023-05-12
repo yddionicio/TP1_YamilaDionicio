@@ -19,12 +19,17 @@ namespace Entidades
         private TipoPago tipoPago;
         private double precioFinal;
 
+        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public Cliente Cliente { get => cliente; set => cliente = value; }
+        public List<Producto> ListaProdSeleccionados { get => listaProdSeleccionados; set => listaProdSeleccionados = value; }
+
+
         public Venta(List<Producto> productos, Cliente cliente, DateTime fecha)
         {
-            this.listaProdSeleccionados = productos;
+            this.ListaProdSeleccionados = productos;
             //this.tipoPago = pago;
-            this.cliente = cliente;
-            this.fecha = fecha;
+            this.Cliente = cliente;
+            this.Fecha = fecha;
         }
 
 
