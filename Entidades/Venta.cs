@@ -12,17 +12,19 @@ namespace Entidades
 
         private DateTime fecha;
         private Producto producto;
+        private List<Producto> listaProdSeleccionados;
+        private Cliente cliente;
         private int dinero;
         private int cantidad;
         private TipoPago tipoPago;
         private double precioFinal;
 
-        public Venta(Producto producto, int dinero, int cantidad, TipoPago pago)
+        public Venta(List<Producto> productos, Cliente cliente, DateTime fecha)
         {
-            this.producto = producto;
-            this.dinero = dinero;
-            this.cantidad = cantidad;
-            this.tipoPago = pago;
+            this.listaProdSeleccionados = productos;
+            //this.tipoPago = pago;
+            this.cliente = cliente;
+            this.fecha = fecha;
         }
 
 
@@ -68,18 +70,23 @@ namespace Entidades
             return precioConRecargo;
         }
 
-        public static void CalcularPrecioFinal(TipoPago tipo, string nombre, double subtotal, double total)
+        public static double CalcularPrecioFinal(TipoPago tipo, string nombre, double subtotal)
         {
-            if (TipoPago.Debito == tipo)
+            double total = 0;
+            if (subtotal != 0)
             {
-                total = PrecioFinalConDescuento(subtotal);
-                nombre = "Descuento 10%";
+                if (TipoPago.Debito == tipo)
+                {
+                    total = PrecioFinalConDescuento(subtotal);
+                    nombre += "Descuento 10%";
+                }
+                else
+                {
+                    total = PrecioFinalConRecargo(subtotal);
+                    nombre += "Recargo 10%";
+                }
             }
-            else
-            {
-                total = PrecioFinalConRecargo(subtotal);
-                nombre = "Recargo 10%";
-            }
+            return total;
         }
 
         public static void CalcularVenta(int cantidad, TipoPago tipo, double precio)

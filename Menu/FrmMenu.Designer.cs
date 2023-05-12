@@ -32,13 +32,14 @@
             productosToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
             ventasToolStripMenuItem = new ToolStripMenuItem();
+            reportesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, clientesToolStripMenuItem, ventasToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, clientesToolStripMenuItem, ventasToolStripMenuItem, reportesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 33);
@@ -57,6 +58,7 @@
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             clientesToolStripMenuItem.Size = new Size(89, 29);
             clientesToolStripMenuItem.Text = "Clientes";
+            clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
             // 
             // ventasToolStripMenuItem
             // 
@@ -64,6 +66,13 @@
             ventasToolStripMenuItem.Size = new Size(80, 29);
             ventasToolStripMenuItem.Text = "Ventas";
             ventasToolStripMenuItem.Click += ventasToolStripMenuItem_Click;
+            // 
+            // reportesToolStripMenuItem
+            // 
+            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            reportesToolStripMenuItem.Size = new Size(98, 29);
+            reportesToolStripMenuItem.Text = "Reportes";
+            reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
             // frmMenu
             // 
@@ -88,5 +97,6 @@
         private ToolStripMenuItem productosToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
         private ToolStripMenuItem ventasToolStripMenuItem;
+        private ToolStripMenuItem reportesToolStripMenuItem;
     }
 }

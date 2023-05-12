@@ -42,3 +42,7 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-win
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.pdb
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\ref\Menu.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.FrmReporte.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.FrmCliente.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.FrmDatosProductos.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Properties.Resources.resources

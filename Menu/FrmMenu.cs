@@ -9,6 +9,8 @@ namespace Menu
         frmProducto productos;
         frmVentas ventas;
         PlataformaVentas plataformaVentas;
+        FrmReporte reportes;
+        FrmCliente clientes;
         public frmMenu()
         {
             InitializeComponent();
@@ -27,6 +29,16 @@ namespace Menu
             ventas.ShowDialog();
         }
 
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reportes = new FrmReporte();
+            reportes.ShowDialog();
+        }
 
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clientes = new FrmCliente(plataformaVentas.Clientes);
+            clientes.ShowDialog();
+        }
     }
 }

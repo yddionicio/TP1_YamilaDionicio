@@ -37,10 +37,10 @@
             label4 = new Label();
             label5 = new Label();
             label3 = new Label();
+            btnBuscar = new Button();
             numUdCantidad = new NumericUpDown();
             txtStock = new TextBox();
             txtDescripcion = new TextBox();
-            btnBuscar = new Button();
             label1 = new Label();
             txtCodigo = new TextBox();
             label2 = new Label();
@@ -51,7 +51,7 @@
             lblSubtotal = new Label();
             label11 = new Label();
             label10 = new Label();
-            label9 = new Label();
+            lblTotal = new Label();
             btnSimulador = new Button();
             cmbMedioPago = new ComboBox();
             label8 = new Label();
@@ -73,6 +73,7 @@
             dgvClientes.RowTemplate.Height = 33;
             dgvClientes.Size = new Size(825, 228);
             dgvClientes.TabIndex = 0;
+            dgvClientes.CellClick += dgvClientes_CellClick;
             // 
             // dgvProductos
             // 
@@ -92,10 +93,10 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(btnBuscar);
             groupBox1.Controls.Add(numUdCantidad);
             groupBox1.Controls.Add(txtStock);
             groupBox1.Controls.Add(txtDescripcion);
-            groupBox1.Controls.Add(btnBuscar);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtCodigo);
             groupBox1.Location = new Point(23, 301);
@@ -108,7 +109,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(418, 38);
+            label6.Location = new Point(322, 37);
             label6.Name = "label6";
             label6.Size = new Size(60, 25);
             label6.TabIndex = 8;
@@ -117,7 +118,7 @@
             // txtPrecio
             // 
             txtPrecio.Enabled = false;
-            txtPrecio.Location = new Point(418, 66);
+            txtPrecio.Location = new Point(322, 65);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(79, 31);
             txtPrecio.TabIndex = 7;
@@ -135,7 +136,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(503, 38);
+            label4.Location = new Point(407, 37);
             label4.Name = "label4";
             label4.Size = new Size(55, 25);
             label4.TabIndex = 5;
@@ -144,7 +145,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(587, 38);
+            label5.Location = new Point(508, 37);
             label5.Name = "label5";
             label5.Size = new Size(83, 25);
             label5.TabIndex = 6;
@@ -153,15 +154,27 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(240, 38);
+            label3.Location = new Point(162, 37);
             label3.Name = "label3";
             label3.Size = new Size(104, 25);
             label3.TabIndex = 5;
             label3.Text = "Descripción";
             // 
+            // btnBuscar
+            // 
+            btnBuscar.BackgroundImage = Menu.Properties.Resources.search;
+            btnBuscar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBuscar.Image = Menu.Properties.Resources.search;
+            btnBuscar.Location = new Point(597, 64);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(33, 31);
+            btnBuscar.TabIndex = 3;
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
             // numUdCantidad
             // 
-            numUdCantidad.Location = new Point(589, 65);
+            numUdCantidad.Location = new Point(510, 64);
             numUdCantidad.Name = "numUdCantidad";
             numUdCantidad.Size = new Size(80, 31);
             numUdCantidad.TabIndex = 5;
@@ -169,7 +182,7 @@
             // txtStock
             // 
             txtStock.Enabled = false;
-            txtStock.Location = new Point(503, 66);
+            txtStock.Location = new Point(407, 65);
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(80, 31);
             txtStock.TabIndex = 5;
@@ -177,19 +190,10 @@
             // txtDescripcion
             // 
             txtDescripcion.Enabled = false;
-            txtDescripcion.Location = new Point(240, 66);
+            txtDescripcion.Location = new Point(162, 65);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(150, 31);
             txtDescripcion.TabIndex = 5;
-            // 
-            // btnBuscar
-            // 
-            btnBuscar.Location = new Point(162, 63);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(53, 34);
-            btnBuscar.TabIndex = 3;
-            btnBuscar.UseVisualStyleBackColor = true;
-            btnBuscar.Click += btnBuscar_Click;
             // 
             // label1
             // 
@@ -202,6 +206,7 @@
             // 
             // txtCodigo
             // 
+            txtCodigo.Enabled = false;
             txtCodigo.Location = new Point(6, 65);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(150, 31);
@@ -233,7 +238,7 @@
             groupBox2.Controls.Add(lblSubtotal);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(lblTotal);
             groupBox2.Controls.Add(btnSimulador);
             groupBox2.Controls.Add(cmbMedioPago);
             groupBox2.Controls.Add(label8);
@@ -251,9 +256,8 @@
             lblRecDes.AutoSize = true;
             lblRecDes.Location = new Point(707, 74);
             lblRecDes.Name = "lblRecDes";
-            lblRecDes.Size = new Size(19, 25);
+            lblRecDes.Size = new Size(0, 25);
             lblRecDes.TabIndex = 16;
-            lblRecDes.Text = "-";
             // 
             // lblCadena
             // 
@@ -269,9 +273,8 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Location = new Point(707, 38);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(19, 25);
+            lblSubtotal.Size = new Size(0, 25);
             lblSubtotal.TabIndex = 14;
-            lblSubtotal.Text = "-";
             // 
             // label11
             // 
@@ -291,14 +294,14 @@
             label10.TabIndex = 12;
             label10.Text = "Dinero";
             // 
-            // label9
+            // lblTotal
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(707, 115);
-            label9.Name = "label9";
-            label9.Size = new Size(59, 25);
-            label9.TabIndex = 11;
-            label9.Text = "label9";
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(707, 115);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(59, 25);
+            lblTotal.TabIndex = 11;
+            lblTotal.Text = "label9";
             // 
             // btnSimulador
             // 
@@ -396,7 +399,7 @@
         private Label label6;
         private TextBox txtPrecio;
         private Label label10;
-        private Label label9;
+        private Label lblTotal;
         private Button btnSimulador;
         private Label lblRecDes;
         private Label lblCadena;

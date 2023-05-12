@@ -27,15 +27,15 @@ namespace Entidades
         public int Cantidad { get => cantidad; set => cantidad = value; }
 
 
-        public static bool operator ==(Producto producto1, Producto producto2)
-        {
-            return producto1.Codigo == producto2.Codigo;
-        }
+        //public static bool operator ==(Producto producto1, Producto producto2)
+        //{
+        //    return producto1.Codigo == producto2.Codigo;
+        //}
 
-        public static bool operator !=(Producto producto1, Producto producto2)
-        {
-            return !(producto1 == producto2);
-        }
+        //public static bool operator !=(Producto producto1, Producto producto2)
+        //{
+        //    return !(producto1 == producto2);
+        //}
 
     }
 }
