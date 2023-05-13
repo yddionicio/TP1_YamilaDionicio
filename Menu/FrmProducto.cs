@@ -8,14 +8,14 @@ namespace FrmProducto
     public partial class frmProducto : Form
     {
         Random rdm;
-        List<Producto> listaProductos;
+        //List<Producto> listaProductos;
         BindingSource bindingSource;
 
-        public frmProducto(List<Producto> productos)
+        public frmProducto()
         {
             InitializeComponent();
             rdm = new Random();
-            listaProductos = productos;
+            // listaProductos = productos;
             bindingSource = new BindingSource();
         }
 
@@ -26,7 +26,7 @@ namespace FrmProducto
             dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //Eliminar.DisplayIndex = dgvProducto.Columns.Count - 1; chequear posicion del boton 
 
-            bindingSource.DataSource = listaProductos;
+            bindingSource.DataSource = PlataformaVentas.Productos;
             dgvProducto.DataSource = bindingSource;
 
             dgvProducto.Update();
@@ -38,9 +38,9 @@ namespace FrmProducto
             if (this.txtPrecio.Text != string.Empty && this.txtDescripcion.Text != string.Empty && this.nupCantidad.Value != 0)
             {
                 Producto p = new Producto(int.Parse(txtCodigo.Text), this.txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
-                listaProductos.Add(p);
+                PlataformaVentas.Productos.Add(p);
 
-                bindingSource.DataSource = listaProductos;
+                bindingSource.DataSource = PlataformaVentas.Productos;
                 dgvProducto.DataSource = bindingSource;
 
                 bindingSource.ResetBindings(false);
@@ -60,20 +60,20 @@ namespace FrmProducto
             nupCantidad.Value = 0;
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (dgvProducto.SelectedRows.Count > 0)
-            {
-                // Obtén el objeto Producto correspondiente a la fila seleccionada
-                Producto producto = (Producto)dgvProducto.SelectedRows[0].DataBoundItem;
+        //private void btneliminar_click(object sender, eventargs e)
+        //{
+        //    if (dgvproducto.selectedrows.count > 0)
+        //    {
+        //        // obtén el objeto producto correspondiente a la fila seleccionada
+        //        producto producto = (producto)dgvproducto.selectedrows[0].databounditem;
 
-                // Elimina el objeto Producto de la lista
-                listaProductos.Remove(producto);
+        //        // elimina el objeto producto de la lista
+        //        plataformaventas.cargarproductos().remove(producto);
 
-                // Actualiza el origen de datos del DataGridView
-                bindingSource.ResetBindings(false);
-            }
-        }
+        //        // actualiza el origen de datos del datagridview
+        //        bindingsource.resetbindings(false);
+        //    }
+        //}
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -123,15 +123,15 @@ namespace FrmProducto
         private void dgvProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar si se hizo clic en la columna del botón
-            if (e.ColumnIndex == dgvProducto.Columns["Eliminar"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvProducto.Columns["Acciones"].Index && e.RowIndex >= 0)
             {
                 // Obtener el objeto Producto correspondiente a la fila seleccionada
                 Producto p = (Producto)dgvProducto.Rows[e.RowIndex].DataBoundItem;
 
                 // Eliminar el objeto Producto de la lista
-                listaProductos.Remove(p);
+                PlataformaVentas.Productos.Remove(p);
 
-                // Actualizar el origen de datos de la DataGridView
+                // Actualizar el origen de datos de la DataGridView 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
             }

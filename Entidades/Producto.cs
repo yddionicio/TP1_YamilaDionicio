@@ -21,12 +21,23 @@ namespace Entidades
             this.Cantidad = cantidad;
         }
 
-        public int Codigo { get => codigo; set => codigo = value; }
+        public int Codigo { get => codigo; set => codigo = value; } //  chequear set
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public double Precio { get => precio; set => precio = value; }
         public int Cantidad { get => cantidad; set => cantidad = value; }
 
 
+        public virtual string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Codigo: " + this.codigo);
+            sb.AppendLine("Descripcion: " + this.descripcion);
+            sb.AppendLine("Precio: " + this.precio);
+            sb.AppendLine("Cantidad: " + this.cantidad);
+
+            return sb.ToString();
+        }
+      
         //public static bool operator ==(Producto producto1, Producto producto2)
         //{
         //    return producto1.Codigo == producto2.Codigo;

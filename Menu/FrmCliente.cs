@@ -16,21 +16,19 @@ namespace Menu
     public partial class FrmCliente : Form
     {
         Random rdm;
-        List<Cliente> listaClientes;
         BindingSource bindingSource;
-        public FrmCliente(List<Cliente> clientes)
+        public FrmCliente()
         {
             InitializeComponent();
             rdm = new Random();
             bindingSource = new BindingSource();
-            listaClientes = clientes;
         }
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = listaClientes;
+            bindingSource.DataSource = PlataformaVentas.Clientes;
             dgvClientes.DataSource = bindingSource;
 
             dgvClientes.Update();
@@ -38,10 +36,10 @@ namespace Menu
         }
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
-            if (this.txtNombre.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
+            if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
-                Cliente c = new Cliente(this.txtNombre.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
-                listaClientes.Add(c);
+                Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text ,int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
+                PlataformaVentas.Clientes.Add(c);
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
@@ -55,6 +53,7 @@ namespace Menu
         public void LimpiarCampos()
         {
             this.txtNombre.Text = string.Empty;
+            this.txtApellido.Text = string.Empty;
             this.txtDni.Text = string.Empty;
             this.txtMail.Text = string.Empty;
             this.txtTelefono.Text = string.Empty;
@@ -66,14 +65,14 @@ namespace Menu
             {
                 Cliente cliente = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
 
-                listaClientes.Remove(cliente);
+                PlataformaVentas.Clientes.Remove(cliente);
                 bindingSource.ResetBindings(false);
             }
         }
 
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            if (this.txtNombre.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
+            if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
                 if (dgvClientes.SelectedRows.Count > 0)
                 {
@@ -82,11 +81,13 @@ namespace Menu
                     Cliente c = (Cliente)row.DataBoundItem;
 
                     c.Nombre = this.txtNombre.Text;
+                    c.Apellido = this.txtApellido.Text;
                     c.Dni = int.Parse(this.txtDni.Text);
                     c.Email = this.txtMail.Text;
                     c.Telefono = int.Parse(this.txtTelefono.Text);
 
                     row.Cells["Nombre"].Value = c.Nombre;
+                    row.Cells["Apellido"].Value = c.Apellido;
                     row.Cells["Dni"].Value = c.Dni;
                     row.Cells["Email"].Value = c.Email;
                     row.Cells["Telefono"].Value = c.Telefono;
@@ -108,6 +109,7 @@ namespace Menu
                 Cliente cliente = (Cliente)row.DataBoundItem;
 
                 this.txtNombre.Text = cliente.Nombre.ToString();
+                this.txtApellido.Text = cliente.Apellido.ToString();
                 this.txtDni.Text = cliente.Dni.ToString();
                 this.txtMail.Text = cliente.Email.ToString();
                 this.txtTelefono.Text = cliente.Telefono.ToString();
@@ -120,7 +122,7 @@ namespace Menu
             {
                 Cliente c = (Cliente)dgvClientes.Rows[e.RowIndex].DataBoundItem;
 
-                listaClientes.Remove(c);
+                PlataformaVentas.Clientes.Remove(c);
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();

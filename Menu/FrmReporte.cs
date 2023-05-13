@@ -16,19 +16,17 @@ namespace Menu
     public partial class FrmReporte : Form
     {
         BindingSource bindingSource;
-        List<Venta> listaVentas;
-        public FrmReporte(List<Venta> ventas)
+        public FrmReporte()
         {
             InitializeComponent();
             bindingSource = new BindingSource();
-            listaVentas = ventas;
         }
 
         private void FrmReporte_Load(object sender, EventArgs e)
         {
             dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = listaVentas;
+            bindingSource.DataSource = PlataformaVentas.Ventas;
             dgvVentas.DataSource = bindingSource;
 
             dgvVentas.Update();
@@ -165,12 +163,31 @@ namespace Menu
                     }
                 }
             }
+            else if (e.ColumnIndex == dgvVentas.Columns["Ver"].Index && e.RowIndex >= 0)
+            {
+                Venta venta = (Venta)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+
+                string infoVenta = "DETALLE DE VENTA";
+                infoVenta += "\n";
+                infoVenta += "FECHA: ";
+                infoVenta += venta.Fecha.ToString();
+                infoVenta += "\n";
+                infoVenta += Environment.NewLine;
+                infoVenta += venta.Cliente.Mostrar();
+                infoVenta += "\n";
+                infoVenta += "DETALLE DE PRODUCTO:";
+
+                foreach (Producto p in venta.ListaProdSeleccionados)
+                {
+                    infoVenta += "\n";
+                    infoVenta += p.Mostrar();
+                }
+
+                rtbMostrarDatos.Clear();
+                rtbMostrarDatos.Text = infoVenta;
+            }
+
         }
-
-
-
-
-
 
     }
 }

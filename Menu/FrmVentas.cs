@@ -7,18 +7,12 @@ namespace FrmVentas
 {
     public partial class frmVentas : Form
     {
-        List<Cliente> listaClientes;
-        List<Producto> listaProductos;
-        List<Venta> listaVentas;
         List<Producto> listaSeleccionado;
         public Cliente ClienteSeleccionado { get; set; }
 
-        public frmVentas(List<Cliente> clientes, List<Producto> productos, List<Venta> ventas)
+        public frmVentas()
         {
             InitializeComponent();
-            listaClientes = clientes;
-            listaProductos = productos;
-            listaVentas = ventas;
             listaSeleccionado = new List<Producto>();
         }
 
@@ -32,7 +26,7 @@ namespace FrmVentas
             this.cmbMedioPago.DisplayMember = "Nombre";
             this.cmbMedioPago.SelectedIndex = 0;
 
-            dgvClientes.DataSource = listaClientes;
+            dgvClientes.DataSource = PlataformaVentas.Clientes;
             dgvClientes.Update();
             dgvClientes.Refresh();
 
@@ -43,7 +37,7 @@ namespace FrmVentas
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            FrmDatosProductos datosProductos = new FrmDatosProductos(listaProductos);
+            FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
             datosProductos.ShowDialog();
 
             if (datosProductos.ProductoSeleccionado != null)
@@ -64,7 +58,7 @@ namespace FrmVentas
             {
                 if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
                 {
-                    foreach (Producto item in listaProductos)
+                    foreach (Producto item in PlataformaVentas.Productos)
                     {
                         //agregar una excepcion es caso que no encuentre el codigo de barras
                         if (this.txtCodigo.Text == item.Codigo.ToString())
@@ -127,7 +121,7 @@ namespace FrmVentas
                 {
                     Cliente clienteSeleccionado = this.ClienteSeleccionado;
                     Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
-                    listaVentas.Add(venta);
+                    PlataformaVentas.Ventas.Add(venta);
 
                     MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -141,7 +135,7 @@ namespace FrmVentas
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            this.ClienteSeleccionado = listaClientes[rowIndex];
+            this.ClienteSeleccionado = PlataformaVentas.Clientes[rowIndex];
         }
 
 

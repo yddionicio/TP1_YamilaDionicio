@@ -41,12 +41,16 @@
             label7 = new Label();
             dgvClientes = new DataGridView();
             Acciones = new DataGridViewButtonColumn();
+            txtApellido = new TextBox();
+            label1 = new Label();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(txtApellido);
             groupBox2.Controls.Add(txtTelefono);
             groupBox2.Controls.Add(btnEditar);
             groupBox2.Controls.Add(btnAgregar);
@@ -66,7 +70,7 @@
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(22, 282);
+            txtTelefono.Location = new Point(22, 328);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(243, 31);
             txtTelefono.TabIndex = 7;
@@ -94,7 +98,7 @@
             // 
             // txtMail
             // 
-            txtMail.Location = new Point(22, 220);
+            txtMail.Location = new Point(22, 266);
             txtMail.Name = "txtMail";
             txtMail.Size = new Size(243, 31);
             txtMail.TabIndex = 1;
@@ -103,7 +107,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(22, 254);
+            label4.Location = new Point(22, 300);
             label4.Name = "label4";
             label4.Size = new Size(79, 25);
             label4.TabIndex = 2;
@@ -112,7 +116,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 192);
+            label5.Location = new Point(22, 238);
             label5.Name = "label5";
             label5.Size = new Size(45, 25);
             label5.TabIndex = 2;
@@ -120,7 +124,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(22, 148);
+            txtDni.Location = new Point(22, 204);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(243, 31);
             txtDni.TabIndex = 1;
@@ -129,7 +133,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(22, 120);
+            label6.Location = new Point(22, 176);
             label6.Name = "label6";
             label6.Size = new Size(43, 25);
             label6.TabIndex = 2;
@@ -172,6 +176,22 @@
             Acciones.Name = "Acciones";
             Acciones.Width = 150;
             // 
+            // txtApellido
+            // 
+            txtApellido.Location = new Point(22, 145);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(243, 31);
+            txtApellido.TabIndex = 8;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(22, 117);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 25);
+            label1.TabIndex = 9;
+            label1.Text = "Apellido";
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -203,5 +223,7 @@
         private DataGridView dgvClientes;
         private TextBox txtTelefono;
         private DataGridViewButtonColumn Acciones;
+        private Label label1;
+        private TextBox txtApellido;
     }
 }

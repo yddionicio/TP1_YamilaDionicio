@@ -12,7 +12,7 @@ namespace Entidades
         public TipoRol rol;
 
 
-        public Usuario(string nombre, int dni, TipoRol tipoRol) : base(nombre, dni)
+        public Usuario(string nombre, string apellido, int dni, TipoRol tipoRol) : base(nombre, apellido, dni)
         {
             this.rol = tipoRol;
         }

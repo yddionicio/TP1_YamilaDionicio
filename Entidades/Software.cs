@@ -21,5 +21,18 @@ namespace Entidades
             this.Version = version;
             this.TipoSistemaOperativo = tipoSistemaOperativo;
         }
+
+        public override string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(base.Mostrar());
+            sb.AppendLine("Version: " + this.version);
+            sb.AppendLine("Tipo de Sistema Operativo: " + this.tipoSistemaOperativo);
+            sb.AppendLine();
+
+            return sb.ToString();
+        }
+
     }
 }

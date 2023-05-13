@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvProducto = new DataGridView();
-            Eliminar = new DataGridViewButtonColumn();
             groupBox2 = new GroupBox();
             btnEditar = new Button();
             button1 = new Button();
@@ -42,6 +40,7 @@
             label6 = new Label();
             txtCodigo = new TextBox();
             label7 = new Label();
+            Acciones = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupCantidad).BeginInit();
@@ -50,7 +49,7 @@
             // dgvProducto
             // 
             dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducto.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
+            dgvProducto.Columns.AddRange(new DataGridViewColumn[] { Acciones });
             dgvProducto.Location = new Point(356, 45);
             dgvProducto.Name = "dgvProducto";
             dgvProducto.RowHeadersWidth = 62;
@@ -59,19 +58,6 @@
             dgvProducto.TabIndex = 0;
             dgvProducto.CellClick += dgvProducto_CellClick;
             dgvProducto.CellContentClick += dgvProducto_CellContentClick;
-            // 
-            // Eliminar
-            // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Tai Le", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.NullValue = "X";
-            Eliminar.DefaultCellStyle = dataGridViewCellStyle1;
-            Eliminar.FlatStyle = FlatStyle.Popup;
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.MinimumWidth = 8;
-            Eliminar.Name = "Eliminar";
-            Eliminar.Text = "";
-            Eliminar.Width = 90;
             // 
             // groupBox2
             // 
@@ -179,6 +165,13 @@
             label7.TabIndex = 2;
             label7.Text = "Codigo";
             // 
+            // Acciones
+            // 
+            Acciones.HeaderText = "Acciones";
+            Acciones.MinimumWidth = 8;
+            Acciones.Name = "Acciones";
+            Acciones.Width = 150;
+            // 
             // frmProducto
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -211,6 +204,6 @@
         private Label label7;
         private Button button1;
         private Button btnEditar;
-        private DataGridViewButtonColumn Eliminar;
+        private DataGridViewButtonColumn Acciones;
     }
 }

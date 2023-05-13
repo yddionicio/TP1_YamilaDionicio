@@ -21,5 +21,17 @@ namespace Entidades
             this.Capacidad = capacidad;
             this.TipoConexion = tipoConexion;
         }
+
+        public override string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(base.Mostrar());
+            sb.AppendLine("Capacidad: " + this.capacidad);
+            sb.AppendLine("Tipo de Conexion: " + this.tipoConexion);
+
+            return sb.ToString();
+        }
+
     }
 }
