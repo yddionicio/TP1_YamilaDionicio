@@ -56,7 +56,7 @@
             // 
             dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVentas.Columns.AddRange(new DataGridViewColumn[] { Acciones });
-            dgvVentas.Location = new Point(11, 81);
+            dgvVentas.Location = new Point(11, 77);
             dgvVentas.Name = "dgvVentas";
             dgvVentas.RowHeadersWidth = 62;
             dgvVentas.RowTemplate.Height = 33;

@@ -10,7 +10,6 @@ namespace FrmProducto
         Random rdm;
         List<Producto> listaProductos;
         BindingSource bindingSource;
-        //public PlataformaVentas<Producto> PlataformaVenta { get => plataforma; set => plataforma = value; }
 
         public frmProducto(List<Producto> productos)
         {
@@ -36,14 +35,21 @@ namespace FrmProducto
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Producto p = new Producto(int.Parse(txtCodigo.Text), txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
-            listaProductos.Add(p);
+            if (this.txtPrecio.Text != string.Empty && this.txtDescripcion.Text != string.Empty && this.nupCantidad.Value != 0)
+            {
+                Producto p = new Producto(int.Parse(txtCodigo.Text), this.txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
+                listaProductos.Add(p);
 
-            bindingSource.DataSource = listaProductos;
-            dgvProducto.DataSource = bindingSource;
+                bindingSource.DataSource = listaProductos;
+                dgvProducto.DataSource = bindingSource;
 
-            bindingSource.ResetBindings(false);
-            LimpiarCampos();
+                bindingSource.ResetBindings(false);
+                LimpiarCampos();
+            }
+            else
+            {
+                MessageBox.Show("¡Por favor complete todos los campos requeridos!", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void LimpiarCampos()
@@ -71,27 +77,33 @@ namespace FrmProducto
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvProducto.SelectedRows.Count > 0)
+            if (this.txtPrecio.Text != string.Empty && this.txtDescripcion.Text != string.Empty && this.nupCantidad.Value != 0)
             {
-                // Obtener la fila seleccionada
-                DataGridViewRow row = dgvProducto.SelectedRows[0];
+                if (dgvProducto.SelectedRows.Count > 0)
+                {
+                    // Obtener la fila seleccionada
+                    DataGridViewRow row = dgvProducto.SelectedRows[0];
 
-                // Obtener el objeto Producto correspondiente a la fila seleccionada
-                Producto p = (Producto)row.DataBoundItem;
+                    // Obtener el objeto Producto correspondiente a la fila seleccionada
+                    Producto p = (Producto)row.DataBoundItem;
 
-                // Actualizar los valores del objeto Producto
-                p.Descripcion = txtDescripcion.Text;
-                p.Precio = double.Parse(txtPrecio.Text);
-                p.Cantidad = (int)nupCantidad.Value;
+                    // Actualizar los valores del objeto Producto
+                    p.Descripcion = txtDescripcion.Text;
+                    p.Precio = double.Parse(txtPrecio.Text);
+                    p.Cantidad = (int)nupCantidad.Value;
 
-                row.Cells["Descripcion"].Value = p.Descripcion;
-                row.Cells["Precio"].Value = p.Precio;
-                row.Cells["Cantidad"].Value = p.Cantidad;
+                    row.Cells["Descripcion"].Value = p.Descripcion;
+                    row.Cells["Precio"].Value = p.Precio;
+                    row.Cells["Cantidad"].Value = p.Cantidad;
 
-                // Limpiar los campos de entrada
-                LimpiarCampos();
+                    // Limpiar los campos de entrada
+                    LimpiarCampos();
+                }
             }
-
+            else
+            {
+                MessageBox.Show("Por favor seleccione un producto", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void dgvProducto_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -125,7 +137,24 @@ namespace FrmProducto
             }
         }
 
+        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
-
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (this.txtPrecio.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvProducto = new DataGridView();
             Eliminar = new DataGridViewButtonColumn();
             groupBox2 = new GroupBox();
             btnEditar = new Button();
-            btnEliminar = new Button();
             button1 = new Button();
             nupCantidad = new NumericUpDown();
             txtPrecio = new TextBox();
@@ -50,7 +49,6 @@
             // 
             // dgvProducto
             // 
-            dgvProducto.AllowUserToOrderColumns = true;
             dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProducto.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dgvProducto.Location = new Point(356, 45);
@@ -64,10 +62,10 @@
             // 
             // Eliminar
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Tai Le", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.NullValue = "X";
-            Eliminar.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Tai Le", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.NullValue = "X";
+            Eliminar.DefaultCellStyle = dataGridViewCellStyle1;
             Eliminar.FlatStyle = FlatStyle.Popup;
             Eliminar.HeaderText = "Eliminar";
             Eliminar.MinimumWidth = 8;
@@ -78,7 +76,6 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(btnEditar);
-            groupBox2.Controls.Add(btnEliminar);
             groupBox2.Controls.Add(button1);
             groupBox2.Controls.Add(nupCantidad);
             groupBox2.Controls.Add(txtPrecio);
@@ -88,9 +85,9 @@
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(txtCodigo);
             groupBox2.Controls.Add(label7);
-            groupBox2.Location = new Point(21, 54);
+            groupBox2.Location = new Point(21, 45);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(290, 544);
+            groupBox2.Size = new Size(290, 533);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalle Producto";
@@ -104,16 +101,6 @@
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(22, 490);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(243, 34);
-            btnEliminar.TabIndex = 5;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // button1
             // 
@@ -138,6 +125,7 @@
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(243, 31);
             txtPrecio.TabIndex = 1;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
             // 
             // label4
             // 
@@ -163,6 +151,7 @@
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(243, 31);
             txtDescripcion.TabIndex = 1;
+            txtDescripcion.KeyPress += txtDescripcion_KeyPress;
             // 
             // label6
             // 
@@ -220,7 +209,6 @@
         private Label label6;
         private TextBox txtCodigo;
         private Label label7;
-        private Button btnEliminar;
         private Button button1;
         private Button btnEditar;
         private DataGridViewButtonColumn Eliminar;

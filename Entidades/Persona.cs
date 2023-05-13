@@ -17,7 +17,7 @@ namespace Entidades
             this.Dni = dni;
         }
 
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre { get => nombre; set => nombre = value; }  // chequear set
         public int Dni { get => dni; set => dni = value; }
     }
 }

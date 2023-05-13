@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public enum TipoSistemaOperativo { Windows, Linux, MacOs }
+    public enum TipoSistemaOperativo { Windows, Linux, MacOs } // enum en un mismo archivo
     public class Software : Producto
     {
         private string version;

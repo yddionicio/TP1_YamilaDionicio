@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class PlataformaVentas
+    public class PlataformaVentas // clase static
     {
         public static List<Producto> productos;
         public static List<Cliente> clientes;
         private static List<Venta> ventas;
 
-        static PlataformaVentas()
+        static PlataformaVentas() 
         {
             productos = new List<Producto>();
             clientes = new List<Cliente>();

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -37,14 +38,18 @@ namespace Menu
         }
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
-            Cliente c = new Cliente(this.txtNombre.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
-            listaClientes.Add(c);
+            if (this.txtNombre.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
+            {
+                Cliente c = new Cliente(this.txtNombre.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
+                listaClientes.Add(c);
 
-            //bindingSource.DataSource = dgvClientes;
-            //dgvClientes.DataSource = bindingSource;
-
-            bindingSource.ResetBindings(false);
-            LimpiarCampos();
+                bindingSource.ResetBindings(false);
+                LimpiarCampos();
+            }
+            else
+            {
+                MessageBox.Show("¡Por favor complete todos los campos requeridos!", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void LimpiarCampos()
@@ -68,23 +73,30 @@ namespace Menu
 
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            if (dgvClientes.SelectedRows.Count > 0)
+            if (this.txtNombre.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
-                DataGridViewRow row = dgvClientes.SelectedRows[0];
+                if (dgvClientes.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dgvClientes.SelectedRows[0];
 
-                Cliente c = (Cliente)row.DataBoundItem;
+                    Cliente c = (Cliente)row.DataBoundItem;
 
-                c.Nombre = this.txtNombre.Text;
-                c.Dni = int.Parse(this.txtDni.Text);
-                c.Email = this.txtMail.Text;
-                c.Telefono = int.Parse(this.txtTelefono.Text);
+                    c.Nombre = this.txtNombre.Text;
+                    c.Dni = int.Parse(this.txtDni.Text);
+                    c.Email = this.txtMail.Text;
+                    c.Telefono = int.Parse(this.txtTelefono.Text);
 
-                row.Cells["Nombre"].Value = c.Nombre;
-                row.Cells["Dni"].Value = c.Dni;
-                row.Cells["Email"].Value = c.Email;
-                row.Cells["Telefono"].Value = c.Telefono;
+                    row.Cells["Nombre"].Value = c.Nombre;
+                    row.Cells["Dni"].Value = c.Dni;
+                    row.Cells["Email"].Value = c.Email;
+                    row.Cells["Telefono"].Value = c.Telefono;
 
-                LimpiarCampos();
+                    LimpiarCampos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un cliente", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -115,6 +127,47 @@ namespace Menu
             }
         }
 
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (this.txtDni.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (this.txtTelefono.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMail_Validating(object sender, CancelEventArgs e)
+        {
+            string pattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+
+            if (!Regex.IsMatch(this.txtMail.Text, pattern))
+            {
+                MessageBox.Show("El correo electrónico no es válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -62,28 +62,35 @@ namespace FrmVentas
             double subtotal = 0;
             if (this.numUdCantidad.Value >= 1)
             {
-                foreach (Producto item in listaProductos)
+                if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
                 {
-                    //agregar una excepcion es caso que no encuentre el codigo de barras
-                    if (this.txtCodigo.Text == item.Codigo.ToString())
+                    foreach (Producto item in listaProductos)
                     {
-                        Producto productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)this.numUdCantidad.Value);
-                        this.listaSeleccionado.Add(productoSeleccionado);
+                        //agregar una excepcion es caso que no encuentre el codigo de barras
+                        if (this.txtCodigo.Text == item.Codigo.ToString())
+                        {
+                            Producto productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)this.numUdCantidad.Value);
+                            this.listaSeleccionado.Add(productoSeleccionado);
 
-                        this.txtCodigo.Text = string.Empty;
-                        this.txtDescripcion.Text = string.Empty;
-                        this.txtPrecio.Text = string.Empty;
-                        this.txtStock.Text = string.Empty;
-                        this.numUdCantidad.Value = 0;
+                            this.txtCodigo.Text = string.Empty;
+                            this.txtDescripcion.Text = string.Empty;
+                            this.txtPrecio.Text = string.Empty;
+                            this.txtStock.Text = string.Empty;
+                            this.numUdCantidad.Value = 0;
 
-                        dgvProductos.DataSource = null;
-                        dgvProductos.DataSource = listaSeleccionado;
-                        dgvProductos.Update();
-                        dgvProductos.Refresh();
+                            dgvProductos.DataSource = null;
+                            dgvProductos.DataSource = listaSeleccionado;
+                            dgvProductos.Update();
+                            dgvProductos.Refresh();
+                        }
                     }
-                }
 
-                this.lblSubtotal.Text = Venta.CalcularSubtotal(listaSeleccionado).ToString();
+                    this.lblSubtotal.Text = Venta.CalcularSubtotal(listaSeleccionado).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No hay stock suficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                }
             }
             else
             {

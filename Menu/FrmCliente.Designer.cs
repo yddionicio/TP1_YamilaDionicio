@@ -31,7 +31,6 @@
             groupBox2 = new GroupBox();
             txtTelefono = new TextBox();
             btnEditar = new Button();
-            btnEliminar = new Button();
             btnAgregar = new Button();
             txtMail = new TextBox();
             label4 = new Label();
@@ -50,7 +49,6 @@
             // 
             groupBox2.Controls.Add(txtTelefono);
             groupBox2.Controls.Add(btnEditar);
-            groupBox2.Controls.Add(btnEliminar);
             groupBox2.Controls.Add(btnAgregar);
             groupBox2.Controls.Add(txtMail);
             groupBox2.Controls.Add(label4);
@@ -61,7 +59,7 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Location = new Point(7, 46);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(290, 530);
+            groupBox2.Size = new Size(290, 520);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalle Cliente";
@@ -72,6 +70,7 @@
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(243, 31);
             txtTelefono.TabIndex = 7;
+            txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
             // btnEditar
             // 
@@ -82,16 +81,6 @@
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click_1;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(22, 473);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(243, 34);
-            btnEliminar.TabIndex = 5;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click_1;
             // 
             // btnAgregar
             // 
@@ -109,6 +98,7 @@
             txtMail.Name = "txtMail";
             txtMail.Size = new Size(243, 31);
             txtMail.TabIndex = 1;
+            txtMail.Validating += txtMail_Validating;
             // 
             // label4
             // 
@@ -134,6 +124,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(243, 31);
             txtDni.TabIndex = 1;
+            txtDni.KeyPress += txtDni_KeyPress;
             // 
             // label6
             // 
@@ -150,6 +141,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(243, 31);
             txtNombre.TabIndex = 1;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // label7
             // 
@@ -200,7 +192,6 @@
 
         private GroupBox groupBox2;
         private Button btnEditar;
-        private Button btnEliminar;
         private Button btnAgregar;
         private TextBox txtMail;
         private Label label4;
