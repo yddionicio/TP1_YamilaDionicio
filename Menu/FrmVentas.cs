@@ -18,7 +18,7 @@ namespace FrmVentas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
-            this.txtDinero.Enabled = false;  
+            this.txtDinero.Enabled = false;
             this.btnSimulador.Enabled = false;
 
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -103,20 +103,75 @@ namespace FrmVentas
 
         private void cmbMedioPago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string cadena;
-
             if (cmbMedioPago.SelectedIndex >= 0)
             {
-                TipoPago tipo = (TipoPago)this.cmbMedioPago.SelectedItem;
+                TipoPago tipo = (TipoPago)cmbMedioPago.SelectedItem;
 
-                double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
+                double subtotal = 0;
 
-                this.lblCadena.Text = cadena;
-                this.lblRecDes.Text = total.ToString();
-                this.lblTotal.Text = total.ToString();
+                if (lblSubtotal.Text != "" && double.TryParse(lblSubtotal.Text, out subtotal))
+                {
+                    double total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
+
+                    lblCadena.Text = cadena;
+                    lblRecDes.Text = total.ToString();
+                    lblTotal.Text = total.ToString();
+
+                    if (tipo == TipoPago.Efectivo)
+                    {
+                        this.btnSimulador.Enabled = true;
+
+                        if (double.TryParse(txtDinero.Text, out double dinero) && dinero >= total)
+                        {
+                            btnCrearVenta.Enabled = true;
+                        }
+                        else
+                        {
+                            btnCrearVenta.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        btnCrearVenta.Enabled = true;
+                    }
+                }
             }
         }
 
+        //private void cmbMedioPago_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string cadena;
+
+        //    if (cmbMedioPago.SelectedIndex >= 0)
+        //    {
+        //        TipoPago tipo = (TipoPago)this.cmbMedioPago.SelectedItem;
+
+        //        if (tipo == TipoPago.Efectivo)
+        //        {
+        //            this.btnSimulador.Enabled = false;
+
+        //            double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
+
+        //            this.lblCadena.Text = cadena;
+        //            this.lblRecDes.Text = total.ToString();
+        //            this.lblTotal.Text = total.ToString();
+
+        //            if (double.Parse(this.txtDinero.Text) >= total)
+        //            {
+        //                // que me deje hacer la venta y sino que muestro que el dinero disponible no es suficiente
+        //            }
+        //        }
+        //        else
+        //        {
+        //            double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
+
+        //            this.lblCadena.Text = cadena;
+        //            this.lblRecDes.Text = total.ToString();
+        //            this.lblTotal.Text = total.ToString();
+        //        }
+
+        //    }
+        //}
         private void btnCrearVenta_Click(object sender, EventArgs e)
         {
             if (dgvClientes.SelectedRows.Count > 0)

@@ -59,6 +59,7 @@
             // 
             rtbMostrarDatos.Location = new Point(13, 418);
             rtbMostrarDatos.Name = "rtbMostrarDatos";
+            rtbMostrarDatos.ReadOnly = true;
             rtbMostrarDatos.Size = new Size(781, 420);
             rtbMostrarDatos.TabIndex = 6;
             rtbMostrarDatos.Text = "";

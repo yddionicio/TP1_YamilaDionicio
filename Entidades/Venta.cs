@@ -91,15 +91,20 @@ namespace Entidades
             double total = 0;
             if (subtotal != 0)
             {
-                if (TipoPago.Debito == tipo)
+                if (TipoPago.Efectivo == tipo)
                 {
                     total = PrecioFinalConDescuento(subtotal);
                     nombre += "Descuento 10%:";
                 }
-                else
+                else if(TipoPago.Credito == tipo)
                 {
                     total = PrecioFinalConRecargo(subtotal);
                     nombre += "Recargo 10%:";
+                }
+                else
+                {
+                    total = subtotal;
+                    nombre += "Precio original:";
                 }
             }
             cadena = nombre;

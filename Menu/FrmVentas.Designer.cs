@@ -223,7 +223,7 @@
             // 
             // btnCrearVenta
             // 
-            btnCrearVenta.Location = new Point(588, 865);
+            btnCrearVenta.Location = new Point(588, 875);
             btnCrearVenta.Name = "btnCrearVenta";
             btnCrearVenta.Size = new Size(260, 50);
             btnCrearVenta.TabIndex = 4;
@@ -264,9 +264,8 @@
             lblCadena.AutoSize = true;
             lblCadena.Location = new Point(571, 73);
             lblCadena.Name = "lblCadena";
-            lblCadena.Size = new Size(69, 25);
+            lblCadena.Size = new Size(0, 25);
             lblCadena.TabIndex = 15;
-            lblCadena.Text = "label13";
             // 
             // lblSubtotal
             // 
@@ -352,7 +351,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(870, 927);
+            ClientSize = new Size(870, 937);
             Controls.Add(groupBox2);
             Controls.Add(btnCrearVenta);
             Controls.Add(label2);
