@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dateTimePicker1 = new DateTimePicker();
+            dtpFecha = new DateTimePicker();
             dgvVentas = new DataGridView();
-            Acciones = new DataGridViewButtonColumn();
-            Ver = new DataGridViewButtonColumn();
             rtbMostrarDatos = new RichTextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            dateTimePicker1.Location = new Point(12, 39);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(270, 29);
-            dateTimePicker1.TabIndex = 3;
+            dtpFecha.Location = new Point(13, 45);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(270, 29);
+            dtpFecha.TabIndex = 3;
+            dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
             // dgvVentas
             // 
             dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVentas.Columns.AddRange(new DataGridViewColumn[] { Acciones, Ver });
-            dgvVentas.Location = new Point(11, 77);
+            dgvVentas.Location = new Point(12, 105);
             dgvVentas.Name = "dgvVentas";
             dgvVentas.RowHeadersWidth = 62;
             dgvVentas.RowTemplate.Height = 33;
@@ -55,49 +55,56 @@
             dgvVentas.TabIndex = 4;
             dgvVentas.CellContentClick += dgvVentas_CellContentClick;
             // 
-            // Acciones
-            // 
-            Acciones.HeaderText = "Acciones";
-            Acciones.MinimumWidth = 8;
-            Acciones.Name = "Acciones";
-            Acciones.Width = 150;
-            // 
-            // Ver
-            // 
-            Ver.HeaderText = "Ver";
-            Ver.MinimumWidth = 8;
-            Ver.Name = "Ver";
-            Ver.Width = 150;
-            // 
             // rtbMostrarDatos
             // 
-            rtbMostrarDatos.Location = new Point(15, 365);
+            rtbMostrarDatos.Location = new Point(13, 418);
             rtbMostrarDatos.Name = "rtbMostrarDatos";
             rtbMostrarDatos.Size = new Size(781, 420);
             rtbMostrarDatos.TabIndex = 6;
             rtbMostrarDatos.Text = "";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 385);
+            label1.Name = "label1";
+            label1.Size = new Size(125, 21);
+            label1.TabIndex = 7;
+            label1.Text = "Detalle Producto";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 21);
+            label2.Name = "label2";
+            label2.Size = new Size(117, 21);
+            label2.TabIndex = 8;
+            label2.Text = "Filtrar Reportes";
+            // 
             // FrmReporte
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(808, 804);
+            ClientSize = new Size(808, 857);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(rtbMostrarDatos);
             Controls.Add(dgvVentas);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtpFecha);
             Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmReporte";
             Text = "FrmReporte";
             Load += FrmReporte_Load;
             ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpFecha;
         private DataGridView dgvVentas;
-        private DataGridViewButtonColumn Acciones;
-        private DataGridViewButtonColumn Ver;
         private RichTextBox rtbMostrarDatos;
+        private Label label1;
+        private Label label2;
     }
 }

@@ -8,7 +8,6 @@ namespace Entidades
 {
     public class Usuario : Persona
     {
-        public enum TipoRol { Vendedor, Supervisor}
         public TipoRol rol;
 
 

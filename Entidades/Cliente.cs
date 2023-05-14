@@ -26,5 +26,8 @@ namespace Entidades
             string cadena = $"DATOS CLIENTE: \n{base.Mostrar()} Mail: {this.email} \nTelefono: {this.telefono}\n";
             return cadena;
         }
+
+
+
     }
 }

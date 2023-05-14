@@ -24,9 +24,15 @@ namespace Entidades
         public string Apellido { get => apellido; set => apellido = value; }
 
 
+        public string MostrarDatos()
+        {
+            string cadena = $"{this.nombre} {this.apellido}";
+            return cadena;
+        }
+
         public virtual string Mostrar() 
         {
-            string cadena = $"Nombre: {this.nombre}\n Apellido: {this.apellido} \n Dni: {this.Dni}\n";
+            string cadena = $"Nombre: {this.nombre}\n Apellido: {this.apellido}\n Dni: {this.Dni}\n";
             return cadena;
         }
 

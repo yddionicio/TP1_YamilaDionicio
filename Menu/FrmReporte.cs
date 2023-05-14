@@ -26,16 +26,28 @@ namespace Menu
         {
             dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = PlataformaVentas.Ventas;
-            dgvVentas.DataSource = bindingSource;
+            dgvVentas.DataSource = PlataformaVentas.Ventas;
+            dgvVentas.Columns[1].Visible = false;
+            dgvVentas.Columns[2].HeaderText = "Nro Venta";
 
-            dgvVentas.Update();
-            dgvVentas.Refresh();
+            DataGridViewButtonColumn descargarColumn = new DataGridViewButtonColumn();
+            descargarColumn.HeaderText = "Descargar";
+            descargarColumn.Name = "Descargar";
+            descargarColumn.UseColumnTextForButtonValue = true;
+            dgvVentas.Columns.Add(descargarColumn);
+
+            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            verColumn.HeaderText = "Ver";
+            verColumn.Name = "Ver";
+            verColumn.UseColumnTextForButtonValue = true;
+            dgvVentas.Columns.Add(verColumn);
         }
+
 
         private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvVentas.Columns["Acciones"].Index && e.RowIndex >= 0)
+            var test = dgvVentas.Columns;
+            if (e.ColumnIndex == dgvVentas.Columns["Descargar"].Index && e.RowIndex >= 0)
             {
                 Venta venta = (Venta)dgvVentas.Rows[e.RowIndex].DataBoundItem;
 
@@ -189,5 +201,22 @@ namespace Menu
 
         }
 
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = dtpFecha.Value.Date;
+            List<Venta> ventasFiltradas = new List<Venta>();
+
+            foreach (Venta venta in PlataformaVentas.Ventas)
+            {
+                if (venta.Fecha.Date == fechaSeleccionada)
+                {
+                    ventasFiltradas.Add(venta);
+                }
+            }
+
+            dgvVentas.DataSource = ventasFiltradas;
+            dgvVentas.Update();
+            dgvVentas.Refresh();
+        }
     }
 }

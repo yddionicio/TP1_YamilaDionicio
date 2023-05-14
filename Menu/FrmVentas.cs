@@ -18,11 +18,14 @@ namespace FrmVentas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
+            this.txtDinero.Enabled = false;  
+            this.btnSimulador.Enabled = false;
+
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             cmbMedioPago.Items.Insert(0, "");
-            this.cmbMedioPago.DataSource = Enum.GetValues(typeof(Venta.TipoPago));
+            this.cmbMedioPago.DataSource = Enum.GetValues(typeof(TipoPago));
             this.cmbMedioPago.DisplayMember = "Nombre";
             this.cmbMedioPago.SelectedIndex = 0;
 
@@ -100,12 +103,15 @@ namespace FrmVentas
 
         private void cmbMedioPago_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string cadena;
+
             if (cmbMedioPago.SelectedIndex >= 0)
             {
-                Venta.TipoPago tipo = (Venta.TipoPago)this.cmbMedioPago.SelectedItem;
+                TipoPago tipo = (TipoPago)this.cmbMedioPago.SelectedItem;
 
-                double total = Venta.CalcularPrecioFinal(tipo, lblCadena.Text, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
+                double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
 
+                this.lblCadena.Text = cadena;
                 this.lblRecDes.Text = total.ToString();
                 this.lblTotal.Text = total.ToString();
             }

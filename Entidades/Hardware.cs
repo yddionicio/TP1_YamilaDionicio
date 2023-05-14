@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public enum TipoConexion { USB, HDMI, DVI}
     public class Hardware : Producto
     {
         private int capacidad;

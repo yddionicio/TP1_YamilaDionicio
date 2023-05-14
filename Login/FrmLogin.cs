@@ -19,7 +19,7 @@ namespace Login
         {
             frmMenu menu = new frmMenu();
 
-            if (rdbVendedor.Checked && Usuario.TipoRol.Vendedor.ToString() == rdbVendedor.Text)
+            if (rdbVendedor.Checked && TipoRol.Vendedor.ToString() == rdbVendedor.Text)
             {
                 menu.OcultarMenuItem();
             }

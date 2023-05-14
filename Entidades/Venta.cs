@@ -8,8 +8,7 @@ namespace Entidades
 {
     public class Venta
     {
-        public enum TipoPago { Credito, Debito }
-
+        private int id;
         private DateTime fecha;
         private Producto producto;
         private List<Producto> listaProdSeleccionados;
@@ -18,18 +17,29 @@ namespace Entidades
         private int cantidad;
         private TipoPago tipoPago;
         private double precioFinal;
+        Random rdm = new Random();
 
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
         public List<Producto> ListaProdSeleccionados { get => listaProdSeleccionados; set => listaProdSeleccionados = value; }
-
+        public int Id 
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
 
         public Venta(List<Producto> productos, Cliente cliente, DateTime fecha)
         {
             this.ListaProdSeleccionados = productos;
-            //this.tipoPago = pago;
             this.Cliente = cliente;
             this.Fecha = fecha;
+            this.Id = rdm.Next(1,1000);
         }
 
 
@@ -75,22 +85,24 @@ namespace Entidades
             return precioConRecargo;
         }
 
-        public static double CalcularPrecioFinal(TipoPago tipo, string nombre, double subtotal)
+        public static double CalcularPrecioFinal(TipoPago tipo, out string cadena, double subtotal)
         {
+            string nombre = "";
             double total = 0;
             if (subtotal != 0)
             {
                 if (TipoPago.Debito == tipo)
                 {
                     total = PrecioFinalConDescuento(subtotal);
-                    nombre += "Descuento 10%";
+                    nombre += "Descuento 10%:";
                 }
                 else
                 {
                     total = PrecioFinalConRecargo(subtotal);
-                    nombre += "Recargo 10%";
+                    nombre += "Recargo 10%:";
                 }
             }
+            cadena = nombre;
             return total;
         }
 
