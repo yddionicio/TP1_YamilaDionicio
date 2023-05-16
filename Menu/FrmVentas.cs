@@ -8,12 +8,15 @@ namespace FrmVentas
     public partial class frmVentas : Form
     {
         List<Producto> listaSeleccionado;
+        BindingSource bindingSource;
+
         public Cliente ClienteSeleccionado { get; set; }
 
         public frmVentas()
         {
             InitializeComponent();
             listaSeleccionado = new List<Producto>();
+            bindingSource = new BindingSource();
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
@@ -34,6 +37,16 @@ namespace FrmVentas
             dgvClientes.Refresh();
 
             dgvProductos.DataSource = listaSeleccionado;
+
+            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            verColumn.HeaderText = "Eliminar";
+            verColumn.Name = "Eliminar";
+            verColumn.UseColumnTextForButtonValue = true;
+            dgvProductos.Columns.Add(verColumn);
+            //dgvProductos.Columns.Insert(4, verColumn);
+            //int ultimaColumna = dgvProductos.Columns.Count - 1;
+            //dgvProductos.Columns.Insert(ultimaColumna + 1, verColumn);
+
             dgvProductos.Update();
             dgvProductos.Refresh();
         }
@@ -199,7 +212,16 @@ namespace FrmVentas
             this.ClienteSeleccionado = PlataformaVentas.Clientes[rowIndex];
         }
 
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e) // modificar 
+        {
+            if (e.ColumnIndex == dgvProductos.Columns["Eliminar"].Index && e.RowIndex >= 0)
+            {
+                Producto p = (Producto)dgvProductos.Rows[e.RowIndex].DataBoundItem;
 
+                this.listaSeleccionado.Remove(p);
 
+                bindingSource.ResetBindings(false);
+            }
+        }
     }
 }

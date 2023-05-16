@@ -8,14 +8,12 @@ namespace FrmProducto
     public partial class frmProducto : Form
     {
         Random rdm;
-        //List<Producto> listaProductos;
         BindingSource bindingSource;
 
         public frmProducto()
         {
             InitializeComponent();
             rdm = new Random();
-            // listaProductos = productos;
             bindingSource = new BindingSource();
         }
 
@@ -28,6 +26,13 @@ namespace FrmProducto
 
             bindingSource.DataSource = PlataformaVentas.Productos;
             dgvProducto.DataSource = bindingSource;
+
+            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            verColumn.HeaderText = "Acciones";
+            verColumn.Name = "Acciones";
+            verColumn.UseColumnTextForButtonValue = true;
+            dgvProducto.Columns.Add(verColumn);
+            //dgvProductos.Columns.Insert(4, verColumn);
 
             dgvProducto.Update();
             dgvProducto.Refresh();
@@ -122,20 +127,17 @@ namespace FrmProducto
 
         private void dgvProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar si se hizo clic en la columna del botón
             if (e.ColumnIndex == dgvProducto.Columns["Acciones"].Index && e.RowIndex >= 0)
             {
-                // Obtener el objeto Producto correspondiente a la fila seleccionada
                 Producto p = (Producto)dgvProducto.Rows[e.RowIndex].DataBoundItem;
 
-                // Eliminar el objeto Producto de la lista
                 PlataformaVentas.Productos.Remove(p);
 
-                // Actualizar el origen de datos de la DataGridView 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
             }
         }
+
 
         private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
         {

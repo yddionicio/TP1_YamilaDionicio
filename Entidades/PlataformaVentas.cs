@@ -12,23 +12,26 @@ namespace Entidades
         private static List<Producto> productos = new List<Producto>();
         private static List<Cliente> clientes = new List<Cliente>();
         private static List<Venta> ventas = new List<Venta>();
+        private static List<Usuario> usuarios = new List<Usuario>();
 
         static PlataformaVentas() 
         {
             PlataformaVentas.CargarProductos();
             PlataformaVentas.CargarClientes();
             PlataformaVentas.CargarVentas();
+            PlataformaVentas.CargarUsuarios();
         }
 
         public static List<Producto> Productos { get => productos; set => productos = value; }
         public static List<Cliente> Clientes { get => clientes; set => clientes = value; }
         public static List<Venta> Ventas { get => ventas; set => ventas = value; }
+        public static List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
 
         public static void CargarProductos()
         {
             Random rdm = new Random();
 
-            Productos.Add(new Hardware(rdm.Next(200000, 600000), "Monitor", 2000, TipoConexion.HDMI, 789000, 45));
+            Productos.Add(new Hardware(rdm.Next(200000, 600000), "Monitor", 2000, TipoConexion.HDMI, 7800, 45));
             Productos.Add(new Hardware(rdm.Next(200000, 600000), "Teclado", 2000, TipoConexion.USB, 1000, 5));
             Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 1000, 5));
             Productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 2500, 90));
@@ -67,5 +70,15 @@ namespace Entidades
             Ventas.Add(new Venta(p1, c2, fecha2));
 
         }
+
+
+        public static void CargarUsuarios()
+        {
+            usuarios.Add(new Usuario("Nicolas", "Perez", 32654789, TipoRol.Vendedor, "nrod@gmail.com"));
+            usuarios.Add(new Usuario("Antonella", "Matinez", 15123456, TipoRol.Vendedor, "amat@gmail.com"));
+            usuarios.Add(new Usuario("Pable", "Smith", 42456852, TipoRol.Supervisor, "psmit@gmail.com"));
+        }
+
+
     }
 }

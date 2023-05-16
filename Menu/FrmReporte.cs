@@ -40,6 +40,7 @@ namespace Menu
             verColumn.HeaderText = "Ver";
             verColumn.Name = "Ver";
             verColumn.UseColumnTextForButtonValue = true;
+
             dgvVentas.Columns.Add(verColumn);
         }
 

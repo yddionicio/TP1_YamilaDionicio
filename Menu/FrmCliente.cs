@@ -31,6 +31,12 @@ namespace Menu
             bindingSource.DataSource = PlataformaVentas.Clientes;
             dgvClientes.DataSource = bindingSource;
 
+            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            verColumn.HeaderText = "Acciones";
+            verColumn.Name = "Acciones";
+            verColumn.UseColumnTextForButtonValue = true;
+            dgvClientes.Columns.Add(verColumn);
+
             dgvClientes.Update();
             dgvClientes.Refresh();
         }
@@ -38,7 +44,7 @@ namespace Menu
         {
             if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
-                Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text ,int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
+                Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
                 PlataformaVentas.Clientes.Add(c);
 
                 bindingSource.ResetBindings(false);

@@ -84,6 +84,7 @@
             dgvProductos.RowTemplate.Height = 33;
             dgvProductos.Size = new Size(825, 248);
             dgvProductos.TabIndex = 1;
+            dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
             // groupBox1
             // 

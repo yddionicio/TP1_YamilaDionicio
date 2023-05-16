@@ -94,7 +94,7 @@
             Controls.Add(dtpFecha);
             Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmReporte";
-            Text = "FrmReporte";
+            Text = "Reportes";
             Load += FrmReporte_Load;
             ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);

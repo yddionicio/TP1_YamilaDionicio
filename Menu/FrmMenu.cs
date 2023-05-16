@@ -40,6 +40,13 @@ namespace Menu
         public void OcultarMenuItem()
         {
             menuStrip1.Items["reportesToolStripMenuItem"].Visible = false;
+            menuStrip1.Items["vendedoresToolStripMenuItem"].Visible = false;
+        }
+
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsuario usuarios = new FrmUsuario();
+            usuarios.ShowDialog();
         }
     }
 }

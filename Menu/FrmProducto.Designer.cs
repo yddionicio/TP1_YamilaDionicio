@@ -40,7 +40,6 @@
             label6 = new Label();
             txtCodigo = new TextBox();
             label7 = new Label();
-            Acciones = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nupCantidad).BeginInit();
@@ -49,7 +48,6 @@
             // dgvProducto
             // 
             dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducto.Columns.AddRange(new DataGridViewColumn[] { Acciones });
             dgvProducto.Location = new Point(356, 45);
             dgvProducto.Name = "dgvProducto";
             dgvProducto.RowHeadersWidth = 62;
@@ -165,13 +163,6 @@
             label7.TabIndex = 2;
             label7.Text = "Codigo";
             // 
-            // Acciones
-            // 
-            Acciones.HeaderText = "Acciones";
-            Acciones.MinimumWidth = 8;
-            Acciones.Name = "Acciones";
-            Acciones.Width = 150;
-            // 
             // frmProducto
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -204,6 +195,5 @@
         private Label label7;
         private Button button1;
         private Button btnEditar;
-        private DataGridViewButtonColumn Acciones;
     }
 }

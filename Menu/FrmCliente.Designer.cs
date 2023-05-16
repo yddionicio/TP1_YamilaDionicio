@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            label1 = new Label();
+            txtApellido = new TextBox();
             txtTelefono = new TextBox();
             btnEditar = new Button();
             btnAgregar = new Button();
@@ -40,9 +42,6 @@
             txtNombre = new TextBox();
             label7 = new Label();
             dgvClientes = new DataGridView();
-            Acciones = new DataGridViewButtonColumn();
-            txtApellido = new TextBox();
-            label1 = new Label();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
@@ -67,6 +66,22 @@
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalle Cliente";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(22, 117);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 25);
+            label1.TabIndex = 9;
+            label1.Text = "Apellido";
+            // 
+            // txtApellido
+            // 
+            txtApellido.Location = new Point(22, 145);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(243, 31);
+            txtApellido.TabIndex = 8;
             // 
             // txtTelefono
             // 
@@ -159,7 +174,6 @@
             // dgvClientes
             // 
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { Acciones });
             dgvClientes.Location = new Point(313, 46);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.RowHeadersWidth = 62;
@@ -168,29 +182,6 @@
             dgvClientes.TabIndex = 4;
             dgvClientes.CellClick += dgvClientes_CellClick_1;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick_1;
-            // 
-            // Acciones
-            // 
-            Acciones.HeaderText = "Acciones";
-            Acciones.MinimumWidth = 8;
-            Acciones.Name = "Acciones";
-            Acciones.Width = 150;
-            // 
-            // txtApellido
-            // 
-            txtApellido.Location = new Point(22, 145);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(243, 31);
-            txtApellido.TabIndex = 8;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 117);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 25);
-            label1.TabIndex = 9;
-            label1.Text = "Apellido";
             // 
             // FrmCliente
             // 
@@ -222,7 +213,6 @@
         private Label label7;
         private DataGridView dgvClientes;
         private TextBox txtTelefono;
-        private DataGridViewButtonColumn Acciones;
         private Label label1;
         private TextBox txtApellido;
     }

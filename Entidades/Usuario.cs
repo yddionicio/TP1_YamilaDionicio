@@ -8,12 +8,16 @@ namespace Entidades
 {
     public class Usuario : Persona
     {
-        public TipoRol rol;
+        private TipoRol rol;
+        private string mail;
 
+        public TipoRol Rol { get => rol; set => rol = value; }
+        public string Mail { get => mail; set => mail = value; }
 
-        public Usuario(string nombre, string apellido, int dni, TipoRol tipoRol) : base(nombre, apellido, dni)
+        public Usuario(string nombre, string apellido, int dni, TipoRol tipoRol, string mail) : base(nombre, apellido, dni)
         {
-            this.rol = tipoRol;
+            this.Rol = tipoRol;
+            this.Mail = mail;
         }
 
 
