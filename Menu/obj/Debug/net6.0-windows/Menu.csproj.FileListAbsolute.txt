@@ -61,3 +61,4 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-win
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.FrmUsuario.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Prueba.resources

@@ -32,20 +32,24 @@ namespace FrmVentas
             this.cmbMedioPago.DisplayMember = "Nombre";
             this.cmbMedioPago.SelectedIndex = 0;
 
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; 
             dgvClientes.DataSource = PlataformaVentas.Clientes;
             dgvClientes.Update();
             dgvClientes.Refresh();
 
             dgvProductos.DataSource = listaSeleccionado;
 
-            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
-            verColumn.HeaderText = "Eliminar";
-            verColumn.Name = "Eliminar";
-            verColumn.UseColumnTextForButtonValue = true;
-            dgvProductos.Columns.Add(verColumn);
+            #region chequear que el boton se agregue al final de las columnas
+            //DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            //verColumn.HeaderText = "Eliminar";
+            //verColumn.Name = "Eliminar";
+            //verColumn.UseColumnTextForButtonValue = true;
+            //dgvProductos.Columns.Add(verColumn);
+
             //dgvProductos.Columns.Insert(4, verColumn);
             //int ultimaColumna = dgvProductos.Columns.Count - 1;
             //dgvProductos.Columns.Insert(ultimaColumna + 1, verColumn);
+            #endregion
 
             dgvProductos.Update();
             dgvProductos.Refresh();
@@ -111,80 +115,63 @@ namespace FrmVentas
 
         private void btnSimulador_Click(object sender, EventArgs e)
         {
+            TipoPago tipo = (TipoPago)cmbMedioPago.SelectedItem;
             this.txtDinero.Text = Venta.SimuladorDinero().ToString();
+
+            double subtotal = 0;
+            double total = 0;
+
+            if (this.lblSubtotal.Text != "" && double.TryParse(lblSubtotal.Text, out subtotal))
+            {
+                 total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
+
+                this.lblCadena.Text = cadena;
+                this.lblRecDes.Text = total.ToString();
+                this.lblTotal.Text = total.ToString();
+            }
+
+            if (double.TryParse(this.txtDinero.Text, out double dinero) && double.Parse(this.txtDinero.Text) >= total)
+            {
+                this.btnCrearVenta.Enabled = true;
+            }
+            else
+            {
+                btnCrearVenta.Enabled = false;
+                MessageBox.Show("El cliente no contiene el dinero suficiente para realizar esta compra", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void cmbMedioPago_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TipoPago tipo = (TipoPago)cmbMedioPago.SelectedItem;
+
             if (cmbMedioPago.SelectedIndex >= 0)
-            {
-                TipoPago tipo = (TipoPago)cmbMedioPago.SelectedItem;
-
-                double subtotal = 0;
-
-                if (lblSubtotal.Text != "" && double.TryParse(lblSubtotal.Text, out subtotal))
+            {        
+                if (tipo == TipoPago.Efectivo)
                 {
-                    double total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
+                    this.btnSimulador.Enabled = true;
+                    this.btnCrearVenta.Enabled = false;
+                }
+                else
+                {
+                    this.btnSimulador.Enabled = false;
+                    this.btnCrearVenta.Enabled = true;
 
-                    lblCadena.Text = cadena;
-                    lblRecDes.Text = total.ToString();
-                    lblTotal.Text = total.ToString();
+                    double subtotal = 0;
+                    double total = 0;
 
-                    if (tipo == TipoPago.Efectivo)
+                    if (this.lblSubtotal.Text != "" && double.TryParse(lblSubtotal.Text, out subtotal))
                     {
-                        this.btnSimulador.Enabled = true;
+                        total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
 
-                        if (double.TryParse(txtDinero.Text, out double dinero) && dinero >= total)
-                        {
-                            btnCrearVenta.Enabled = true;
-                        }
-                        else
-                        {
-                            btnCrearVenta.Enabled = false;
-                        }
-                    }
-                    else
-                    {
-                        btnCrearVenta.Enabled = true;
+                        this.lblCadena.Text = cadena;
+                        this.lblRecDes.Text = total.ToString();
+                        this.lblTotal.Text = total.ToString();
                     }
                 }
             }
         }
 
-        //private void cmbMedioPago_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    string cadena;
-
-        //    if (cmbMedioPago.SelectedIndex >= 0)
-        //    {
-        //        TipoPago tipo = (TipoPago)this.cmbMedioPago.SelectedItem;
-
-        //        if (tipo == TipoPago.Efectivo)
-        //        {
-        //            this.btnSimulador.Enabled = false;
-
-        //            double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
-
-        //            this.lblCadena.Text = cadena;
-        //            this.lblRecDes.Text = total.ToString();
-        //            this.lblTotal.Text = total.ToString();
-
-        //            if (double.Parse(this.txtDinero.Text) >= total)
-        //            {
-        //                // que me deje hacer la venta y sino que muestro que el dinero disponible no es suficiente
-        //            }
-        //        }
-        //        else
-        //        {
-        //            double total = Venta.CalcularPrecioFinal(tipo, out cadena, this.lblSubtotal.Text == "" ? 0 : Double.Parse(this.lblSubtotal.Text));
-
-        //            this.lblCadena.Text = cadena;
-        //            this.lblRecDes.Text = total.ToString();
-        //            this.lblTotal.Text = total.ToString();
-        //        }
-
-        //    }
-        //}
         private void btnCrearVenta_Click(object sender, EventArgs e)
         {
             if (dgvClientes.SelectedRows.Count > 0)

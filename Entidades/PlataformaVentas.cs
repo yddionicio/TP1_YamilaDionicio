@@ -31,20 +31,20 @@ namespace Entidades
         {
             Random rdm = new Random();
 
-            Productos.Add(new Hardware(rdm.Next(200000, 600000), "Monitor", 2000, TipoConexion.HDMI, 7800, 45));
+            Productos.Add(new Hardware(rdm.Next(200000, 600000), "Monitor", 2000, TipoConexion.HDMI, 1550, 11));
             Productos.Add(new Hardware(rdm.Next(200000, 600000), "Teclado", 2000, TipoConexion.USB, 1000, 5));
-            Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 1000, 5));
-            Productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 2500, 90));
-            Productos.Add(new Software(123456, "Photoshop", "9.0", TipoSistemaOperativo.Windows, 1200, 90));
-            Productos.Add(new Software(2222, "aaaaa", "7.0", TipoSistemaOperativo.Linux, 2500, 5));
+            Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 3600, 7));
+            Productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 500, 15));
+            Productos.Add(new Software(123456, "Photoshop", "9.0", TipoSistemaOperativo.Windows, 1200, 8));
+            Productos.Add(new Software(2222, "aaaaa", "7.0", TipoSistemaOperativo.Linux, 1900, 5));
         }
 
         public static void CargarClientes()
         {
             Clientes.Add(new Cliente("pompo", "pomposo", 36258147, "pmp@gmail.com", 15926348));
-            Clientes.Add(new Cliente("aaaa", "Perez", 36258147, "pmp@gmail.com", 15926348));
-            Clientes.Add(new Cliente("bbbb", "garcia", 36258147, "pmp@gmail.com", 15926348));
-            Clientes.Add(new Cliente("cccc", "bbb", 36258147, "pmp@gmail.com", 15926348));
+            Clientes.Add(new Cliente("Lucas", "Perez", 32852999, "lp@gmail.com", 1531322525));
+            Clientes.Add(new Cliente("Maria", "Garcia", 36111258, "mg@gmail.com", 1511224487));
+            Clientes.Add(new Cliente("Tomas", "Martin", 41254456, "tm@gmail.com", 1599652387));
         }
 
         public static void CargarVentas()
@@ -54,7 +54,7 @@ namespace Entidades
             List<Producto> p2 = new List<Producto>();
 
             Cliente c1 = new Cliente("Gustavo", "Bruno", 36258147, "pmp@gmail.com", 15926348);
-            Cliente c2 = new Cliente("Ysmila", "Dionicio", 38260999, "ydd@gmail.com", 1532312727);
+            Cliente c2 = new Cliente("Yamila", "Dionicio", 38260999, "ydd@gmail.com", 1532312727);
             Cliente c3 = new Cliente("Juan", "Perez", 36258147, "jp@gmail.com", 1526485923);
 
             p1.Add(new Hardware(rdm.Next(15000, 600000), "Monitor", 2000, TipoConexion.HDMI, 789000, 5));

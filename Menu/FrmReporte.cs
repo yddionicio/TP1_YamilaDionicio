@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,6 +30,13 @@ namespace Menu
             dgvVentas.DataSource = PlataformaVentas.Ventas;
             dgvVentas.Columns[1].Visible = false;
             dgvVentas.Columns[2].HeaderText = "Nro Venta";
+
+            #region agregar formato al campo Id
+            foreach (var venta in PlataformaVentas.Ventas)
+            {
+                venta.Id.ToString("D4");
+            }
+            #endregion
 
             DataGridViewButtonColumn descargarColumn = new DataGridViewButtonColumn();
             descargarColumn.HeaderText = "Descargar";

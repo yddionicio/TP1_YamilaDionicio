@@ -29,6 +29,13 @@ namespace Menu
             bindingSource.DataSource = PlataformaVentas.Usuarios;
             dgvUsuarios.DataSource = bindingSource;
 
+            DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
+            verColumn.HeaderText = "Acciones";
+            verColumn.Name = "Acciones";
+            verColumn.UseColumnTextForButtonValue = true;
+            dgvUsuarios.Columns.Add(verColumn);
+
+
             dgvUsuarios.Update();
             dgvUsuarios.Refresh();
         }

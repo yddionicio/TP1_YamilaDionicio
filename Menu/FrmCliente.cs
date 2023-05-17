@@ -35,6 +35,19 @@ namespace Menu
             verColumn.HeaderText = "Acciones";
             verColumn.Name = "Acciones";
             verColumn.UseColumnTextForButtonValue = true;
+
+            #region chequear si me permite agregar una imagen al boton sino eliminarlo
+            // Crea una instancia de DataGridViewImageCell para la imagen del botón
+            //DataGridViewImageCell imageCell = new DataGridViewImageCell();
+            DataGridViewButtonCell buttonCell = new DataGridViewButtonCell();
+            buttonCell.Value = Image.FromFile("C:\\Users\\Administrator\\source\\repos\\TP1_YamilaDionicio\\Menu\\Resources\\search.png"); // Ruta de la imagen que deseas mostrar en el botón
+
+            // Asigna la celda de imagen al botón
+            //verColumn.CellTemplate = imageCell;
+            verColumn.CellTemplate = buttonCell;
+            #endregion
+
+
             dgvClientes.Columns.Add(verColumn);
 
             dgvClientes.Update();

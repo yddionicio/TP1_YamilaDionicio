@@ -42,7 +42,6 @@
             txtNombre = new TextBox();
             label7 = new Label();
             dgvUsuarios = new DataGridView();
-            Acciones = new DataGridViewButtonColumn();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
@@ -175,7 +174,6 @@
             // dgvUsuarios
             // 
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { Acciones });
             dgvUsuarios.Location = new Point(369, 46);
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 62;
@@ -184,13 +182,6 @@
             dgvUsuarios.TabIndex = 4;
             dgvUsuarios.CellClick += dgvUsuarios_CellClick;
             dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
-            // 
-            // Acciones
-            // 
-            Acciones.HeaderText = "Acciones";
-            Acciones.MinimumWidth = 8;
-            Acciones.Name = "Acciones";
-            Acciones.Width = 150;
             // 
             // FrmUsuario
             // 
@@ -222,7 +213,6 @@
         private TextBox txtNombre;
         private Label label7;
         private DataGridView dgvUsuarios;
-        private DataGridViewButtonColumn Acciones;
         private TextBox txtMail;
         private Label Mail;
         private ComboBox cmbTipo;
