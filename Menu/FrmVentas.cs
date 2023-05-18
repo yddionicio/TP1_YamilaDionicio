@@ -32,12 +32,20 @@ namespace FrmVentas
             this.cmbMedioPago.DisplayMember = "Nombre";
             this.cmbMedioPago.SelectedIndex = 0;
 
-            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; 
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.DataSource = PlataformaVentas.Clientes;
+
             dgvClientes.Update();
             dgvClientes.Refresh();
 
             dgvProductos.DataSource = listaSeleccionado;
+
+            #region Agregar columna subtotal
+            //DataGridViewColumn columna = new DataGridViewTextBoxColumn();
+            //columna.Name = "Subtotal";
+            //columna.HeaderText = "Subtotal";
+            //dgvProductos.Columns.Insert(4, columna);
+            #endregion
 
             #region chequear que el boton se agregue al final de las columnas
             //DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
@@ -74,6 +82,7 @@ namespace FrmVentas
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             double subtotal = 0;
+
             if (this.numUdCantidad.Value >= 1)
             {
                 if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
@@ -123,7 +132,7 @@ namespace FrmVentas
 
             if (this.lblSubtotal.Text != "" && double.TryParse(lblSubtotal.Text, out subtotal))
             {
-                 total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
+                total = Venta.CalcularPrecioFinal(tipo, out string cadena, subtotal);
 
                 this.lblCadena.Text = cadena;
                 this.lblRecDes.Text = total.ToString();
@@ -146,7 +155,7 @@ namespace FrmVentas
             TipoPago tipo = (TipoPago)cmbMedioPago.SelectedItem;
 
             if (cmbMedioPago.SelectedIndex >= 0)
-            {        
+            {
                 if (tipo == TipoPago.Efectivo)
                 {
                     this.btnSimulador.Enabled = true;
@@ -185,6 +194,21 @@ namespace FrmVentas
                     PlataformaVentas.Ventas.Add(venta);
 
                     MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        this.listaSeleccionado.Clear();
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un cliente", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -210,5 +234,9 @@ namespace FrmVentas
                 bindingSource.ResetBindings(false);
             }
         }
+
+
+
+
     }
 }

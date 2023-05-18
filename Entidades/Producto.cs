@@ -37,15 +37,15 @@ namespace Entidades
 
             return sb.ToString();
         }
-      
-        //public static bool operator ==(Producto producto1, Producto producto2)
+
+        //public static bool operator ==(Producto p1, Producto p2)
         //{
-        //    return producto1.Codigo == producto2.Codigo;
+        //    return p1.codigo == p2.codigo;
         //}
 
-        //public static bool operator !=(Producto producto1, Producto producto2)
+        //public static bool operator !=(Producto p1, Producto p2)
         //{
-        //    return !(producto1 == producto2);
+        //    return !(p1 == p2);
         //}
 
     }

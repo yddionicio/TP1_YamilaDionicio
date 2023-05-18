@@ -22,10 +22,26 @@ namespace Entidades
             PlataformaVentas.CargarUsuarios();
         }
 
-        public static List<Producto> Productos { get => productos; set => productos = value; }
-        public static List<Cliente> Clientes { get => clientes; set => clientes = value; }
-        public static List<Venta> Ventas { get => ventas; set => ventas = value; }
-        public static List<Usuario> Usuarios { get => usuarios; set => usuarios = value; }
+        public static List<Producto> Productos
+        {
+            get { return PlataformaVentas.productos;}
+            set { PlataformaVentas.productos = value; }
+        }
+        public static List<Cliente> Clientes 
+        {
+            get { return PlataformaVentas.clientes; }
+            set { PlataformaVentas.clientes = value; }
+        }
+        public static List<Venta> Ventas 
+        {
+            get { return PlataformaVentas.ventas; }
+            set { PlataformaVentas.ventas = value; }
+        }
+        public static List<Usuario> Usuarios 
+        {
+            get { return PlataformaVentas.usuarios; }
+            set { PlataformaVentas.usuarios = value; }
+        }
 
         public static void CargarProductos()
         {
@@ -35,8 +51,8 @@ namespace Entidades
             Productos.Add(new Hardware(rdm.Next(200000, 600000), "Teclado", 2000, TipoConexion.USB, 1000, 5));
             Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 3600, 7));
             Productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 500, 15));
-            Productos.Add(new Software(123456, "Photoshop", "9.0", TipoSistemaOperativo.Windows, 1200, 8));
-            Productos.Add(new Software(2222, "aaaaa", "7.0", TipoSistemaOperativo.Linux, 1900, 5));
+            Productos.Add(new Software(123456, "Visual Studio Code", "2.0", TipoSistemaOperativo.Windows, 1200, 8));
+            Productos.Add(new Software(2222, "Eclipse", "3.0", TipoSistemaOperativo.Linux, 1900, 5));
         }
 
         public static void CargarClientes()
