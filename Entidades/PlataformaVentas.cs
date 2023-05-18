@@ -84,7 +84,6 @@ namespace Entidades
             Ventas.Add(new Venta(p1, c2, fecha1));
             Ventas.Add(new Venta(p2, c3, fecha2));
             Ventas.Add(new Venta(p1, c2, fecha2));
-
         }
 
 

@@ -21,5 +21,16 @@ namespace Entidades
         }
 
 
+        //public static bool operator ==(Usuario u1, Usuario u2)
+        //{
+        //    return u1.Apellido == u2.Apellido;  
+        //}
+
+        //public static bool operator !=(Usuario u1, Usuario u2)
+        //{
+        //    return !(u1.Apellido == u2.Apellido);
+        //}
+
+
     }
 }

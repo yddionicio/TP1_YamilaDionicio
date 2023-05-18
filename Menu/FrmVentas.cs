@@ -217,6 +217,7 @@ namespace FrmVentas
             }
         }
 
+
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
