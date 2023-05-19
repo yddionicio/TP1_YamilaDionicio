@@ -17,8 +17,16 @@ namespace Entidades
             this.Telefono = telefono;
         }
 
-        public string Email { get => email; set => email = value; }
-        public int Telefono { get => telefono; set => telefono = value; }
+        public string Email 
+        {
+            get { return this.email; }
+            set { this.email = value; }
+        }
+        public int Telefono 
+        {
+            get { return this.telefono; }
+            set { this.telefono = value; }
+        }
 
 
         public override string Mostrar()

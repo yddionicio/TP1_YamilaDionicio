@@ -11,7 +11,11 @@ namespace Entidades
         private string version;
         private TipoSistemaOperativo tipoSistemaOperativo;
 
-        public string Version { get => version; set => version = value; }
+        public string Version 
+        {
+            get { return this.version; }
+            set { this.version = value; }
+        }
         public TipoSistemaOperativo TipoSistemaOperativo { get => tipoSistemaOperativo; set => tipoSistemaOperativo = value; }
 
         public Software(int codigo, string descripcion, string version, TipoSistemaOperativo tipoSistemaOperativo, double precio, int cantidad) :
