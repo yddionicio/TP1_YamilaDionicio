@@ -68,7 +68,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.kiosk;
+            pictureBox1.Image = Properties.Resources.gadgets;
             pictureBox1.Location = new Point(240, 45);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(298, 179);
@@ -82,7 +82,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1366, 502);
+            ClientSize = new Size(1214, 502);
             Controls.Add(pictureBox1);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
@@ -90,7 +90,7 @@
             ForeColor = SystemColors.ControlText;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Prueba";
-            Text = "Prueba";
+            Text = "  Prueba";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

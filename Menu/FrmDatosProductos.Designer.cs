@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDatosProductos));
             dgvDatosProductos = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvDatosProductos).BeginInit();
             SuspendLayout();
@@ -40,7 +41,7 @@
             dgvDatosProductos.RowHeadersWidth = 62;
             dgvDatosProductos.RowTemplate.Height = 33;
             dgvDatosProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDatosProductos.Size = new Size(793, 444);
+            dgvDatosProductos.Size = new Size(796, 327);
             dgvDatosProductos.TabIndex = 0;
             dgvDatosProductos.CellClick += dgvDatosProductos_CellClick;
             // 
@@ -48,10 +49,11 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 448);
+            ClientSize = new Size(804, 331);
             Controls.Add(dgvDatosProductos);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmDatosProductos";
-            Text = "FrmDatosProductos";
+            Text = "Datos";
             Load += FrmDatosProductos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDatosProductos).EndInit();
             ResumeLayout(false);

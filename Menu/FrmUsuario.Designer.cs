@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
             groupBox2 = new GroupBox();
             cmbTipo = new ComboBox();
             txtMail = new TextBox();
@@ -190,6 +191,7 @@
             ClientSize = new Size(1121, 606);
             Controls.Add(groupBox2);
             Controls.Add(dgvUsuarios);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmUsuario";
             Text = "Usuarios";
             Load += FrmUsuario_Load;

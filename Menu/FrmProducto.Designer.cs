@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProducto));
             dgvProducto = new DataGridView();
             groupBox2 = new GroupBox();
             btnEditar = new Button();
@@ -171,8 +172,9 @@
             Controls.Add(groupBox2);
             Controls.Add(dgvProducto);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmProducto";
-            Text = "Producto";
+            Text = "Productos";
             Load += frmProducto_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
             groupBox2.ResumeLayout(false);

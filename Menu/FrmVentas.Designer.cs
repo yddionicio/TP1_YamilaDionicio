@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
             dgvClientes = new DataGridView();
             dgvProductos = new DataGridView();
             groupBox1 = new GroupBox();
@@ -360,8 +361,9 @@
             Controls.Add(dgvProductos);
             Controls.Add(dgvClientes);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmVentas";
-            Text = "Ventas";
+            Text = " Ventas";
             Load += frmVentas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();

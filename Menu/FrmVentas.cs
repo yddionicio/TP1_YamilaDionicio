@@ -68,7 +68,7 @@ namespace FrmVentas
             FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
             datosProductos.ShowDialog();
 
-            if (datosProductos != null && datosProductos.ProductoSeleccionado != null )
+            if (datosProductos != null && datosProductos.ProductoSeleccionado != null)
             {
                 Producto productoSeleccionado = datosProductos.ProductoSeleccionado;
 
@@ -217,7 +217,7 @@ namespace FrmVentas
                     PlataformaVentas.Ventas.Add(venta);
 
                     //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
-                    
+
 
                     MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -227,7 +227,6 @@ namespace FrmVentas
                     {
                         this.listaSeleccionado.Clear();
                         dgvProductos.DataSource = null;
-                        //dgvProductos.DataSource = listaSeleccionado;
                         dgvProductos.Update();
                         dgvProductos.Refresh();
                     }

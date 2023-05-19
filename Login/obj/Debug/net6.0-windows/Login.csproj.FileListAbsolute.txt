@@ -37,3 +37,4 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-wi
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\Entidades.pdb
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\Menu.pdb
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\obj\Debug\net6.0-windows\Login.csproj.CopyComplete
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\obj\Debug\net6.0-windows\Login.Properties.Resources.resources

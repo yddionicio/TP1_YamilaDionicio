@@ -17,8 +17,8 @@ namespace Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Prueba p = new Prueba();
-            p.ShowDialog();
+            //Prueba p = new Prueba();
+            //p.ShowDialog();
 
             string usuario = txtUsuario.Text;
             string contrasena = txtContraseña.Text;

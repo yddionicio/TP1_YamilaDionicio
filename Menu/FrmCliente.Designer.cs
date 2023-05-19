@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             groupBox2 = new GroupBox();
             label1 = new Label();
             txtApellido = new TextBox();
@@ -190,8 +191,9 @@
             ClientSize = new Size(1100, 597);
             Controls.Add(groupBox2);
             Controls.Add(dgvClientes);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmCliente";
-            Text = "FrmCliente";
+            Text = "Clientes";
             Load += FrmCliente_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

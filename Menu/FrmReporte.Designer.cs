@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReporte));
             dtpFecha = new DateTimePicker();
             dgvVentas = new DataGridView();
             rtbMostrarDatos = new RichTextBox();
@@ -93,6 +94,7 @@
             Controls.Add(dgvVentas);
             Controls.Add(dtpFecha);
             Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmReporte";
             Text = "Reportes";
             Load += FrmReporte_Load;
