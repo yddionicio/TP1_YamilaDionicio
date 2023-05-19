@@ -98,11 +98,11 @@ namespace FrmProducto
                     // Actualizar los valores del objeto Producto
                     p.Descripcion = txtDescripcion.Text;
                     p.Precio = double.Parse(txtPrecio.Text);
-                    p.Cantidad = (int)nupCantidad.Value;
+                    p.Stock = (int)nupCantidad.Value;
 
                     row.Cells["Descripcion"].Value = p.Descripcion;
                     row.Cells["Precio"].Value = p.Precio;
-                    row.Cells["Cantidad"].Value = p.Cantidad;
+                    row.Cells["Cantidad"].Value = p.Stock;
 
                     // Limpiar los campos de entrada
                     LimpiarCampos();
@@ -124,7 +124,7 @@ namespace FrmProducto
                 txtCodigo.Text = producto.Codigo.ToString();
                 txtDescripcion.Text = producto.Descripcion;
                 txtPrecio.Text = producto.Precio.ToString();
-                nupCantidad.Value = producto.Cantidad;
+                nupCantidad.Value = producto.Stock;
             }
         }
 

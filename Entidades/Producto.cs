@@ -11,14 +11,14 @@ namespace Entidades
         private int codigo;
         private string descripcion;
         private double precio;
-        private int cantidad;
+        private int stock;
 
-        public Producto(int codigo, string descripcion, double precio, int cantidad)
+        public Producto(int codigo, string descripcion, double precio, int stock)
         {
             this.Codigo = codigo;
             this.Descripcion = descripcion;
             this.Precio = precio;
-            this.Cantidad = cantidad;
+            this.Stock = stock;
         }
 
         public int Codigo
@@ -37,10 +37,10 @@ namespace Entidades
             get { return this.precio; }
             set { this.precio = value; }
         }
-        public int Cantidad
+        public int Stock
         {
-            get { return this.cantidad; }
-            set { this.cantidad = value; }
+            get { return this.stock; }
+            set { this.stock = value; }
         }
 
         public virtual string Mostrar()
@@ -49,7 +49,7 @@ namespace Entidades
             sb.AppendLine("Codigo: " + this.codigo);
             sb.AppendLine("Descripcion: " + this.descripcion);
             sb.AppendLine("Precio: " + this.precio);
-            sb.AppendLine("Cantidad: " + this.cantidad);
+            sb.AppendLine("Cantidad: " + this.stock);
 
             return sb.ToString();
         }

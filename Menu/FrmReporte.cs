@@ -142,7 +142,7 @@ namespace Menu
                     foreach (Producto item in venta.ListaProdSeleccionados)
                     {
                         columna = 1;
-                        lines = new List<string>() { item.Codigo.ToString(), item.Descripcion, item.Cantidad.ToString(), item.Precio.ToString(), (item.Precio * item.Cantidad).ToString() };
+                        lines = new List<string>() { item.Codigo.ToString(), item.Descripcion, item.Stock.ToString(), item.Precio.ToString(), (item.Precio * item.Stock).ToString() };
 
                         foreach (var linea in lines)
                         {

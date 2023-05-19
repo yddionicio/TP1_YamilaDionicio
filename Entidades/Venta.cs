@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace Entidades
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
         public List<Producto> ListaProdSeleccionados { get => listaProdSeleccionados; set => listaProdSeleccionados = value; }
-        public int Id 
+        public int Id
         {
             get
             {
@@ -39,7 +40,7 @@ namespace Entidades
             this.ListaProdSeleccionados = productos;
             this.Cliente = cliente;
             this.Fecha = fecha;
-            this.Id = rdm.Next(1,1000);
+            this.Id = rdm.Next(1, 1000);
         }
 
 
@@ -61,7 +62,7 @@ namespace Entidades
             double total = 0;
             foreach (Producto item in listaProdSeleccion)
             {
-                double subTotal = CalcularSubtotalPorPrecio(item.Precio, item.Cantidad);
+                double subTotal = CalcularSubtotalPorPrecio(item.Precio, item.Stock);
                 total += subTotal;
             }
             return total;
@@ -96,7 +97,7 @@ namespace Entidades
                     total = PrecioFinalConDescuento(subtotal);
                     nombre += "Descuento 10%:";
                 }
-                else if(TipoPago.Credito == tipo)
+                else if (TipoPago.Credito == tipo)
                 {
                     total = PrecioFinalConRecargo(subtotal);
                     nombre += "Recargo 10%:";
@@ -111,11 +112,19 @@ namespace Entidades
             return total;
         }
 
-        public static void CalcularVenta(int cantidad, TipoPago tipo, double precio)
-        {
-            //this.producto.Cantidad -= cantidad;
-            //CalcularPrecioFinal(tipo, precio, cantidad);
-        }
+        //public static void ActualizarStock(List<Producto> listaSeleccionado, List<Producto> listaProductos)
+        //{
+        //    foreach (Producto producto in listaProductos)
+        //    {
+        //        foreach (Producto item in listaSeleccionado)
+        //        {
+        //            producto.Stock -= item.Stock;
+        //        }
+        //    }
+        
+
+        //    //CalcularPrecioFinal(tipo, precio, cantidad); //CalcularVenta
+        //}
 
 
     }

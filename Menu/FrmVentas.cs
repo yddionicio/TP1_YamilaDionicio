@@ -75,7 +75,7 @@ namespace FrmVentas
                 this.txtCodigo.Text = productoSeleccionado.Codigo.ToString();
                 this.txtDescripcion.Text = productoSeleccionado.Descripcion.ToString();
                 this.txtPrecio.Text = productoSeleccionado.Precio.ToString();
-                this.txtStock.Text = productoSeleccionado.Cantidad.ToString();
+                this.txtStock.Text = productoSeleccionado.Stock.ToString();
             }
 
         }
@@ -215,6 +215,9 @@ namespace FrmVentas
                     Cliente clienteSeleccionado = this.ClienteSeleccionado;
                     Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
                     PlataformaVentas.Ventas.Add(venta);
+
+                    //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
+                    
 
                     MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
