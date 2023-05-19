@@ -16,8 +16,5 @@
     <Compile Update="FrmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Prueba.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

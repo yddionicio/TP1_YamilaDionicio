@@ -45,6 +45,24 @@ namespace FrmProducto
 
                 Producto p = new Producto(int.Parse(txtCodigo.Text), this.txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
 
+                #region
+                //Producto p;
+
+                //if (tipoProducto == "Hardware")
+                //{
+                //    p = new Hardware(int.Parse(txtCodigo.Text), this.txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
+                //}
+                //else if (tipoProducto == "Software")
+                //{
+                //    p = new Software(int.Parse(txtCodigo.Text), this.txtDescripcion.Text, double.Parse(txtPrecio.Text), int.Parse(nupCantidad.Value.ToString()));
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Tipo de producto inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+
+                #endregion
 
                 PlataformaVentas.Productos.Add(p);
 
@@ -67,21 +85,6 @@ namespace FrmProducto
             txtPrecio.Text = string.Empty;
             nupCantidad.Value = 0;
         }
-
-        //private void btneliminar_click(object sender, eventargs e)
-        //{
-        //    if (dgvproducto.selectedrows.count > 0)
-        //    {
-        //        // obtén el objeto producto correspondiente a la fila seleccionada
-        //        producto producto = (producto)dgvproducto.selectedrows[0].databounditem;
-
-        //        // elimina el objeto producto de la lista
-        //        plataformaventas.cargarproductos().remove(producto);
-
-        //        // actualiza el origen de datos del datagridview
-        //        bindingsource.resetbindings(false);
-        //    }
-        //}
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
