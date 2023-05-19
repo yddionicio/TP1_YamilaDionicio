@@ -68,7 +68,7 @@ namespace FrmVentas
             FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
             datosProductos.ShowDialog();
 
-            if (datosProductos.ProductoSeleccionado != null)
+            if (datosProductos != null && datosProductos.ProductoSeleccionado != null )
             {
                 Producto productoSeleccionado = datosProductos.ProductoSeleccionado;
 
@@ -77,6 +77,7 @@ namespace FrmVentas
                 this.txtPrecio.Text = productoSeleccionado.Precio.ToString();
                 this.txtStock.Text = productoSeleccionado.Cantidad.ToString();
             }
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -87,25 +88,47 @@ namespace FrmVentas
             {
                 if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
                 {
+                    bool productoAgregado = false;
+
                     foreach (Producto item in PlataformaVentas.Productos)
                     {
-                        //agregar una excepcion es caso que no encuentre el codigo de barras
-                        if (this.txtCodigo.Text == item.Codigo.ToString())
+                        Producto productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)this.numUdCantidad.Value);
+
+                        bool productoEncontrado = false;
+
+                        foreach (Producto producto in this.listaSeleccionado)
                         {
-                            Producto productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)this.numUdCantidad.Value);
-                            this.listaSeleccionado.Add(productoSeleccionado);
-
-                            this.txtCodigo.Text = string.Empty;
-                            this.txtDescripcion.Text = string.Empty;
-                            this.txtPrecio.Text = string.Empty;
-                            this.txtStock.Text = string.Empty;
-                            this.numUdCantidad.Value = 0;
-
-                            dgvProductos.DataSource = null;
-                            dgvProductos.DataSource = listaSeleccionado;
-                            dgvProductos.Update();
-                            dgvProductos.Refresh();
+                            if (producto == productoSeleccionado)
+                            {
+                                productoEncontrado = true;
+                                break;
+                            }
                         }
+
+                        if (!productoEncontrado)
+                        {
+                            this.listaSeleccionado += productoSeleccionado;
+                            productoAgregado = true;
+                            break;
+                        }
+                    }
+
+                    if (productoAgregado)
+                    {
+                        this.txtCodigo.Text = string.Empty;
+                        this.txtDescripcion.Text = string.Empty;
+                        this.txtPrecio.Text = string.Empty;
+                        this.txtStock.Text = string.Empty;
+                        this.numUdCantidad.Value = 0;
+
+                        dgvProductos.DataSource = null;
+                        dgvProductos.DataSource = listaSeleccionado;
+                        dgvProductos.Update();
+                        dgvProductos.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El producto ya ha sido agregado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     }
 
                     this.lblSubtotal.Text = Venta.CalcularSubtotal(listaSeleccionado).ToString();
@@ -117,10 +140,10 @@ namespace FrmVentas
             }
             else
             {
-                //agregar excepcion 
                 MessageBox.Show("Por favor, ingrese la cantidad de productos que desea agregar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
+
 
         private void btnSimulador_Click(object sender, EventArgs e)
         {
@@ -200,6 +223,10 @@ namespace FrmVentas
                     if (result == DialogResult.Yes)
                     {
                         this.listaSeleccionado.Clear();
+                        dgvProductos.DataSource = null;
+                        //dgvProductos.DataSource = listaSeleccionado;
+                        dgvProductos.Update();
+                        dgvProductos.Refresh();
                     }
                     else if (result == DialogResult.No)
                     {

@@ -21,11 +21,27 @@ namespace Entidades
             this.Cantidad = cantidad;
         }
 
-        public int Codigo { get => codigo; set => codigo = value; } //  chequear set
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-        public double Precio { get => precio; set => precio = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
+        public int Codigo
+        {
+            get { return this.codigo; }
+            set { this.codigo = value; }
+        }
 
+        public string Descripcion
+        {
+            get { return this.descripcion; }
+            set { this.descripcion = value; }
+        }
+        public double Precio
+        {
+            get { return this.precio; }
+            set { this.precio = value; }
+        }
+        public int Cantidad
+        {
+            get { return this.cantidad; }
+            set { this.cantidad = value; }
+        }
 
         public virtual string Mostrar()
         {
@@ -38,15 +54,47 @@ namespace Entidades
             return sb.ToString();
         }
 
-        //public static bool operator ==(Producto p1, Producto p2)
-        //{
-        //    return p1.codigo == p2.codigo;
-        //}
+        public static bool operator ==(Producto p1, Producto p2)
+        {
+            if (ReferenceEquals(p1, p2))
+            {
+                return true;
+            }
 
-        //public static bool operator !=(Producto p1, Producto p2)
-        //{
-        //    return !(p1 == p2);
-        //}
+            if (ReferenceEquals(p1, null) || ReferenceEquals(p2, null))
+            {
+                return false;
+            }
+
+            return p1.codigo.Equals(p2.codigo);
+        }
+
+        public static bool operator !=(Producto p1, Producto p2)
+        {
+            return !(p1 == p2);
+        }
+
+        public static List<Producto> operator +(List<Producto> productos, Producto producto)
+        {
+            bool productoEncontrado = false;
+
+            foreach (Producto item in productos)
+            {
+                if (item == producto)
+                {
+                    productoEncontrado = true; 
+                    break;
+                }
+            }
+
+            if (!productoEncontrado)
+            {
+                productos.Add(producto);
+            }
+            
+            return productos;
+        }
+
 
     }
 }
