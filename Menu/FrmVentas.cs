@@ -206,44 +206,53 @@ namespace FrmVentas
 
         private void btnCrearVenta_Click(object sender, EventArgs e)
         {
-            if (dgvClientes.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow currentRow = dgvClientes.CurrentRow;
 
-                if (this.ClienteSeleccionado != null)
+                if (dgvClientes.SelectedRows.Count > 0)
                 {
-                    Cliente clienteSeleccionado = this.ClienteSeleccionado;
-                    Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
-                    PlataformaVentas.Ventas.Add(venta);
+                    DataGridViewRow currentRow = dgvClientes.CurrentRow;
 
-                    //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
-
-
-                    MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.Yes)
+                    if (this.ClienteSeleccionado != null)
                     {
-                        this.listaSeleccionado.Clear();
-                        dgvProductos.DataSource = null;
-                        dgvProductos.Update();
-                        dgvProductos.Refresh();
+                        Cliente clienteSeleccionado = this.ClienteSeleccionado;
+                        Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
+                        PlataformaVentas.Ventas.Add(venta);
+
+                        //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
+
+
+                        MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            this.listaSeleccionado.Clear();
+                            dgvProductos.DataSource = null;
+                            dgvProductos.Update();
+                            dgvProductos.Refresh();
+                        }
+                        else if (result == DialogResult.No)
+                        {
+                            this.Close();
+                        }
                     }
-                    else if (result == DialogResult.No)
+                    else
                     {
-                        this.Close();
+                        throw new VentaInvalidaException("Debe seleccionar un cliente");
+                        //MessageBox.Show("Debe seleccionar un cliente", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar un cliente", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
-            else
+            catch (VentaInvalidaException ex)
             {
-                MessageBox.Show("Venta rechazada", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "-"+ "Venta rechazada", "Operación inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //else
+            //{
+            //    MessageBox.Show("Venta rechazada", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
 

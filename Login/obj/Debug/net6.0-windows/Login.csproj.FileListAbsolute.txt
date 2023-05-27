@@ -38,3 +38,9 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-wi
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\Menu.pdb
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\obj\Debug\net6.0-windows\Login.csproj.CopyComplete
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\obj\Debug\net6.0-windows\Login.Properties.Resources.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Login\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

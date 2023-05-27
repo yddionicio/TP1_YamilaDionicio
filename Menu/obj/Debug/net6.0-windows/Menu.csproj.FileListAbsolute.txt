@@ -50,7 +50,6 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-win
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.FrmUsuario.resources
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\FrmVentas.frmVentas.resources
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Properties.Resources.resources
-C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Prueba.resources
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.csproj.GenerateResource.cache
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.AssemblyInfoInputs.cache
@@ -62,3 +61,10 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-win
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.pdb
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\ref\Menu.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Pruebita.resources
