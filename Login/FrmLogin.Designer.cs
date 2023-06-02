@@ -87,6 +87,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(316, 31);
             txtUsuario.TabIndex = 4;
+            txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // label2
             // 
@@ -118,7 +119,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientActiveCaption;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(840, 580);
             Controls.Add(pictureBox1);
             Controls.Add(txtContraseña);
@@ -128,6 +129,7 @@
             Controls.Add(rdbSupervisor);
             Controls.Add(rdbVendedor);
             Controls.Add(btnIngresar);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmLogin";
             Text = "Login";

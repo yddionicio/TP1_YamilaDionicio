@@ -40,10 +40,12 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.ImageScalingSize = new Size(24, 24);
             menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, clientesToolStripMenuItem, ventasToolStripMenuItem, reportesToolStripMenuItem, vendedoresToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
+            menuStrip1.RenderMode = ToolStripRenderMode.System;
             menuStrip1.Size = new Size(800, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
@@ -87,6 +89,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;

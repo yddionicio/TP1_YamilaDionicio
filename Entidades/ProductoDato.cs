@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class ProductoDato : Cargar<Producto>
+    internal class ProductoDato/* : Cargar<Producto>*/
     {
 
-        public ProductoDato() : base(PlataformaVentas.Productos)
-        {
-        }
+        //public ProductoDato() : base(PlataformaVentas.Productos)
+        //{
+        //}
 
 
 

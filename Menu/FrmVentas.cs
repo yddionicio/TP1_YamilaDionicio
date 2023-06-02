@@ -9,18 +9,22 @@ namespace FrmVentas
     {
         List<Producto> listaSeleccionado;
         BindingSource bindingSource;
+        ManejadorDatos manejador;
 
         public Cliente ClienteSeleccionado { get; set; }
 
         public frmVentas()
         {
             InitializeComponent();
+            manejador = new ManejadorDatos();
             listaSeleccionado = new List<Producto>();
             bindingSource = new BindingSource();
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
+            manejador.CompraRealizada += Manejador_CompraRealizada;
+
             this.txtDinero.Enabled = false;
             this.btnSimulador.Enabled = false;
 
@@ -204,6 +208,20 @@ namespace FrmVentas
             }
         }
 
+        //private void MostrarSpinner()
+        //{
+        //    progressBar.Visible = true;
+        //}
+
+        //private void OcultarSpinner()
+        //{
+        //    progressBar.Visible = false;
+        //}
+        private void Manejador_CompraRealizada()
+        {
+            MessageBox.Show("La compra ha sido realizada con exito");
+        }
+
         private void btnCrearVenta_Click(object sender, EventArgs e)
         {
             try
@@ -215,14 +233,16 @@ namespace FrmVentas
 
                     if (this.ClienteSeleccionado != null)
                     {
+                        Task.Run(manejador.RealizarCompra).Wait();
+
                         Cliente clienteSeleccionado = this.ClienteSeleccionado;
-                        Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
-                        PlataformaVentas.Ventas.Add(venta);
+                        //Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
+                        
+                        PlataformaVentas.Ventas.Add(CrearVenta(listaSeleccionado, clienteSeleccionado));
 
                         //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
 
-
-                        MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -247,14 +267,15 @@ namespace FrmVentas
             }
             catch (VentaInvalidaException ex)
             {
-                MessageBox.Show(ex.Message + "-"+ "Venta rechazada", "Operación inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "-" + "Venta rechazada", "Operación inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //else
-            //{
-            //    MessageBox.Show("Venta rechazada", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
         }
 
+        private Venta CrearVenta(List<Producto> productos, Cliente cliente)
+        {
+            Venta venta = new Venta(productos, cliente, DateTime.Now);
+            return venta;
+        }
 
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -273,6 +294,8 @@ namespace FrmVentas
                 bindingSource.ResetBindings(false);
             }
         }
+
+
 
 
 

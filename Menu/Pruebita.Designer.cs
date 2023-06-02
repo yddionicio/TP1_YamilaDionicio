@@ -39,6 +39,7 @@
             ClientSize = new Size(899, 537);
             Name = "Pruebita";
             Text = "Pruebita";
+            Load += Pruebita_Load;
             ResumeLayout(false);
         }
 
