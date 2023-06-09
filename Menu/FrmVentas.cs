@@ -84,47 +84,20 @@ namespace FrmVentas
 
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            double subtotal = 0;
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {            
             if (this.numUdCantidad.Value >= 1)
             {
                 if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
                 {
                     bool productoAgregado = false;
 
-                    foreach (Producto item in PlataformaVentas.Productos)
-                    {
-                        Producto productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)this.numUdCantidad.Value);
-
-                        bool productoEncontrado = false;
-
-                        foreach (Producto producto in this.listaSeleccionado)
-                        {
-                            if (producto == productoSeleccionado)
-                            {
-                                productoEncontrado = true;
-                                break;
-                            }
-                        }
-
-                        if (!productoEncontrado)
-                        {
-                            this.listaSeleccionado += productoSeleccionado;
-                            productoAgregado = true;
-                            break;
-                        }
-                    }
-
+                    manejador.AgregarProducto(PlataformaVentas.Productos, listaSeleccionado, out productoAgregado, this.numUdCantidad.Value);
+                   
                     if (productoAgregado)
                     {
-                        this.txtCodigo.Text = string.Empty;
-                        this.txtDescripcion.Text = string.Empty;
-                        this.txtPrecio.Text = string.Empty;
-                        this.txtStock.Text = string.Empty;
-                        this.numUdCantidad.Value = 0;
-
+                        LimpiarCampos();
                         dgvProductos.DataSource = null;
                         dgvProductos.DataSource = listaSeleccionado;
                         dgvProductos.Update();
@@ -146,6 +119,16 @@ namespace FrmVentas
             {
                 MessageBox.Show("Por favor, ingrese la cantidad de productos que desea agregar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
+        }
+
+
+        private void LimpiarCampos()
+        {
+            this.txtCodigo.Text = string.Empty;
+            this.txtDescripcion.Text = string.Empty;
+            this.txtPrecio.Text = string.Empty;
+            this.txtStock.Text = string.Empty;
+            this.numUdCantidad.Value = 0;
         }
 
 
@@ -208,15 +191,7 @@ namespace FrmVentas
             }
         }
 
-        //private void MostrarSpinner()
-        //{
-        //    progressBar.Visible = true;
-        //}
 
-        //private void OcultarSpinner()
-        //{
-        //    progressBar.Visible = false;
-        //}
         private void Manejador_CompraRealizada()
         {
             MessageBox.Show("La compra ha sido realizada con exito");

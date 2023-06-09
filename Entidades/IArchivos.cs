@@ -9,8 +9,8 @@ namespace Entidades
     public interface IArchivos<T>
     {
         List<T> leerJson(string path);
-        List<T> leerXml(string path);
-        List<T> leerTxt(string path);
+        //List<T> leerXml(string path);
+        //List<T> leerTxt(string path);
 
     }
 }
