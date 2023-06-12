@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public interface IArchivos<T>
+    public interface IArchivos
     {
-        List<T> leerJson(string path);
+         void WriterLog(Exception ex, string descripcion, string clase, string metodo);
         //List<T> leerXml(string path);
         //List<T> leerTxt(string path);
 

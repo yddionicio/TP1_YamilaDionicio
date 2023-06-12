@@ -1,0 +1,21 @@
+Fecha y hora: 6/12/2023 2:38:34 PM
+Descripción: venta rechazada
+Clase: FrmVentas.frmVentas, Text:  Ventas
+Metodo: btnCrearVenta_Click
+Excepcíón: Entidades.VentaInvalidaException: Debe seleccionar un cliente
+   at FrmVentas.frmVentas.btnCrearVenta_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\FrmVentas.cs:line 237
+
+Fecha y hora: 6/12/2023 2:56:34 PM
+Descripción: venta rechazada
+Clase: FrmVentas.frmVentas, Text:  Ventas
+Metodo: btnCrearVenta_Click
+Excepcíón: Entidades.VentaInvalidaException: Debe seleccionar un cliente
+   at FrmVentas.frmVentas.btnCrearVenta_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\FrmVentas.cs:line 237
+
+Fecha y hora: 6/12/2023 2:57:00 PM
+Descripción: venta rechazada
+Clase: FrmVentas.frmVentas, Text:  Ventas
+Metodo: btnCrearVenta_Click
+Excepcíón: Entidades.VentaInvalidaException: Debe seleccionar un cliente
+   at FrmVentas.frmVentas.btnCrearVenta_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\FrmVentas.cs:line 237
+

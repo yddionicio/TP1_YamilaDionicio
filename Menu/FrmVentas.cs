@@ -201,7 +201,6 @@ namespace FrmVentas
         {
             try
             {
-
                 if (dgvClientes.SelectedRows.Count > 0)
                 {
                     DataGridViewRow currentRow = dgvClientes.CurrentRow;
@@ -243,6 +242,8 @@ namespace FrmVentas
             catch (VentaInvalidaException ex)
             {
                 MessageBox.Show(ex.Message + "-" + "Venta rechazada", "Operación inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DatosArchivo archivo = new DatosArchivo();
+                archivo.WriterLog(ex, "venta rechazada", this.ToString(), nameof(btnCrearVenta_Click));
             }
         }
 
