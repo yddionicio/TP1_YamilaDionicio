@@ -12,6 +12,9 @@ namespace Entidades
         private string apellido;
         private int dni;
 
+        public Persona()
+        {         
+        }
         public Persona(string nombre, string apellido, int dni)
         {
             this.Nombre = nombre;
@@ -19,7 +22,7 @@ namespace Entidades
             this.Dni = dni;
         }
 
-        public string Nombre { get => nombre; set => nombre = value; }  // chequear set
+        public string Nombre { get => nombre; set => nombre = value; }
         public int Dni { get => dni; set => dni = value; }
         public string Apellido { get => apellido; set => apellido = value; }
 

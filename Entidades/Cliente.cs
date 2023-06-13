@@ -11,6 +11,9 @@ namespace Entidades
         private string email;
         private int telefono;
 
+        public Cliente()
+        {
+        }
         public Cliente(string nombre, string apellido, int dni, string email, int telefono): base(nombre, apellido, dni)
         {
             Email = email;

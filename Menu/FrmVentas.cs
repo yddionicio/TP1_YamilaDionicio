@@ -210,13 +210,9 @@ namespace FrmVentas
                         Task.Run(manejador.RealizarCompra).Wait();
 
                         Cliente clienteSeleccionado = this.ClienteSeleccionado;
-                        //Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
+                        Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
                         
-                        PlataformaVentas.Ventas.Add(CrearVenta(listaSeleccionado, clienteSeleccionado));
-
-                        //Venta.ActualizarStock(listaSeleccionado, PlataformaVentas.Productos);
-
-                        //MessageBox.Show("Venta realizada exitosamente", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //PlataformaVentas.Ventas.Add(CrearVenta(listaSeleccionado, clienteSeleccionado));
 
                         DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -235,7 +231,6 @@ namespace FrmVentas
                     else
                     {
                         throw new VentaInvalidaException("Debe seleccionar un cliente");
-                        //MessageBox.Show("Debe seleccionar un cliente", "Operación invalida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -247,7 +242,7 @@ namespace FrmVentas
             }
         }
 
-        private Venta CrearVenta(List<Producto> productos, Cliente cliente)
+        private Venta CrearVenta(List<Producto> productos, Cliente cliente) // eliminar metodo 
         {
             Venta venta = new Venta(productos, cliente, DateTime.Now);
             return venta;

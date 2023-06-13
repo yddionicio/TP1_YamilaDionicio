@@ -18,6 +18,10 @@ namespace Entidades
         }
         public TipoSistemaOperativo TipoSistemaOperativo { get => tipoSistemaOperativo; set => tipoSistemaOperativo = value; }
 
+        public Software()
+        {
+        }
+
         public Software(int codigo, string descripcion, string version, TipoSistemaOperativo tipoSistemaOperativo, double precio, int cantidad) :
             base(codigo, descripcion, precio, cantidad)
         {

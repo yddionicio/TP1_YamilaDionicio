@@ -38,11 +38,17 @@ namespace Menu
             }
             #endregion
 
-            DataGridViewButtonColumn descargarColumn = new DataGridViewButtonColumn();
-            descargarColumn.HeaderText = "Descargar";
-            descargarColumn.Name = "Descargar";
-            descargarColumn.UseColumnTextForButtonValue = true;
-            dgvVentas.Columns.Add(descargarColumn);
+            DataGridViewButtonColumn botonExcel = new DataGridViewButtonColumn();
+            botonExcel.HeaderText = "Excel";
+            botonExcel.Name = "Excel";
+            botonExcel.UseColumnTextForButtonValue = true;
+            dgvVentas.Columns.Add(botonExcel);
+
+            DataGridViewButtonColumn botonXml = new DataGridViewButtonColumn();
+            botonXml.HeaderText = "Xml";
+            botonXml.Name = "Xml";
+            botonXml.UseColumnTextForButtonValue = true;
+            dgvVentas.Columns.Add(botonXml);
 
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
             verColumn.HeaderText = "Ver";
@@ -55,8 +61,7 @@ namespace Menu
 
         private void dgvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var test = dgvVentas.Columns;
-            if (e.ColumnIndex == dgvVentas.Columns["Descargar"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvVentas.Columns["Excel"].Index && e.RowIndex >= 0)
             {
                 Venta venta = (Venta)dgvVentas.Rows[e.RowIndex].DataBoundItem;
 
@@ -206,6 +211,17 @@ namespace Menu
 
                 rtbMostrarDatos.Clear();
                 rtbMostrarDatos.Text = infoVenta;
+            }
+
+
+            if (e.ColumnIndex == dgvVentas.Columns["Xml"].Index && e.RowIndex >= 0)
+            {
+                Venta venta = (Venta)dgvVentas.Rows[e.RowIndex].DataBoundItem;
+
+                DatosArchivo datos = new DatosArchivo();
+                datos.WriteXml(venta.ListaProdSeleccionados, venta.Cliente);
+
+                MessageBox.Show("Venta guardada en archivo XML.", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

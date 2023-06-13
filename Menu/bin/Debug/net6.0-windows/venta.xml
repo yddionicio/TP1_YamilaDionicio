@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Venta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Fecha>2023-06-12T21:06:30.0489198-03:00</Fecha>
+  <Cliente>
+    <Nombre>Gustavo</Nombre>
+    <Dni>36258147</Dni>
+    <Apellido>Bruno</Apellido>
+    <Email>pmp@gmail.com</Email>
+    <Telefono>15926348</Telefono>
+  </Cliente>
+  <ListaProdSeleccionados>
+    <Producto xsi:type="Hardware">
+      <Codigo>307093</Codigo>
+      <Descripcion>Monitor</Descripcion>
+      <Precio>789000</Precio>
+      <Stock>5</Stock>
+      <Capacidad>2000</Capacidad>
+      <TipoConexion>HDMI</TipoConexion>
+    </Producto>
+    <Producto xsi:type="Hardware">
+      <Codigo>67427</Codigo>
+      <Descripcion>Teclado</Descripcion>
+      <Precio>200</Precio>
+      <Stock>9</Stock>
+      <Capacidad>900</Capacidad>
+      <TipoConexion>USB</TipoConexion>
+    </Producto>
+  </ListaProdSeleccionados>
+  <Id>971</Id>
+</Venta>

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [XmlInclude(typeof(Hardware))]
     public class Venta
     {
         private int id;
@@ -33,6 +35,10 @@ namespace Entidades
             {
                 this.id = value;
             }
+        }
+
+        public Venta()
+        {  
         }
 
         public Venta(List<Producto> productos, Cliente cliente, DateTime fecha)

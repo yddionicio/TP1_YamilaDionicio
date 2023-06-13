@@ -13,6 +13,10 @@ namespace Entidades
         private double precio;
         private int stock;
 
+
+        public Producto()
+        {
+        }
         public Producto(int codigo, string descripcion, double precio, int stock)
         {
             this.Codigo = codigo;
