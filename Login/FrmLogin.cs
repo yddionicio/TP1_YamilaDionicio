@@ -17,6 +17,7 @@ namespace Login
             Configuracion estilos = datos.LeerJson(path);
             this.btnIngresar.BackColor = Color.FromName(estilos.Color);
             this.picboxImagen.Image = Image.FromFile(estilos.Imagen);
+            this.BackColor = Color.FromName(estilos.Fondo);
             //System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(estilos.Sonido);
             //this.btnIngresar.Click += (sender, e) => soundPlayer.Play();
         }

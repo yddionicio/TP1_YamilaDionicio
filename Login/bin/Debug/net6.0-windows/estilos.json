@@ -1,6 +1,7 @@
 {
   "Imagen": "rocket.gif",
   "Color": "LightBlue",
+  "Fondo": "ControlLight",
   "Fuente": "Arial",
   "Sonido": "Mouse_Click.mp3"
 }
