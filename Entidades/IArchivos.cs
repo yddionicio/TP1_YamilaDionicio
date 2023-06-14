@@ -8,10 +8,9 @@ namespace Entidades
 {
     public interface IArchivos
     {
-         void WriterLog(Exception ex, string descripcion, string clase, string metodo);
-         void WriteXml(List<Producto> productos, Cliente cliente);
-
-        //List<T> leerTxt(string path);
+        void WriterLog(Exception ex, string descripcion, string clase, string metodo);
+        void WriteXml(List<Producto> productos, Cliente cliente);
+        Configuracion LeerJson(string path);
 
     }
 }

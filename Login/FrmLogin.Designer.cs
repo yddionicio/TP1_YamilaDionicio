@@ -36,8 +36,8 @@
             txtUsuario = new TextBox();
             label2 = new Label();
             txtContraseña = new TextBox();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            picboxImagen = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)picboxImagen).BeginInit();
             SuspendLayout();
             // 
             // btnIngresar
@@ -105,15 +105,14 @@
             txtContraseña.Size = new Size(316, 31);
             txtContraseña.TabIndex = 6;
             // 
-            // pictureBox1
+            // picboxImagen
             // 
-            pictureBox1.Image = Properties.Resources.gadgets;
-            pictureBox1.Location = new Point(279, 34);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(257, 190);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
+            picboxImagen.Location = new Point(279, 34);
+            picboxImagen.Name = "picboxImagen";
+            picboxImagen.Size = new Size(257, 207);
+            picboxImagen.SizeMode = PictureBoxSizeMode.Zoom;
+            picboxImagen.TabIndex = 7;
+            picboxImagen.TabStop = false;
             // 
             // FrmLogin
             // 
@@ -121,7 +120,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(840, 580);
-            Controls.Add(pictureBox1);
+            Controls.Add(picboxImagen);
             Controls.Add(txtContraseña);
             Controls.Add(label2);
             Controls.Add(txtUsuario);
@@ -134,7 +133,7 @@
             Name = "FrmLogin";
             Text = "Login";
             Load += FrmLogin_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picboxImagen).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,6 +147,6 @@
         private TextBox txtUsuario;
         private Label label2;
         private TextBox txtContraseña;
-        private PictureBox pictureBox1;
+        private PictureBox picboxImagen;
     }
 }

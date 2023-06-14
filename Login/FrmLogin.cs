@@ -12,7 +12,11 @@ namespace Login
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            DatosArchivo datos = new DatosArchivo();
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "estilos.json");
+            Configuracion estilos = datos.LeerJson(path);
+            this.btnIngresar.BackColor = Color.FromName(estilos.Color);
+            this.picboxImagen.Image = Image.FromFile(estilos.Imagen);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
