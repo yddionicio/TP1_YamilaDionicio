@@ -17,6 +17,8 @@ namespace Menu
     {
         Random rdm;
         BindingSource bindingSource;
+        DatosDAO db = new DatosDAO();
+
         public FrmCliente()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace Menu
         {
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = PlataformaVentas.Clientes;
+            bindingSource.DataSource = db.TraerDatosClientes(); //PlataformaVentas.Clientes;
             dgvClientes.DataSource = bindingSource;
 
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
@@ -59,6 +61,7 @@ namespace Menu
             {
                 Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
                 PlataformaVentas.Clientes.Add(c);
+                db.InsertarDatosCliente(c);
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
@@ -141,9 +144,19 @@ namespace Menu
             {
                 Cliente c = (Cliente)dgvClientes.Rows[e.RowIndex].DataBoundItem;
 
-                PlataformaVentas.Clientes.Remove(c);
+                //PlataformaVentas.Clientes.Remove(c);
+                db.EliminarDatosCliente(c.Dni);
+
+                //List<Cliente> clientes = db.TraerDatosClientes();
+
+                // Asignar la nueva lista de clientes al DataGridView
+                //dgvClientes.DataSource = clientes;
+                dgvClientes.DataSource = db.TraerDatosClientes();
+
+                dgvClientes.Update();
 
                 bindingSource.ResetBindings(false);
+                dgvClientes.Refresh();
                 LimpiarCampos();
             }
         }
