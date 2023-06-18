@@ -153,8 +153,6 @@ namespace Menu
                 //dgvClientes.DataSource = clientes;
                 dgvClientes.DataSource = db.TraerDatosClientes();
 
-                dgvClientes.Update();
-
                 bindingSource.ResetBindings(false);
                 dgvClientes.Refresh();
                 LimpiarCampos();
