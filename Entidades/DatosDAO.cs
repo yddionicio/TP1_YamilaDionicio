@@ -14,7 +14,7 @@ namespace Entidades
         private static SqlCommand comando;
         private static SqlConnection conexion;
         private static SqlDataReader reader;
-        List<Cliente> clientes = new List<Cliente>();
+        List<Cliente> clientes;
 
         static DatosDAO()
         {
@@ -37,6 +37,7 @@ namespace Entidades
                 conexion.Open();
                 ConfigurarComando(consulta, CommandType.Text);
                 reader = comando.ExecuteReader();
+                clientes = new List<Cliente>();
 
                 while (reader.Read())
                 {

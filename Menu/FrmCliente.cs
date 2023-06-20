@@ -151,10 +151,12 @@ namespace Menu
 
                 // Asignar la nueva lista de clientes al DataGridView
                 //dgvClientes.DataSource = clientes;
+                dgvClientes.DataSource = null;
+
                 dgvClientes.DataSource = db.TraerDatosClientes();
 
                 bindingSource.ResetBindings(false);
-                dgvClientes.Refresh();
+                //dgvClientes.Refresh();
                 LimpiarCampos();
             }
         }
