@@ -9,6 +9,9 @@ namespace Entidades
 {
     public class ManejadorDatos : DatosDAO
     {
+        public delegate Task MyEventHandler(object sender, EventArgs e);
+        public event MyEventHandler MiEvento;
+
 
         public delegate void CompraRealizadaEventHandler();
         public event CompraRealizadaEventHandler CompraRealizada;

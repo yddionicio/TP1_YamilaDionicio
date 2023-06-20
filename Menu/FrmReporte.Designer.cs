@@ -94,6 +94,7 @@
             Controls.Add(dgvVentas);
             Controls.Add(dtpFecha);
             Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmReporte";
             Text = "Reportes";

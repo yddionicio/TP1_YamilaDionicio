@@ -92,7 +92,7 @@ namespace Menu
             }
         }
 
-        private void btnEditar_Click_1(object sender, EventArgs e)
+        private async void btnEditar_Click_1(object sender, EventArgs e)
         {
             if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
@@ -102,18 +102,24 @@ namespace Menu
 
                     Cliente c = (Cliente)row.DataBoundItem;
 
-                    c.Nombre = this.txtNombre.Text;
-                    c.Apellido = this.txtApellido.Text;
-                    c.Dni = int.Parse(this.txtDni.Text);
-                    c.Email = this.txtMail.Text;
-                    c.Telefono = int.Parse(this.txtTelefono.Text);
+                    //c.Nombre = this.txtNombre.Text;
+                    //c.Apellido = this.txtApellido.Text;
+                    //c.Dni = int.Parse(this.txtDni.Text);
+                    //c.Email = this.txtMail.Text;
+                    //c.Telefono = int.Parse(this.txtTelefono.Text);
 
-                    row.Cells["Nombre"].Value = c.Nombre;
-                    row.Cells["Apellido"].Value = c.Apellido;
-                    row.Cells["Dni"].Value = c.Dni;
-                    row.Cells["Email"].Value = c.Email;
-                    row.Cells["Telefono"].Value = c.Telefono;
+                    //row.Cells["Nombre"].Value = c.Nombre;
+                    //row.Cells["Apellido"].Value = c.Apellido;
+                    //row.Cells["Dni"].Value = c.Dni;
+                    //row.Cells["Email"].Value = c.Email;
+                    //row.Cells["Telefono"].Value = c.Telefono;
 
+                    db.ActualizarDatosCliente(c).Wait();
+
+                    dgvClientes.DataSource = null;
+                    dgvClientes.DataSource = db.TraerDatosClientes();
+
+                    bindingSource.ResetBindings(false);
                     LimpiarCampos();
                 }
             }

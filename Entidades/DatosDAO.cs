@@ -102,6 +102,32 @@ namespace Entidades
         }
 
 
+        public async Task ActualizarDatosCliente(Cliente cliente)
+        {
+            try
+            {
+                string consulta = "UPDATE Clientes SET nombre = @nombre, apellido = @apellido, email = @email, telefono = @telefono WHERE dni = @dni";
+
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+                comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                comando.Parameters.AddWithValue("@dni", cliente.Dni);
+                comando.Parameters.AddWithValue("@email", cliente.Email);
+                comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new TraerDatosException("Error al actualizar el cliente.", e);
+            }
+        }
+
+
+
 
     }
 }

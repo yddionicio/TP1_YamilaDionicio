@@ -191,6 +191,7 @@
             ClientSize = new Size(1100, 597);
             Controls.Add(groupBox2);
             Controls.Add(dgvClientes);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmCliente";
             Text = "Clientes";

@@ -35,7 +35,9 @@
             ventasToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             vendedoresToolStripMenuItem = new ToolStripMenuItem();
+            picBoxImagen = new PictureBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxImagen).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -46,7 +48,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.System;
-            menuStrip1.Size = new Size(800, 33);
+            menuStrip1.Size = new Size(687, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -85,12 +87,22 @@
             vendedoresToolStripMenuItem.Text = "Usuarios";
             vendedoresToolStripMenuItem.Click += vendedoresToolStripMenuItem_Click;
             // 
+            // picBoxImagen
+            // 
+            picBoxImagen.Dock = DockStyle.Fill;
+            picBoxImagen.Location = new Point(0, 33);
+            picBoxImagen.Name = "picBoxImagen";
+            picBoxImagen.Size = new Size(687, 401);
+            picBoxImagen.TabIndex = 3;
+            picBoxImagen.TabStop = false;
+            // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(687, 434);
+            Controls.Add(picBoxImagen);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -98,8 +110,10 @@
             MainMenuStrip = menuStrip1;
             Name = "frmMenu";
             Text = "Plataforma";
+            Load += frmMenu_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picBoxImagen).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,5 +126,6 @@
         private ToolStripMenuItem ventasToolStripMenuItem;
         private ToolStripMenuItem reportesToolStripMenuItem;
         private ToolStripMenuItem vendedoresToolStripMenuItem;
+        private PictureBox picBoxImagen;
     }
 }
