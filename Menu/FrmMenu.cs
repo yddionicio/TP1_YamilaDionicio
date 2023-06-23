@@ -51,15 +51,6 @@ namespace Menu
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            //string rutaImagen = "cohete.gif";
-
-            //if (File.Exists(rutaImagen))
-            //{
-            //    this.BackgroundImage = Image.FromFile(rutaImagen);
-            //    this.BackgroundImageLayout = ImageLayout.Stretch;
-            //}
-
-
             string rutaImagen = "cohete2.gif";
 
             if (File.Exists(rutaImagen))
@@ -67,9 +58,6 @@ namespace Menu
                 this.picBoxImagen.Image = Image.FromFile(rutaImagen);
                 this.picBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
                 this.picBoxImagen.Visible = true;
-
-                // Iniciar la animación del GIF
-                // ((ImageAnimator)picBoxImagen.Image).StartAnimate();
             }
         }
     }

@@ -197,7 +197,7 @@ namespace FrmVentas
             MessageBox.Show("La compra ha sido realizada con exito");
         }
 
-        private void btnCrearVenta_Click(object sender, EventArgs e)
+        private async void btnCrearVenta_Click(object sender, EventArgs e)
         {
             try
             {
@@ -207,7 +207,8 @@ namespace FrmVentas
 
                     if (this.ClienteSeleccionado != null)
                     {
-                        Task.Run(manejador.RealizarCompra).Wait();
+                        //Task.Run(manejador.RealizarCompra).Wait();
+                        await Task.Run(manejador.RealizarCompra);
 
                         Cliente clienteSeleccionado = this.ClienteSeleccionado;
                         Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);

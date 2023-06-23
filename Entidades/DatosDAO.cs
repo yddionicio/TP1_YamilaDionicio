@@ -15,6 +15,7 @@ namespace Entidades
         private static SqlConnection conexion;
         private static SqlDataReader reader;
         List<Cliente> clientes;
+        List<Producto> productos;
 
         static DatosDAO()
         {
@@ -28,6 +29,8 @@ namespace Entidades
             comando.Connection = conexion;
             comando.CommandType = tipoComando;
         }
+
+        #region Clientes
         public List<Cliente> TraerDatosClientes()
         {
             string consulta = "SELECT * FROM Clientes";
@@ -126,7 +129,75 @@ namespace Entidades
             }
         }
 
+        #endregion
 
+        #region Productos
+
+        //public List<Producto> TraerDatosProductos()
+        //{
+        //    string consulta = "SELECT * FROM Productos";
+
+        //    try
+        //    {
+        //        conexion.Open();
+        //        ConfigurarComando(consulta, CommandType.Text);
+        //        reader = comando.ExecuteReader();
+        //        productos = new List<Producto>();
+
+        //        while (reader.Read())
+        //        {
+        //            productos.Add(new Producto(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString())));
+        //        }
+
+        //        conexion.Close();
+        //        return productos;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new TraerDatosException("Error al leer los clientes.", e);
+        //    }
+        //}
+
+
+        //public List<Producto> TraerDatosProductos()
+        //{
+        //    string consulta = "SELECT * FROM Productos";
+
+        //    try
+        //    {
+        //        conexion.Open();
+        //        ConfigurarComando(consulta, CommandType.Text);
+        //        reader = comando.ExecuteReader();
+        //        productos = new List<Producto>();
+
+        //        while (reader.Read())
+        //        {
+        //            string tipo = reader["Tipo"].ToString(); // Supongamos que hay una columna "Tipo" en la tabla Productos que indica el tipo de producto
+
+        //            if (tipo == "Software")
+        //            {
+        //                productos.Add(new Software(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString()), reader["SoftwareSpecificColumn1"].ToString(), reader["SoftwareSpecificColumn2"].ToString()));
+        //            }
+        //            else if (tipo == "Hardware")
+        //            {
+        //                productos.Add(new Hardware(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString()), reader["HardwareSpecificColumn1"].ToString(), reader["HardwareSpecificColumn2"].ToString()));
+        //            }
+        //            else
+        //            {
+        //                productos.Add(new Producto(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString())));
+        //            }
+        //        }
+
+        //        conexion.Close();
+        //        return productos;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new TraerDatosException("Error al leer los clientes.", e);
+        //    }
+        //}
+
+        #endregion
 
 
     }

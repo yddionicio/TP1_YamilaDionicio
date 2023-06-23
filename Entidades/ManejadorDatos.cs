@@ -7,19 +7,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class ManejadorDatos : DatosDAO
+    public class ManejadorDatos
     {
-        public delegate Task MyEventHandler(object sender, EventArgs e);
-        public event MyEventHandler MiEvento;
-
-
         public delegate void CompraRealizadaEventHandler();
         public event CompraRealizadaEventHandler CompraRealizada;
 
 
         public void RealizarCompra()
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(8000);
             CompraRealizada.Invoke();
         }
 

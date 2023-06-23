@@ -5,19 +5,13 @@ namespace PruebaPlataforma
     [TestClass]
     public class TestPlataforma
     {
-        //[TestMethod]
-       // [ExpectedException(typeof(VentaInvalidaException))]
-        //public void TestValidarExcepcion()
-        //{
-            //Arrange: Inicializar las variables
-            //List<Producto> productos = new List<Producto>();
-            //Cliente cliente = new Cliente("aa", "bb", 123456, "asd@",465789);
-
-            ////Act: llamar al metodo a testear
-            //Venta venta = new Venta(productos, cliente, DateTime.Now);
-            
-            //Assert: comprobar el valor con el esperado
-       // }
+        [TestMethod]
+        [ExpectedException(typeof(TraerDatosException))]
+        public void TestValidarExcepcion()
+        {
+            DatosDAO datos = new DatosDAO();
+            datos.TraerDatosClientes();
+        }
 
         [TestMethod]
         public void TestListaInstaciada()

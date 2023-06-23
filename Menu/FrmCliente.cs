@@ -61,7 +61,13 @@ namespace Menu
             {
                 Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
                 PlataformaVentas.Clientes.Add(c);
+
+                //Comparar<Cliente> comparador = new Comparar<Cliente>();
                 db.InsertarDatosCliente(c);
+                //comparador.Ordenar(db.TraerDatosClientes(), (x, y) => string.Compare(x.Apellido, y.Apellido)); checkear delegado
+
+                dgvClientes.DataSource = null; 
+                dgvClientes.DataSource = db.TraerDatosClientes();
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
