@@ -30,13 +30,17 @@ namespace Menu
         {
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = db.TraerDatosClientes(); //PlataformaVentas.Clientes;
-            dgvClientes.DataSource = bindingSource;
-
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
             verColumn.HeaderText = "Acciones";
             verColumn.Name = "Acciones";
             verColumn.UseColumnTextForButtonValue = true;
+            dgvClientes.Columns.Add(verColumn);
+
+
+            bindingSource.DataSource = db.TraerDatosClientes(); //PlataformaVentas.Clientes;
+            dgvClientes.DataSource = bindingSource;
+
+            
 
             #region chequear si me permite agregar una imagen al boton sino eliminarlo
             // Crea una instancia de DataGridViewImageCell para la imagen del botón
@@ -50,7 +54,6 @@ namespace Menu
             #endregion
 
 
-            dgvClientes.Columns.Add(verColumn);
 
             dgvClientes.Update();
             dgvClientes.Refresh();
@@ -62,12 +65,15 @@ namespace Menu
                 Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
                 PlataformaVentas.Clientes.Add(c);
 
-                //Comparar<Cliente> comparador = new Comparar<Cliente>();
+                Comparar<Cliente> comparador = new Comparar<Cliente>();
                 db.InsertarDatosCliente(c);
-                //comparador.Ordenar(db.TraerDatosClientes(), (x, y) => string.Compare(x.Apellido, y.Apellido)); checkear delegado
+                List<Cliente> cli = db.TraerDatosClientes();
+
+
+               comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido)); //checkear delegado
 
                 dgvClientes.DataSource = null; 
-                dgvClientes.DataSource = db.TraerDatosClientes();
+                dgvClientes.DataSource = cli;
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();

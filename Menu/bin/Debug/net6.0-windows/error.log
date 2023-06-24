@@ -26,3 +26,10 @@ Metodo: btnCrearVenta_Click
 Excepcíón: Entidades.VentaInvalidaException: Debe seleccionar un cliente
    at FrmVentas.frmVentas.btnCrearVenta_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\FrmVentas.cs:line 237
 
+6/24/2023 8:22:44 PM: Debe seleccionar un clienteFecha y hora: 6/24/2023 8:22:53 PM
+Descripción: venta rechazada
+Clase: FrmVentas.frmVentas, Text:  Ventas
+Metodo: btnCrearVenta_Click
+Excepcíón: Entidades.VentaInvalidaException: Debe seleccionar un cliente
+   at FrmVentas.frmVentas.btnCrearVenta_Click(Object sender, EventArgs e) in C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\FrmVentas.cs:line 234
+

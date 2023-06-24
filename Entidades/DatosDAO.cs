@@ -135,7 +135,8 @@ namespace Entidades
 
         //public List<Producto> TraerDatosProductos()
         //{
-        //    string consulta = "SELECT * FROM Productos";
+        //    string consulta = "SELECT * FROM s";
+        //    string consulta = "SELECT * FROM h";
 
         //    try
         //    {

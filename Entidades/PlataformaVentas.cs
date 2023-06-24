@@ -89,9 +89,9 @@ namespace Entidades
 
         public static void CargarUsuarios()
         {
-            usuarios.Add(new Usuario("Nicolas", "Perez", 32654789, TipoRol.Vendedor, "nrod@gmail.com"));
-            usuarios.Add(new Usuario("Antonella", "Matinez", 15123456, TipoRol.Vendedor, "amat@gmail.com"));
-            usuarios.Add(new Usuario("Pable", "Smith", 42456852, TipoRol.Supervisor, "psmit@gmail.com"));
+            usuarios.Add(new Usuario("Nicolas", "Perez", 123, TipoRol.Vendedor, "nrod@gmail.com"));
+            usuarios.Add(new Usuario("Antonella", "Martinez", 15123456, TipoRol.Vendedor, "amat@gmail.com"));
+            usuarios.Add(new Usuario("Pablo", "Smith", 456, TipoRol.Supervisor, "psmit@gmail.com"));
         }
 
 

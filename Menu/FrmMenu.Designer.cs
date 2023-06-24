@@ -90,9 +90,11 @@
             // picBoxImagen
             // 
             picBoxImagen.Dock = DockStyle.Fill;
+            picBoxImagen.Image = (Image)resources.GetObject("picBoxImagen.Image");
             picBoxImagen.Location = new Point(0, 33);
             picBoxImagen.Name = "picBoxImagen";
             picBoxImagen.Size = new Size(687, 401);
+            picBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxImagen.TabIndex = 3;
             picBoxImagen.TabStop = false;
             // 

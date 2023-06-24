@@ -35,7 +35,7 @@ namespace Entidades
         }
 
 
-        public void WriteXml(List<Producto> productos, Cliente cliente)
+        public void WriteXml(List<Producto> productos, Cliente cliente) 
         {
             try
             {

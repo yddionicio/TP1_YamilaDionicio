@@ -51,14 +51,14 @@ namespace Menu
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            string rutaImagen = "cohete2.gif";
+            //string rutaImagen = "cohete2.gif";
 
-            if (File.Exists(rutaImagen))
-            {
-                this.picBoxImagen.Image = Image.FromFile(rutaImagen);
-                this.picBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-                this.picBoxImagen.Visible = true;
-            }
+            //if (File.Exists(rutaImagen))
+            //{
+            //    this.picBoxImagen.Image = Image.FromFile(rutaImagen);
+            //    this.picBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            //    this.picBoxImagen.Visible = true;
+            //}
         }
     }
 }

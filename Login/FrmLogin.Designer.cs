@@ -87,7 +87,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(316, 31);
             txtUsuario.TabIndex = 4;
-            txtUsuario.KeyPress += txtUsuario_KeyPress;
+            //txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // label2
             // 

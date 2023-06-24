@@ -72,17 +72,17 @@ namespace Login
             return false;
         }
 
-        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        //private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        //{
 
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            if (this.txtUsuario.Text.Length >= 8 && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
+        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //    }
+        //    if (this.txtUsuario.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
     }
 }
