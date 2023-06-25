@@ -14,6 +14,8 @@ namespace Menu
 {
     public partial class FrmUsuario : Form
     {
+        DatosDAO datos = new DatosDAO();
+
         BindingSource bindingSource;
         public FrmUsuario()
         {
@@ -26,26 +28,31 @@ namespace Menu
             this.cmbTipo.DataSource = Enum.GetValues(typeof(TipoRol));
             dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            bindingSource.DataSource = PlataformaVentas.Usuarios;
-            dgvUsuarios.DataSource = bindingSource;
-
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
-            verColumn.HeaderText = "Acciones";
-            verColumn.Name = "Acciones";
+            verColumn.HeaderText = "Eliminar";
+            verColumn.Name = "Eliminar";
             verColumn.UseColumnTextForButtonValue = true;
             dgvUsuarios.Columns.Add(verColumn);
 
+            bindingSource.DataSource = datos.TraerDatosUsuarios();  //PlataformaVentas.Usuarios;
+            dgvUsuarios.DataSource = bindingSource;
 
             dgvUsuarios.Update();
             dgvUsuarios.Refresh();
         }
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.cmbTipo.Text != string.Empty)
             {
                 Usuario u = new Usuario(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), (TipoRol)(this.cmbTipo.SelectedItem), this.txtMail.Text);
-                PlataformaVentas.Usuarios.Add(u);
+                //PlataformaVentas.Usuarios.Add(u);
+                datos.InsertarDatosUsuario(u);
+                List<Usuario> usu = datos.TraerDatosUsuarios();
+
+                dgvUsuarios.DataSource = null;
+                dgvUsuarios.DataSource = usu;
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
@@ -75,18 +82,25 @@ namespace Menu
 
                     Usuario c = (Usuario)row.DataBoundItem;
 
-                    c.Nombre = this.txtNombre.Text;
-                    c.Apellido = this.txtApellido.Text;
-                    c.Dni = int.Parse(this.txtDni.Text);
-                    c.Rol = (TipoRol)this.cmbTipo.SelectedItem;
-                    c.Mail = this.txtMail.Text;
+                    //c.Nombre = this.txtNombre.Text;
+                    //c.Apellido = this.txtApellido.Text;
+                    //c.Dni = int.Parse(this.txtDni.Text);
+                    //c.Rol = (TipoRol)this.cmbTipo.SelectedItem;
+                    //c.Mail = this.txtMail.Text;
 
-                    row.Cells["Nombre"].Value = c.Nombre;
-                    row.Cells["Apellido"].Value = c.Apellido;
-                    row.Cells["Dni"].Value = c.Dni;
-                    row.Cells["Rol"].Value = c.Rol;
-                    row.Cells["Mail"].Value = c.Mail;
+                    //row.Cells["Nombre"].Value = c.Nombre;
+                    //row.Cells["Apellido"].Value = c.Apellido;
+                    //row.Cells["Dni"].Value = c.Dni;
+                    //row.Cells["Rol"].Value = c.Rol;
+                    //row.Cells["Mail"].Value = c.Mail;
 
+                    datos.ActualizarDatosUsuario(c);
+                    List<Usuario> usu = datos.TraerDatosUsuarios();
+
+                    dgvUsuarios.DataSource = null;
+                    dgvUsuarios.DataSource = usu;
+
+                    bindingSource.ResetBindings(false);
                     LimpiarCampos();
                 }
             }
@@ -113,11 +127,15 @@ namespace Menu
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvUsuarios.Columns["Acciones"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvUsuarios.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
                 Usuario p = (Usuario)dgvUsuarios.Rows[e.RowIndex].DataBoundItem;
 
-                PlataformaVentas.Usuarios.Remove(p);
+                //PlataformaVentas.Usuarios.Remove(p);
+                datos.EliminarDatosUsuario(p.Dni);
+
+                dgvUsuarios.DataSource = null;
+                dgvUsuarios.DataSource = datos.TraerDatosUsuarios();
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();

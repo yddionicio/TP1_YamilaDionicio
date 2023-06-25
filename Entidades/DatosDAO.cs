@@ -133,10 +133,110 @@ namespace Entidades
 
 
         #region Usuarios
+        public List<Usuario> TraerDatosUsuarios()
+        {
+            string consulta = "SELECT * FROM Usuarios";
 
+            try
+            {
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+                reader = comando.ExecuteReader();
+                List<Usuario> usuarios = new List<Usuario>();
 
+                while (reader.Read())
+                {
+                    string nombre = reader["Nombre"].ToString();
+                    string apellido = reader["Apellido"].ToString();
+                    int dni = int.Parse(reader["Dni"].ToString());
+                    TipoRol tipoRol = (TipoRol)Enum.Parse(typeof(TipoRol), reader["TipoRol"].ToString());
+                    string mail = reader["Email"].ToString();
+
+                    Usuario usuario = new Usuario(nombre, apellido, dni, tipoRol, mail);
+                    usuarios.Add(usuario);
+                }
+
+                conexion.Close();
+                return usuarios;
+            }
+            catch (Exception e)
+            {
+                throw new TraerDatosException("Error al leer los usuarios.", e);
+            }
+        }
+
+        public void InsertarDatosUsuario(Usuario nuevoUsuario)
+        {
+            string consulta = "INSERT INTO Usuarios (Nombre, Apellido, Dni, TipoRol, Email) VALUES (@Nombre, @Apellido, @Dni, @TipoRol, @Email)";
+
+            try
+            {
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+
+                comando.Parameters.AddWithValue("@Nombre", nuevoUsuario.Nombre);
+                comando.Parameters.AddWithValue("@Apellido", nuevoUsuario.Apellido);
+                comando.Parameters.AddWithValue("@Dni", nuevoUsuario.Dni);
+                comando.Parameters.AddWithValue("@TipoRol", nuevoUsuario.Rol.ToString());
+                comando.Parameters.AddWithValue("@Email", nuevoUsuario.Mail);
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new BaseDeDatosException("Error al insertar el usuario.", e);
+            }
+        }
+
+        public void EliminarDatosUsuario(int dni)
+        {
+            try
+            {
+                string consulta = "DELETE FROM Usuarios WHERE dni = @Dni";
+
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+                comando.Parameters.Clear();
+
+                comando.Parameters.AddWithValue("@Dni", dni);
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new BaseDeDatosException("Error al eliminar el usuario.", e);
+            }
+        }
+
+        public async Task ActualizarDatosUsuario(Usuario usuario)
+        {
+            try
+            {
+                string consulta = "UPDATE Usuarios SET Nombre = @Nombre, Apellido = @Apellido, TipoRol = @TipoRol, Email = @Email WHERE Dni = @Dni";
+
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+                comando.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                comando.Parameters.AddWithValue("@Apellido", usuario.Apellido);
+                comando.Parameters.AddWithValue("@Dni", usuario.Dni);
+                comando.Parameters.AddWithValue("@TipoRol", usuario.Rol.ToString());
+                comando.Parameters.AddWithValue("@Email", usuario.Mail);
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new BaseDeDatosException("Error al actualizar el usuario.", e);
+            }
+        }
 
         #endregion
+
 
 
 
