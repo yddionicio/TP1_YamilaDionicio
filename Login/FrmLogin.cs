@@ -28,36 +28,46 @@ namespace Login
             string contrasena = txtContraseña.Text;
             frmMenu menu = new frmMenu();
 
-            if (this.rdbVendedor.Checked && TipoRol.Vendedor.ToString() == this.rdbVendedor.Text)
+            try
             {
-                if (ValidarUsuario(usuario, contrasena))
+                if (this.rdbVendedor.Checked && TipoRol.Vendedor.ToString() == this.rdbVendedor.Text)
                 {
-                    menu.OcultarMenuItem();
-                    menu.ShowDialog();
-                    this.Close();
+                    if (ValidarUsuario(usuario, contrasena))
+                    {
+                        menu.OcultarMenuItem();
+                        menu.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        throw new AutenticacionException("Usuario o contraseña incorrectos");
+                        //MessageBox.Show("Usuario o contraseña incorrectos", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (this.rdbSupervisor.Checked && TipoRol.Supervisor.ToString() == this.rdbSupervisor.Text)
+                {
+                    if (ValidarUsuario(usuario, contrasena))
+                    {
+                        menu.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario o contraseña incorrectos", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debe seleccionar un tipo de rol válido", "Error de Selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (this.rdbSupervisor.Checked && TipoRol.Supervisor.ToString() == this.rdbSupervisor.Text)
+            catch (AutenticacionException ex)
             {
-                if (ValidarUsuario(usuario, contrasena))
-                {
-                    menu.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña incorrectos", "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(ex.Message, "Error de Autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un tipo de rol válido", "Error de Selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
+
 
 
         private bool ValidarUsuario(string usuario, string contraseña)

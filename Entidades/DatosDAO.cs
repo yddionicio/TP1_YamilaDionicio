@@ -131,6 +131,15 @@ namespace Entidades
 
         #endregion
 
+
+        #region Usuarios
+
+
+
+        #endregion
+
+
+
         #region Productos
 
         //public List<Producto> TraerDatosProductos()
