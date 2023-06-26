@@ -49,7 +49,7 @@ namespace Entidades
 
             Productos.Add(new Hardware(rdm.Next(200000, 600000), "Monitor", 2000, TipoConexion.HDMI, 1550, 11));
             Productos.Add(new Hardware(rdm.Next(200000, 600000), "Teclado", 2000, TipoConexion.USB, 1000, 5));
-            Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOs, 3600, 7));
+            Productos.Add(new Software(rdm.Next(200000, 600000), "Visual", "7.0", TipoSistemaOperativo.MacOS, 3600, 7));
             Productos.Add(new Software(rdm.Next(200000, 600000), "Photoshop", "9.0", TipoSistemaOperativo.Windows, 500, 15));
             Productos.Add(new Software(123456, "Visual Studio Code", "2.0", TipoSistemaOperativo.Windows, 1200, 8));
             Productos.Add(new Software(2222, "Eclipse", "3.0", TipoSistemaOperativo.Linux, 1900, 5));

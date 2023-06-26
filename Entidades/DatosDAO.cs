@@ -242,70 +242,61 @@ namespace Entidades
 
         #region Productos
 
-        //public List<Producto> TraerDatosProductos()
-        //{
-        //    string consulta = "SELECT * FROM s";
-        //    string consulta = "SELECT * FROM h";
+        public List<Producto> TraerDatosProductos()
+        {
+            List<Producto> productos = new List<Producto>();
 
-        //    try
-        //    {
-        //        conexion.Open();
-        //        ConfigurarComando(consulta, CommandType.Text);
-        //        reader = comando.ExecuteReader();
-        //        productos = new List<Producto>();
+            try
+            {
+                conexion.Open();
 
-        //        while (reader.Read())
-        //        {
-        //            productos.Add(new Producto(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString())));
-        //        }
+                // Consulta para obtener los datos de la tabla "Software"
+                string consultaSoftware = "SELECT * FROM Software";
+                ConfigurarComando(consultaSoftware, CommandType.Text);
+                reader = comando.ExecuteReader();
 
-        //        conexion.Close();
-        //        return productos;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new TraerDatosException("Error al leer los clientes.", e);
-        //    }
-        //}
+                while (reader.Read())
+                {
+                    productos.Add(new Software(
+                                                int.Parse(reader[0].ToString()),
+                                                reader[1].ToString(),
+                                                reader[2].ToString(),
+                                                (TipoSistemaOperativo)Enum.Parse(typeof(TipoSistemaOperativo), reader[3].ToString()),
+                                                double.Parse(reader[4].ToString()),
+                                                int.Parse(reader[5].ToString())
+                                             ));
+                }
 
+                reader.Close();
 
-        //public List<Producto> TraerDatosProductos()
-        //{
-        //    string consulta = "SELECT * FROM Productos";
+                // Consulta para obtener los datos de la tabla "Hardware"
+                string consultaHardware = "SELECT * FROM Hardware";
+                ConfigurarComando(consultaHardware, CommandType.Text);
+                reader = comando.ExecuteReader();
 
-        //    try
-        //    {
-        //        conexion.Open();
-        //        ConfigurarComando(consulta, CommandType.Text);
-        //        reader = comando.ExecuteReader();
-        //        productos = new List<Producto>();
+                while (reader.Read())
+                {
+                    productos.Add(new Hardware(
+                                                int.Parse(reader[0].ToString()),
+                                                reader[1].ToString(),
+                                                int.Parse(reader[2].ToString()),
+                                                (TipoConexion)Enum.Parse(typeof(TipoConexion), reader[3].ToString()),
+                                                double.Parse(reader[4].ToString()),
+                                                int.Parse(reader[5].ToString())
+                                            ));
 
-        //        while (reader.Read())
-        //        {
-        //            string tipo = reader["Tipo"].ToString(); // Supongamos que hay una columna "Tipo" en la tabla Productos que indica el tipo de producto
+                }
 
-        //            if (tipo == "Software")
-        //            {
-        //                productos.Add(new Software(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString()), reader["SoftwareSpecificColumn1"].ToString(), reader["SoftwareSpecificColumn2"].ToString()));
-        //            }
-        //            else if (tipo == "Hardware")
-        //            {
-        //                productos.Add(new Hardware(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString()), reader["HardwareSpecificColumn1"].ToString(), reader["HardwareSpecificColumn2"].ToString()));
-        //            }
-        //            else
-        //            {
-        //                productos.Add(new Producto(reader[0].ToString(), reader[1].ToString(), int.Parse(reader[2].ToString()), reader[3].ToString(), int.Parse(reader[4].ToString())));
-        //            }
-        //        }
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new TraerDatosException("Error al leer los productos.", e);
+            }
 
-        //        conexion.Close();
-        //        return productos;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new TraerDatosException("Error al leer los clientes.", e);
-        //    }
-        //}
+            return productos;
+        }
+
 
         #endregion
 

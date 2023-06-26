@@ -9,7 +9,7 @@ namespace FrmProducto
     {
         Random rdm;
         BindingSource bindingSource;
-
+        DatosDAO datos = new DatosDAO();
         public frmProducto()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace FrmProducto
             dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //Eliminar.DisplayIndex = dgvProducto.Columns.Count - 1; chequear posicion del boton 
 
-            bindingSource.DataSource = PlataformaVentas.Productos;
+            bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
             dgvProducto.DataSource = bindingSource;
 
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
