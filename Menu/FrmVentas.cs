@@ -10,7 +10,7 @@ namespace FrmVentas
         List<Producto> listaSeleccionado;
         BindingSource bindingSource;
         ManejadorDatos manejador;
-
+        DatosDAO datos = new DatosDAO();
         public Cliente ClienteSeleccionado { get; set; }
 
         public frmVentas()
@@ -37,7 +37,7 @@ namespace FrmVentas
             this.cmbMedioPago.SelectedIndex = 0;
 
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.DataSource = PlataformaVentas.Clientes;
+            dgvClientes.DataSource = datos.TraerDatosClientes(); //PlataformaVentas.Clientes;
 
             dgvClientes.Update();
             dgvClientes.Refresh();
@@ -70,6 +70,7 @@ namespace FrmVentas
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
+            //FrmDatosProductos datosProductos = new FrmDatosProductos(datos.TraerDatosProductos());
             datosProductos.ShowDialog();
 
             if (datosProductos != null && datosProductos.ProductoSeleccionado != null)

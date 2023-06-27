@@ -298,6 +298,137 @@ namespace Entidades
         }
 
 
+
+        public void InsertarDatosProductos(Producto producto)
+        {
+            try
+            {
+                string consulta = "";
+
+                if (producto is Software)
+                {
+                    consulta = "INSERT INTO Software (Codigo, Descripcion, version, TipoSistemaOperativo, Precio, Cantidad) " +
+                               "VALUES (@Codigo, @Descripcion, @version, @tipoSistemaOperativo, @Precio, @Cantidad)";
+                }
+                else if (producto is Hardware)
+                {
+                    consulta = "INSERT INTO Hardware (Codigo, Descripcion, Capacidad, TipoConexion, Precio, Cantidad) " +
+                               "VALUES (@Codigo, @Descripcion, @Capacidad, @TipoConexion, @Precio, @Cantidad)";
+                }
+
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+
+                comando.Parameters.AddWithValue("@Codigo", producto.Codigo);
+                comando.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
+                comando.Parameters.AddWithValue("@Precio", producto.Precio);
+                comando.Parameters.AddWithValue("@Cantidad", producto.Stock);
+
+                if (producto is Software)
+                {
+                    Software software = (Software)producto;
+                    comando.Parameters.AddWithValue("@version", software.Version);
+                    comando.Parameters.AddWithValue("@tipoSistemaOperativo", software.TipoSistemaOperativo.ToString());
+                }
+                else if (producto is Hardware)
+                {
+                    Hardware hardware = (Hardware)producto;
+                    comando.Parameters.AddWithValue("@Capacidad", hardware.Capacidad);
+                    comando.Parameters.AddWithValue("@TipoConexion", hardware.TipoConexion.ToString());
+                }
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new BaseDeDatosException("Error al insertar el producto.", e);
+            }
+        }
+
+
+
+        public void EliminarDatosProducto(int codigo)
+        {
+            try
+            {
+                // Verificar si el producto está en la tabla Software
+                string consultaSoftware = "DELETE FROM Software WHERE Codigo = @codigo";
+
+                conexion.Open();
+                ConfigurarComando(consultaSoftware, CommandType.Text);
+                comando.Parameters.Clear();
+
+                comando.Parameters.AddWithValue("@codigo", codigo);
+                int filasAfectadasSoftware = comando.ExecuteNonQuery();
+
+                // Verificar si el producto está en la tabla Hardware
+                string consultaHardware = "DELETE FROM Hardware WHERE Codigo = @codigo";
+
+                ConfigurarComando(consultaHardware, CommandType.Text);
+                comando.Parameters.Clear();
+
+                comando.Parameters.AddWithValue("@codigo", codigo);
+                int filasAfectadasHardware = comando.ExecuteNonQuery();
+
+                conexion.Close();
+
+                if (filasAfectadasSoftware == 0 && filasAfectadasHardware == 0)
+                {
+                    throw new Exception("No se encontró ningún producto con el código especificado.");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new TraerDatosException("Error al eliminar el producto.", e);
+            }
+        }
+
+
+
+        public async Task ActualizarDatosProducto(Producto producto)
+        {
+            try
+            {
+                string consulta = "";
+
+                if (producto is Software)
+                {
+                    consulta = "UPDATE Software SET descripcion = @descripcion, version = @version, tipoSistemaOperativo = @tipoSistemaOperativo, precio = @precio, cantidad = @cantidad WHERE codigo = @codigo";
+                    Software software = (Software)producto;
+
+                    comando.Parameters.AddWithValue("@descripcion", software.Descripcion);
+                    comando.Parameters.AddWithValue("@version", software.Version);
+                    comando.Parameters.AddWithValue("@tipoSistemaOperativo", software.TipoSistemaOperativo.ToString());
+                }
+                else if (producto is Hardware)
+                {
+                    consulta = "UPDATE Hardware SET descripcion = @descripcion, capacidad = @capacidad, tipoConexion = @tipoConexion, precio = @precio, cantidad = @cantidad WHERE codigo = @codigo";
+                    Hardware hardware = (Hardware)producto;
+
+                    comando.Parameters.AddWithValue("@descripcion", hardware.Descripcion);
+                    comando.Parameters.AddWithValue("@capacidad", hardware.Capacidad);
+                    comando.Parameters.AddWithValue("@tipoConexion", hardware.TipoConexion.ToString());
+                }
+
+                comando.Parameters.AddWithValue("@precio", producto.Precio);
+                comando.Parameters.AddWithValue("@cantidad", producto.Stock);
+                comando.Parameters.AddWithValue("@codigo", producto.Codigo);
+
+                conexion.Open();
+                ConfigurarComando(consulta, CommandType.Text);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+            }
+            catch (Exception e)
+            {
+                throw new TraerDatosException("Error al actualizar el producto.", e);
+            }
+        }
+
+
+
         #endregion
 
 

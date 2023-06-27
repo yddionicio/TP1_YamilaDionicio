@@ -24,15 +24,16 @@ namespace FrmProducto
             dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //Eliminar.DisplayIndex = dgvProducto.Columns.Count - 1; chequear posicion del boton 
 
-            bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
-            dgvProducto.DataSource = bindingSource;
-
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
             verColumn.HeaderText = "Acciones";
             verColumn.Name = "Acciones";
             verColumn.UseColumnTextForButtonValue = true;
             dgvProducto.Columns.Add(verColumn);
             //dgvProductos.Columns.Insert(4, verColumn);
+
+
+            bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
+            dgvProducto.DataSource = bindingSource;
 
             dgvProducto.Update();
             dgvProducto.Refresh();
@@ -64,7 +65,8 @@ namespace FrmProducto
 
                 #endregion
 
-                PlataformaVentas.Productos.Add(p);
+                //PlataformaVentas.Productos.Add(p);
+                datos.InsertarDatosProductos(p);
 
                 bindingSource.DataSource = PlataformaVentas.Productos;
                 dgvProducto.DataSource = bindingSource;
@@ -92,22 +94,26 @@ namespace FrmProducto
             {
                 if (dgvProducto.SelectedRows.Count > 0)
                 {
-                    // Obtener la fila seleccionada
                     DataGridViewRow row = dgvProducto.SelectedRows[0];
 
-                    // Obtener el objeto Producto correspondiente a la fila seleccionada
                     Producto p = (Producto)row.DataBoundItem;
+                    datos.ActualizarDatosProducto(p);
 
-                    // Actualizar los valores del objeto Producto
-                    p.Descripcion = txtDescripcion.Text;
-                    p.Precio = double.Parse(txtPrecio.Text);
-                    p.Stock = (int)nupCantidad.Value;
+                    //p.Descripcion = txtDescripcion.Text;
+                    //p.Precio = double.Parse(txtPrecio.Text);
+                    //p.Stock = (int)nupCantidad.Value;
 
-                    row.Cells["Descripcion"].Value = p.Descripcion;
-                    row.Cells["Precio"].Value = p.Precio;
-                    row.Cells["Cantidad"].Value = p.Stock;
+                    //row.Cells["Descripcion"].Value = p.Descripcion;
+                    //row.Cells["Precio"].Value = p.Precio;
+                    //row.Cells["Cantidad"].Value = p.Stock;
 
-                    // Limpiar los campos de entrada
+
+                    List<Producto> prod = datos.TraerDatosProductos();
+
+                    dgvProducto.DataSource = null;
+                    dgvProducto.DataSource = prod;
+
+                    bindingSource.ResetBindings(false);
                     LimpiarCampos();
                 }
             }
@@ -137,7 +143,11 @@ namespace FrmProducto
             {
                 Producto p = (Producto)dgvProducto.Rows[e.RowIndex].DataBoundItem;
 
-                PlataformaVentas.Productos.Remove(p);
+                //PlataformaVentas.Productos.Remove(p);
+                datos.EliminarDatosProducto(p.Codigo);
+
+                dgvProducto.DataSource = null;
+                dgvProducto.DataSource = datos.TraerDatosProductos();
 
                 bindingSource.ResetBindings(false);
                 LimpiarCampos();
