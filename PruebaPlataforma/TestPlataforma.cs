@@ -31,6 +31,20 @@ namespace PruebaPlataforma
             Assert.IsTrue(resultado);   
         }
 
+        [TestMethod]
+        public void CalcularPrecioFinal_TipoEfectivo_DescuentoAplicado()
+        {
+            // Arrange
+            TipoPago tipoPago = TipoPago.Efectivo;
+            string cadena;
+            double subtotal = 100.0;
 
+            // Act
+            double resultado = Venta.CalcularPrecioFinal(tipoPago, out cadena, subtotal);
+
+            // Assert
+            Assert.AreEqual(90.0, resultado);
+            Assert.AreEqual("Descuento 10%:", cadena);
+        }
     }
 }
