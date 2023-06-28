@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Producto
+    public class Producto: IActualizar
     {
         private int codigo;
         private string descripcion;
@@ -56,6 +56,11 @@ namespace Entidades
             sb.AppendLine("Cantidad: " + this.stock);
 
             return sb.ToString();
+        }
+
+        public void ActualizarStock(int cantidad)
+        {
+            Stock -= cantidad;
         }
 
         public static bool operator ==(Producto p1, Producto p2)

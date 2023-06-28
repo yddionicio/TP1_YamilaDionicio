@@ -67,4 +67,4 @@ C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-win
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Pruebita.resources
+C:\Users\Administrator\source\repos\TP1_YamilaDionicio\Menu\obj\Debug\net6.0-windows\Menu.Barra.resources

@@ -70,7 +70,7 @@ namespace Menu
                 List<Cliente> cli = db.TraerDatosClientes();
 
 
-               comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido)); //checkear delegado
+               comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));
 
                 dgvClientes.DataSource = null; 
                 dgvClientes.DataSource = cli;

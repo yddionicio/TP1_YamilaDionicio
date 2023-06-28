@@ -15,7 +15,7 @@ namespace Entidades
 
         public void RealizarCompra()
         {
-            Thread.Sleep(8000);
+            Thread.Sleep(2000);
             CompraRealizada.Invoke();
         }
 

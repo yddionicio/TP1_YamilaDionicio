@@ -1,6 +1,6 @@
 ﻿namespace Menu
 {
-    partial class Pruebita
+    partial class Barra
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            progressBar1 = new ProgressBar();
             SuspendLayout();
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 36);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(454, 34);
+            progressBar1.TabIndex = 0;
             // 
             // Pruebita
             // 
@@ -36,13 +44,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(899, 537);
+            ClientSize = new Size(478, 108);
+            Controls.Add(progressBar1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Pruebita";
-            Text = "Pruebita";
+            Text = "Procesando Compra";
             Load += Pruebita_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private ProgressBar progressBar1;
     }
 }

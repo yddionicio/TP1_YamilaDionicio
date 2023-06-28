@@ -23,7 +23,7 @@ namespace FrmVentas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
-            manejador.CompraRealizada += Manejador_CompraRealizada;
+            //manejador.CompraRealizada += Manejador_CompraRealizada;
 
             this.txtDinero.Enabled = false;
             this.btnSimulador.Enabled = false;
@@ -87,7 +87,7 @@ namespace FrmVentas
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
-        {            
+        {
             if (this.numUdCantidad.Value >= 1)
             {
                 if (int.Parse(this.txtStock.Text) >= (int)this.numUdCantidad.Value)
@@ -95,7 +95,7 @@ namespace FrmVentas
                     bool productoAgregado = false;
 
                     manejador.AgregarProducto(PlataformaVentas.Productos, listaSeleccionado, out productoAgregado, this.numUdCantidad.Value);
-                   
+
                     if (productoAgregado)
                     {
                         LimpiarCampos();
@@ -208,12 +208,28 @@ namespace FrmVentas
 
                     if (this.ClienteSeleccionado != null)
                     {
-                        //Task.Run(manejador.RealizarCompra).Wait();
-                        await Task.Run(manejador.RealizarCompra);
+                        Barra barraForm = new Barra();
+                        barraForm.Show();
+
+                        manejador.CompraRealizada += Manejador_CompraRealizada;
+
+                        foreach (var productoVenta in listaSeleccionado)
+                        {
+                            productoVenta.ActualizarStock(Convert.ToInt16(this.numUdCantidad.Value));
+                        }
+
+                        await Task.Run(() =>
+                        {
+                            barraForm.Invoke((MethodInvoker)(() => barraForm.UpdateProgressBar(100)));
+
+                            manejador.RealizarCompra();
+                        });
+
+                        barraForm.Close();
 
                         Cliente clienteSeleccionado = this.ClienteSeleccionado;
                         Venta venta = new Venta(listaSeleccionado, clienteSeleccionado, DateTime.Now);
-                        
+
                         //PlataformaVentas.Ventas.Add(CrearVenta(listaSeleccionado, clienteSeleccionado));
 
                         DialogResult result = MessageBox.Show("¿Desea realizar otra compra?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
