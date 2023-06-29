@@ -213,9 +213,18 @@ namespace FrmVentas
 
                         manejador.CompraRealizada += Manejador_CompraRealizada;
 
-                        foreach (var productoVenta in listaSeleccionado)
+                        //foreach (var productoVenta in listaSeleccionado)
+                        //{
+                        //    productoVenta.ActualizarStock(Convert.ToInt16(productoVenta.Stock));
+                        //}
+                        // Verificar si el carrito está vacío
+                        manejador.CarritoVacio += ManejadorCarrito_CarritoVacio;
+
+                        if (listaSeleccionado.Count == 0)
                         {
-                            productoVenta.ActualizarStock(Convert.ToInt16(this.numUdCantidad.Value));
+                            manejador.OnCarritoVacio();
+
+                            return;
                         }
 
                         await Task.Run(() =>
@@ -258,6 +267,12 @@ namespace FrmVentas
                 DatosArchivo archivo = new DatosArchivo();
                 archivo.WriterLog(ex, "venta rechazada", this.ToString(), nameof(btnCrearVenta_Click));
             }
+        }
+
+
+        private void ManejadorCarrito_CarritoVacio()
+        {
+            MessageBox.Show("El carrito está vacío. Por favor, seleccione al menos un producto.", "Carrito Vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private Venta CrearVenta(List<Producto> productos, Cliente cliente) // eliminar metodo 

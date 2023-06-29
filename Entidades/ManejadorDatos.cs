@@ -9,8 +9,14 @@ namespace Entidades
 {
     public class ManejadorDatos
     {
+        public delegate void MensajeInformacionEventHandler(string mensaje);
+        public event MensajeInformacionEventHandler MostrarMensajeInformacion;
+
         public delegate void CompraRealizadaEventHandler();
         public event CompraRealizadaEventHandler CompraRealizada;
+
+        public event Action CarritoVacio;
+
 
 
         public void RealizarCompra()
@@ -19,6 +25,16 @@ namespace Entidades
             CompraRealizada.Invoke();
         }
 
+        public void MostrarMensaje(string mensaje)
+        {
+            // Invocar el evento para mostrar el mensaje
+            MostrarMensajeInformacion?.Invoke(mensaje);
+        }
+
+        public void OnCarritoVacio()
+        {
+            CarritoVacio?.Invoke();
+        }
 
         public List<Producto> AgregarProducto(List<Producto> listaProductos, List<Producto> listaSeleccionado, out bool productoEncontrado, decimal cantidad)
         {

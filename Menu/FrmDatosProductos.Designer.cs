@@ -36,12 +36,13 @@
             // dgvDatosProductos
             // 
             dgvDatosProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDatosProductos.Location = new Point(4, 3);
+            dgvDatosProductos.Dock = DockStyle.Fill;
+            dgvDatosProductos.Location = new Point(0, 0);
             dgvDatosProductos.Name = "dgvDatosProductos";
             dgvDatosProductos.RowHeadersWidth = 62;
             dgvDatosProductos.RowTemplate.Height = 33;
             dgvDatosProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDatosProductos.Size = new Size(796, 327);
+            dgvDatosProductos.Size = new Size(804, 331);
             dgvDatosProductos.TabIndex = 0;
             dgvDatosProductos.CellClick += dgvDatosProductos_CellClick;
             // 
@@ -51,6 +52,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(804, 331);
             Controls.Add(dgvDatosProductos);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmDatosProductos";
             Text = "Datos";

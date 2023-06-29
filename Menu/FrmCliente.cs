@@ -18,7 +18,7 @@ namespace Menu
         Random rdm;
         BindingSource bindingSource;
         DatosDAO db = new DatosDAO();
-
+        ManejadorDatos manejador = new ManejadorDatos();
         public FrmCliente()
         {
             InitializeComponent();
@@ -80,9 +80,18 @@ namespace Menu
             }
             else
             {
-                MessageBox.Show("¡Por favor complete todos los campos requeridos!", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                manejador.MostrarMensajeInformacion += MostrarMensajeInformacionHandler;
+                manejador.MostrarMensaje("¡Por favor complete todos los campos requeridos!");
+
+                //MessageBox.Show("¡Por favor complete todos los campos requeridos!", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void MostrarMensajeInformacionHandler(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Información Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
 
         public void LimpiarCampos()
         {
