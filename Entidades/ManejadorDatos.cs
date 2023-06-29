@@ -15,9 +15,9 @@ namespace Entidades
         public delegate void CompraRealizadaEventHandler();
         public event CompraRealizadaEventHandler CompraRealizada;
 
-        public event Action CarritoVacio;
+       public event Action CarritoVacio;
 
-
+        public Predicate<List<Producto>> carritoVacio = (lista) => lista.Count == 0;
 
         public void RealizarCompra()
         {
@@ -27,7 +27,6 @@ namespace Entidades
 
         public void MostrarMensaje(string mensaje)
         {
-            // Invocar el evento para mostrar el mensaje
             MostrarMensajeInformacion?.Invoke(mensaje);
         }
 

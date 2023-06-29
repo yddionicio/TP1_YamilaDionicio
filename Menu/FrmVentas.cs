@@ -208,12 +208,11 @@ namespace FrmVentas
 
                     if (this.ClienteSeleccionado != null)
                     {
-                        manejador.CarritoVacio += ManejadorCarrito_CarritoVacio;
 
-                        if (listaSeleccionado.Count == 0)
+                        if (manejador.carritoVacio(listaSeleccionado))
                         {
+                            manejador.CarritoVacio += ManejadorCarrito_CarritoVacio;
                             manejador.OnCarritoVacio();
-
                             return;
                         }
 
