@@ -208,6 +208,15 @@ namespace FrmVentas
 
                     if (this.ClienteSeleccionado != null)
                     {
+                        manejador.CarritoVacio += ManejadorCarrito_CarritoVacio;
+
+                        if (listaSeleccionado.Count == 0)
+                        {
+                            manejador.OnCarritoVacio();
+
+                            return;
+                        }
+
                         Barra barraForm = new Barra();
                         barraForm.Show();
 
@@ -218,14 +227,7 @@ namespace FrmVentas
                         //    productoVenta.ActualizarStock(Convert.ToInt16(productoVenta.Stock));
                         //}
                         // Verificar si el carrito está vacío
-                        manejador.CarritoVacio += ManejadorCarrito_CarritoVacio;
-
-                        if (listaSeleccionado.Count == 0)
-                        {
-                            manejador.OnCarritoVacio();
-
-                            return;
-                        }
+                       
 
                         await Task.Run(() =>
                         {
