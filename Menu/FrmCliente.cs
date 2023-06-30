@@ -36,8 +36,12 @@ namespace Menu
             verColumn.UseColumnTextForButtonValue = true;
             dgvClientes.Columns.Add(verColumn);
 
+            Comparar<Cliente> comparador = new Comparar<Cliente>();
+            List<Cliente> cli = db.TraerDatosClientes();
+            comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));
 
-            bindingSource.DataSource = db.TraerDatosClientes(); //PlataformaVentas.Clientes;
+
+            bindingSource.DataSource = cli; //PlataformaVentas.Clientes;
             dgvClientes.DataSource = bindingSource;
 
             
@@ -63,11 +67,11 @@ namespace Menu
             if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
                 Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
-                PlataformaVentas.Clientes.Add(c);
+                //PlataformaVentas.Clientes.Add(c);
 
-                Comparar<Cliente> comparador = new Comparar<Cliente>();
+               Comparar<Cliente> comparador = new Comparar<Cliente>();
                 db.InsertarDatosCliente(c);
-                List<Cliente> cli = db.TraerDatosClientes();
+               List<Cliente> cli = db.TraerDatosClientes();
 
 
                comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));

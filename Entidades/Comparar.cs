@@ -15,12 +15,6 @@ namespace Entidades
             elementos.Sort((x, y) =>
             {
                 int comparacion = comparador(x, y);
-
-                //if (comparacion == 0 && x is Cliente clienteX && y is Cliente clienteY)
-                //{
-                //    // Comparar por DNI si los objetos son Cliente y la comparación previa es igual a 0
-                //    return clienteX.Dni.CompareTo(clienteY.Dni);
-                //}
                 return comparacion;
             });
         }

@@ -253,6 +253,7 @@ namespace Entidades
                 // Consulta para obtener los datos de la tabla "Software"
                 string consultaSoftware = "SELECT * FROM Software";
                 ConfigurarComando(consultaSoftware, CommandType.Text);
+
                 reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -424,6 +425,41 @@ namespace Entidades
             catch (Exception e)
             {
                 throw new TraerDatosException("Error al actualizar el producto.", e);
+            }
+        }
+
+        public void ActualizarStockEnBaseDeDatos(Producto producto)
+        {
+            string tabla;
+
+            if (producto is Software)
+            {
+                tabla = "Software";
+            }
+            else if (producto is Hardware)
+            {
+                tabla = "Hardware";
+            }
+            else
+            {
+                throw new ArgumentException("Tipo de producto no válido");
+            }
+
+            using (SqlConnection connection = new SqlConnection("cadenaDeConexion"))
+            {
+                connection.Open();
+
+                string consulta = $"UPDATE {tabla} SET Stock = @nuevoStock WHERE Id = @productoId";
+
+                using (SqlCommand command = new SqlCommand(consulta, connection))
+                {
+                    command.Parameters.AddWithValue("@nuevoStock", producto.Stock);
+                    command.Parameters.AddWithValue("@productoId", producto.Codigo);
+                    
+                    ConfigurarComando(consulta, CommandType.Text);
+                    command.ExecuteNonQuery();
+                }
+
             }
         }
 

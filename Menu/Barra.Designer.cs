@@ -38,7 +38,7 @@
             progressBar1.Size = new Size(454, 34);
             progressBar1.TabIndex = 0;
             // 
-            // Pruebita
+            // Barra
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -47,7 +47,8 @@
             ClientSize = new Size(478, 108);
             Controls.Add(progressBar1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "Pruebita";
+            Name = "Barra";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Procesando Compra";
             Load += Pruebita_Load;
             ResumeLayout(false);

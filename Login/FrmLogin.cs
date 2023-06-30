@@ -1,13 +1,22 @@
 using Entidades;
+using Google.GData.Extensions.MediaRss;
 using Menu;
+using System;
+using System.IO;
+using System.Media;
+using System.Windows.Forms;
 
 namespace Login
 {
     public partial class FrmLogin : Form
     {
+        private SoundPlayer soundPlayer;
+
         public FrmLogin()
         {
-            InitializeComponent();
+            InitializeComponent();  
+            soundPlayer = new SoundPlayer();
+
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -19,6 +28,9 @@ namespace Login
             this.picboxImagen.Image = Image.FromFile(estilos.Imagen);
             this.BackColor = Color.FromName(estilos.Fondo);
             //System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(estilos.Sonido);
+            //this.btnIngresar.Click += (sender, e) => soundPlayer.Play();
+
+            //soundPlayer.SoundLocation = estilos.Sonido;
             //this.btnIngresar.Click += (sender, e) => soundPlayer.Play();
         }
 
@@ -81,6 +93,8 @@ namespace Login
             }
             return false;
         }
+
+
 
         //private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         //{

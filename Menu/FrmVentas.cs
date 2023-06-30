@@ -23,8 +23,6 @@ namespace FrmVentas
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
-            //manejador.CompraRealizada += Manejador_CompraRealizada;
-
             this.txtDinero.Enabled = false;
             this.btnSimulador.Enabled = false;
 
@@ -66,16 +64,16 @@ namespace FrmVentas
             dgvProductos.Update();
             dgvProductos.Refresh();
         }
-
+        Producto productoSeleccionado;
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
-            //FrmDatosProductos datosProductos = new FrmDatosProductos(datos.TraerDatosProductos());
+            //FrmDatosProductos datosProductos = new FrmDatosProductos(PlataformaVentas.Productos);
+            FrmDatosProductos datosProductos = new FrmDatosProductos(datos.TraerDatosProductos());
             datosProductos.ShowDialog();
 
             if (datosProductos != null && datosProductos.ProductoSeleccionado != null)
             {
-                Producto productoSeleccionado = datosProductos.ProductoSeleccionado;
+                productoSeleccionado = datosProductos.ProductoSeleccionado;
 
                 this.txtCodigo.Text = productoSeleccionado.Codigo.ToString();
                 this.txtDescripcion.Text = productoSeleccionado.Descripcion.ToString();
@@ -94,7 +92,7 @@ namespace FrmVentas
                 {
                     bool productoAgregado = false;
 
-                    manejador.AgregarProducto(PlataformaVentas.Productos, listaSeleccionado, out productoAgregado, this.numUdCantidad.Value);
+                    manejador.AgregarProducto(productoSeleccionado, listaSeleccionado, out productoAgregado, this.numUdCantidad.Value);
 
                     if (productoAgregado)
                     {
@@ -224,9 +222,11 @@ namespace FrmVentas
                         //foreach (var productoVenta in listaSeleccionado)
                         //{
                         //    productoVenta.ActualizarStock(Convert.ToInt16(productoVenta.Stock));
+                        //    datos.ActualizarDatosProducto(productoVenta);
                         //}
-                        // Verificar si el carrito está vacío
-                       
+
+                        dgvProductos.Refresh();
+                        dgvProductos.Update();
 
                         await Task.Run(() =>
                         {
@@ -285,7 +285,11 @@ namespace FrmVentas
         private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            this.ClienteSeleccionado = PlataformaVentas.Clientes[rowIndex];
+
+            if (rowIndex >= 0 && rowIndex < PlataformaVentas.Clientes.Count)
+            {
+                this.ClienteSeleccionado = PlataformaVentas.Clientes[rowIndex];
+            }
         }
 
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e) // modificar 

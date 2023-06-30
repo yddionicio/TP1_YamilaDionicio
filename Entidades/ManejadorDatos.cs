@@ -15,7 +15,7 @@ namespace Entidades
         public delegate void CompraRealizadaEventHandler();
         public event CompraRealizadaEventHandler CompraRealizada;
 
-       public event Action CarritoVacio;
+        public event Action CarritoVacio;
 
         public Predicate<List<Producto>> carritoVacio = (lista) => lista.Count == 0;
 
@@ -35,14 +35,13 @@ namespace Entidades
             CarritoVacio?.Invoke();
         }
 
-        public List<Producto> AgregarProducto(List<Producto> listaProductos, List<Producto> listaSeleccionado, out bool productoEncontrado, decimal cantidad)
+        public List<Producto> AgregarProducto(Producto p, List<Producto> listaSeleccionado, out bool productoEncontrado, decimal cantidad)
         {
             productoEncontrado = false;
             Producto productoSeleccionado = null;
 
-            foreach (Producto item in listaProductos)
-            {
-                productoSeleccionado = new Producto(item.Codigo, item.Descripcion, item.Precio, (int)cantidad);
+            p.Stock = (int)cantidad;
+            productoSeleccionado = p;
 
                 productoEncontrado = false;
 
@@ -59,9 +58,7 @@ namespace Entidades
                 {
                     listaSeleccionado += productoSeleccionado;
                     productoEncontrado = true;
-                    break;
                 }
-            }
 
             return listaSeleccionado;
         }

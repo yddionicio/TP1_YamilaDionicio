@@ -111,6 +111,7 @@
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "frmMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Plataforma";
             Load += frmMenu_Load;
             menuStrip1.ResumeLayout(false);

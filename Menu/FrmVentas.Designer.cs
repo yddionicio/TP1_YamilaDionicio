@@ -363,6 +363,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmVentas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = " Ventas";
             Load += frmVentas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
