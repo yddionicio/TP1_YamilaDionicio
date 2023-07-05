@@ -33,7 +33,7 @@ namespace Entidades
         #region Clientes
         public List<Cliente> TraerDatosClientes()
         {
-            string consulta = "SELECT * FROM Clientes";
+            string consulta = ""; //"SELECT * FROM Clientes";
 
             try
             {
@@ -462,10 +462,11 @@ namespace Entidades
 
             }
         }
-
-
-
         #endregion
+
+
+
+
 
 
     }

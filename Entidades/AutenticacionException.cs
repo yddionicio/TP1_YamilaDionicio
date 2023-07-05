@@ -19,7 +19,6 @@ namespace Entidades
 
         private int GenerarCodigoError()
         {
-            // Generar un código de error único
             Random random = new Random();
             return random.Next(1000, 9999);
         }
@@ -44,7 +43,6 @@ namespace Entidades
             }
             catch (Exception ex)
             {
-                // Manejo de errores al crear o escribir en el archivo de registro
                 Console.WriteLine($"Error al registrar el error de autenticación: {ex.Message}");
             }
         }

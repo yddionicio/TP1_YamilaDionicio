@@ -10,6 +10,8 @@ namespace FrmProducto
         Random rdm;
         BindingSource bindingSource;
         DatosDAO datos = new DatosDAO();
+        ProductosDAO prod = new ProductosDAO();
+
         public frmProducto()
         {
             InitializeComponent();
@@ -32,7 +34,8 @@ namespace FrmProducto
             //dgvProductos.Columns.Insert(4, verColumn);
 
 
-            bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
+            //bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
+            bindingSource.DataSource = prod.GetAll();
             dgvProducto.DataSource = bindingSource;
 
             dgvProducto.Update();
@@ -66,8 +69,8 @@ namespace FrmProducto
                 #endregion
 
                 //PlataformaVentas.Productos.Add(p);
-                datos.InsertarDatosProductos(p);
-
+                //datos.InsertarDatosProductos(p);
+                prod.Add(p);
                 bindingSource.DataSource = PlataformaVentas.Productos;
                 dgvProducto.DataSource = bindingSource;
 
@@ -144,7 +147,8 @@ namespace FrmProducto
                 Producto p = (Producto)dgvProducto.Rows[e.RowIndex].DataBoundItem;
 
                 //PlataformaVentas.Productos.Remove(p);
-                datos.EliminarDatosProducto(p.Codigo);
+                //datos.EliminarDatosProducto(p.Codigo);
+                prod.Delete(p.Codigo);
 
                 dgvProducto.DataSource = null;
                 dgvProducto.DataSource = datos.TraerDatosProductos();

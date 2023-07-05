@@ -19,6 +19,8 @@ namespace Menu
         BindingSource bindingSource;
         DatosDAO db = new DatosDAO();
         ManejadorDatos manejador = new ManejadorDatos();
+        ClientesDAO clienteDB = new ClientesDAO();
+
         public FrmCliente()
         {
             InitializeComponent();
@@ -37,14 +39,15 @@ namespace Menu
             dgvClientes.Columns.Add(verColumn);
 
             Comparar<Cliente> comparador = new Comparar<Cliente>();
-            List<Cliente> cli = db.TraerDatosClientes();
+            //List<Cliente> cli = db.TraerDatosClientes();
+            List<Cliente> cli = clienteDB.GetAll();
             comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));
 
 
             bindingSource.DataSource = cli; //PlataformaVentas.Clientes;
             dgvClientes.DataSource = bindingSource;
 
-            
+
 
             #region chequear si me permite agregar una imagen al boton sino eliminarlo
             // Crea una instancia de DataGridViewImageCell para la imagen del botón
@@ -69,14 +72,16 @@ namespace Menu
                 Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
                 //PlataformaVentas.Clientes.Add(c);
 
-               Comparar<Cliente> comparador = new Comparar<Cliente>();
-                db.InsertarDatosCliente(c);
-               List<Cliente> cli = db.TraerDatosClientes();
+                //Comparar<Cliente> comparador = new Comparar<Cliente>();
+                // db.InsertarDatosCliente(c);
+                clienteDB.Add(c);
+
+                List<Cliente> cli = clienteDB.GetAll();
 
 
-               comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));
+                //comparador.Ordenar(cli, (x, y) => string.Compare(x.Apellido, y.Apellido));
 
-                dgvClientes.DataSource = null; 
+                dgvClientes.DataSource = null;
                 dgvClientes.DataSource = cli;
 
                 bindingSource.ResetBindings(false);
@@ -121,32 +126,30 @@ namespace Menu
         {
             if (this.txtNombre.Text != string.Empty && this.txtApellido.Text != string.Empty && this.txtDni.Text != string.Empty && this.txtMail.Text != string.Empty && this.txtTelefono.Text != string.Empty)
             {
-                if (dgvClientes.SelectedRows.Count > 0)
+                Cliente c = new Cliente(this.txtNombre.Text, this.txtApellido.Text, int.Parse(this.txtDni.Text), this.txtMail.Text, int.Parse(this.txtTelefono.Text));
+
+                if (this.txtDni.Text != null)
                 {
-                    DataGridViewRow row = dgvClientes.SelectedRows[0];
-
-                    Cliente c = (Cliente)row.DataBoundItem;
-
-                    //c.Nombre = this.txtNombre.Text;
-                    //c.Apellido = this.txtApellido.Text;
-                    //c.Dni = int.Parse(this.txtDni.Text);
-                    //c.Email = this.txtMail.Text;
-                    //c.Telefono = int.Parse(this.txtTelefono.Text);
-
-                    //row.Cells["Nombre"].Value = c.Nombre;
-                    //row.Cells["Apellido"].Value = c.Apellido;
-                    //row.Cells["Dni"].Value = c.Dni;
-                    //row.Cells["Email"].Value = c.Email;
-                    //row.Cells["Telefono"].Value = c.Telefono;
-
-                    db.ActualizarDatosCliente(c).Wait();
-
-                    dgvClientes.DataSource = null;
-                    dgvClientes.DataSource = db.TraerDatosClientes();
-
-                    bindingSource.ResetBindings(false);
-                    LimpiarCampos();
+                    List<Cliente> cli = clienteDB.GetAll();
+                    foreach (var item in cli)
+                    {
+                        if (item.Dni != Convert.ToInt32(this.txtDni.Text))
+                        {
+                            MessageBox.Show("Debe ingresar un DNI existente", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
                 }
+
+                //db.ActualizarDatosCliente(c).Wait();
+                clienteDB.Update(c);
+
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = clienteDB.GetAll();
+
+                bindingSource.ResetBindings(false);
+                LimpiarCampos();
+
             }
             else
             {
@@ -175,19 +178,13 @@ namespace Menu
             {
                 Cliente c = (Cliente)dgvClientes.Rows[e.RowIndex].DataBoundItem;
 
-                //PlataformaVentas.Clientes.Remove(c);
-                db.EliminarDatosCliente(c.Dni);
+                //db.EliminarDatosCliente(c.Dni);
+                clienteDB.Delete(c.Dni);
 
-                //List<Cliente> clientes = db.TraerDatosClientes();
-
-                // Asignar la nueva lista de clientes al DataGridView
-                //dgvClientes.DataSource = clientes;
                 dgvClientes.DataSource = null;
-
-                dgvClientes.DataSource = db.TraerDatosClientes();
+                dgvClientes.DataSource = clienteDB.GetAll();
 
                 bindingSource.ResetBindings(false);
-                //dgvClientes.Refresh();
                 LimpiarCampos();
             }
         }

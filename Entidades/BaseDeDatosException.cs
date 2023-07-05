@@ -14,6 +14,7 @@ namespace Entidades
 
         public BaseDeDatosException(string mensaje, Exception innerException) : base(mensaje, innerException)
         {
+            //ashdbkas
         }
     }
 }

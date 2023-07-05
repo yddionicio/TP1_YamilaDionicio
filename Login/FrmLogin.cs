@@ -11,7 +11,7 @@ namespace Login
     public partial class FrmLogin : Form
     {
         private SoundPlayer soundPlayer;
-
+        DatosDAO datos = new DatosDAO();
         public FrmLogin()
         {
             InitializeComponent();  
@@ -84,7 +84,7 @@ namespace Login
 
         private bool ValidarUsuario(string usuario, string contraseña)
         {
-            foreach (Usuario item in PlataformaVentas.Usuarios)
+            foreach (Usuario item in datos.TraerDatosUsuarios())
             {
                 if (item.Apellido == usuario && item.Dni == int.Parse(contraseña))
                 {
