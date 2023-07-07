@@ -89,8 +89,7 @@ namespace Menu
             }
             else
             {
-                manejador.MostrarMensajeInformacion += MostrarMensajeInformacionHandler;
-                manejador.MostrarMensaje("¡Por favor complete todos los campos requeridos!");
+                manejador.MostrarMensajeInformacion += MostrarMensajeInformacionHandler;               
 
                 //MessageBox.Show("¡Por favor complete todos los campos requeridos!", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

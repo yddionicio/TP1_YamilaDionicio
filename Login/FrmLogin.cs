@@ -12,6 +12,7 @@ namespace Login
     {
         private SoundPlayer soundPlayer;
         DatosDAO datos = new DatosDAO();
+        UsuariosDAO usuarios = new UsuariosDAO();
         public FrmLogin()
         {
             InitializeComponent();  
@@ -84,7 +85,7 @@ namespace Login
 
         private bool ValidarUsuario(string usuario, string contraseña)
         {
-            foreach (Usuario item in datos.TraerDatosUsuarios())
+            foreach (Usuario item in usuarios.GetAll())
             {
                 if (item.Apellido == usuario && item.Dni == int.Parse(contraseña))
                 {

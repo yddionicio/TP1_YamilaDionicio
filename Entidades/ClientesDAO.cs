@@ -63,7 +63,7 @@ namespace Entidades
         public List<Cliente> GetAll()
         {
 
-            string consulta = "SELECT * FROM Clientes";
+            string consulta = "SELECT * FROM Clientes ORDER BY apellido, nombre";
 
             try
             {

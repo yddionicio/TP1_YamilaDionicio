@@ -10,7 +10,7 @@ namespace FrmProducto
         Random rdm;
         BindingSource bindingSource;
         DatosDAO datos = new DatosDAO();
-        ProductosDAO prod = new ProductosDAO();
+        ProductosDAO productosDB = new ProductosDAO();
 
         public frmProducto()
         {
@@ -27,15 +27,15 @@ namespace FrmProducto
             //Eliminar.DisplayIndex = dgvProducto.Columns.Count - 1; chequear posicion del boton 
 
             DataGridViewButtonColumn verColumn = new DataGridViewButtonColumn();
-            verColumn.HeaderText = "Acciones";
-            verColumn.Name = "Acciones";
+            verColumn.HeaderText = "Eliminar";
+            verColumn.Name = "Eliminar";
             verColumn.UseColumnTextForButtonValue = true;
             dgvProducto.Columns.Add(verColumn);
             //dgvProductos.Columns.Insert(4, verColumn);
 
 
             //bindingSource.DataSource = datos.TraerDatosProductos(); //PlataformaVentas.Productos;
-            bindingSource.DataSource = prod.GetAll();
+            bindingSource.DataSource = productosDB.GetAll();
             dgvProducto.DataSource = bindingSource;
 
             dgvProducto.Update();
@@ -70,7 +70,7 @@ namespace FrmProducto
 
                 //PlataformaVentas.Productos.Add(p);
                 //datos.InsertarDatosProductos(p);
-                prod.Add(p);
+                productosDB.Add(p);
                 bindingSource.DataSource = PlataformaVentas.Productos;
                 dgvProducto.DataSource = bindingSource;
 
@@ -100,18 +100,9 @@ namespace FrmProducto
                     DataGridViewRow row = dgvProducto.SelectedRows[0];
 
                     Producto p = (Producto)row.DataBoundItem;
-                    datos.ActualizarDatosProducto(p);
+                    List<Producto> prod = productosDB.GetAll();
 
-                    //p.Descripcion = txtDescripcion.Text;
-                    //p.Precio = double.Parse(txtPrecio.Text);
-                    //p.Stock = (int)nupCantidad.Value;
-
-                    //row.Cells["Descripcion"].Value = p.Descripcion;
-                    //row.Cells["Precio"].Value = p.Precio;
-                    //row.Cells["Cantidad"].Value = p.Stock;
-
-
-                    List<Producto> prod = datos.TraerDatosProductos();
+                    productosDB.Update(p);
 
                     dgvProducto.DataSource = null;
                     dgvProducto.DataSource = prod;
@@ -142,13 +133,13 @@ namespace FrmProducto
 
         private void dgvProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvProducto.Columns["Acciones"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvProducto.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
                 Producto p = (Producto)dgvProducto.Rows[e.RowIndex].DataBoundItem;
 
                 //PlataformaVentas.Productos.Remove(p);
                 //datos.EliminarDatosProducto(p.Codigo);
-                prod.Delete(p.Codigo);
+                productosDB.Delete(p.Codigo);
 
                 dgvProducto.DataSource = null;
                 dgvProducto.DataSource = datos.TraerDatosProductos();

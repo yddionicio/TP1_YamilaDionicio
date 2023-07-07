@@ -15,7 +15,7 @@ namespace Menu
     public partial class FrmUsuario : Form
     {
         DatosDAO datos = new DatosDAO();
-
+        UsuariosDAO usuariosDB = new UsuariosDAO();
         BindingSource bindingSource;
         public FrmUsuario()
         {
@@ -82,23 +82,23 @@ namespace Menu
 
                     Usuario c = (Usuario)row.DataBoundItem;
 
-                    //c.Nombre = this.txtNombre.Text;
-                    //c.Apellido = this.txtApellido.Text;
-                    //c.Dni = int.Parse(this.txtDni.Text);
-                    //c.Rol = (TipoRol)this.cmbTipo.SelectedItem;
-                    //c.Mail = this.txtMail.Text;
+                    if (this.txtDni.Text != null)
+                    {
+                        List<Usuario> usu = usuariosDB.GetAll();
 
-                    //row.Cells["Nombre"].Value = c.Nombre;
-                    //row.Cells["Apellido"].Value = c.Apellido;
-                    //row.Cells["Dni"].Value = c.Dni;
-                    //row.Cells["Rol"].Value = c.Rol;
-                    //row.Cells["Mail"].Value = c.Mail;
-
-                    datos.ActualizarDatosUsuario(c);
-                    List<Usuario> usu = datos.TraerDatosUsuarios();
+                        foreach (var item in usu)
+                        {
+                            if (item.Dni != Convert.ToInt32(this.txtDni.Text))
+                            {
+                                MessageBox.Show("Debe ingresar un DNI existente", "Informacion Requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            }
+                        }
+                    }
+                    usuariosDB.Update(c);
 
                     dgvUsuarios.DataSource = null;
-                    dgvUsuarios.DataSource = usu;
+                    dgvUsuarios.DataSource = usuariosDB.GetAll();
 
                     bindingSource.ResetBindings(false);
                     LimpiarCampos();
